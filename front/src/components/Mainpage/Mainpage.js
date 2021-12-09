@@ -1,8 +1,10 @@
+import React from 'react'
+import ServicePage from '../ServicePage/ServicePage'
 function Mainpage() {
 
   return (
     <div>
-      Mainpage
+      <ServicePage/>
     </div>
   )
 
