@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CardDetailPage(){
+function ServicePage() {
   return (
     <div>
       CardDetailPage
@@ -8,4 +8,5 @@ function CardDetailPage(){
   )
 }
 
-export default CardDetailPage
+export default ServicePage
+

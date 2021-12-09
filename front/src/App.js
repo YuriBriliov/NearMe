@@ -1,10 +1,18 @@
-import React from 'react'
+import { Routes, Route } from "react-router-dom";
+import Header from './components/Header/Header'
+import Mainpage from './components/Mainpage/Mainpage'
 
 function App() {
   return (
-    <div className="App">
-      Hello
-    </div>
+    <>
+    <Header />
+    <Routes>
+      <Route path='/' element={ <Mainpage />}/>
+
+    </Routes>
+
+    </>
+
   );
 }
 
