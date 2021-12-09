@@ -1,10 +1,11 @@
 import styles from './style.module.css'
 
+
 function Header() {
 
   return (
-    <div>
-      hello
+    <div className={styles.header}>
+
     </div>
 
   )
