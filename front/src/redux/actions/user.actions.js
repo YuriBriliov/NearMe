@@ -6,9 +6,8 @@ const userError = (error) => ({
 })
 
 export const registerNewUser = (user) => async (dispatch) => {
-  console.log(user);
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/sign_up`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/sign_up`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -27,13 +26,13 @@ export const registerNewUser = (user) => async (dispatch) => {
       dispatch(userError('Вы ввели неверные данные'))
     }
   } catch (error) {
-    dispatch(userError('Вы ввели неверные данные'))
+    dispatch(userError('Ошибка при связи с сервером'))
   }
 }
 
 export const checkUser = () => async (dispatch) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/check`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/check`, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
@@ -53,8 +52,9 @@ export const checkUser = () => async (dispatch) => {
 }
 
 export const loginUser = (data) => async (dispatch) => {
+  console.log(data);
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/sign_in`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/sign_in`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -73,13 +73,13 @@ export const loginUser = (data) => async (dispatch) => {
     }
 
   } catch (err) {
-    dispatch(userError('Неверный логин или пароль'))
+    dispatch(userError('Ошибка при связи с сервером'))
   }
 }
 
 export const userLogout = (user) => async (dispatch) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/logout`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/logout`, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
@@ -91,11 +91,10 @@ export const userLogout = (user) => async (dispatch) => {
       dispatch({
         type: USER_LOGOUT
       })
-    } else {
-      dispatch(userError('Ошибка при выходе'))
     }
   } catch (error) {
-    dispatch(userError('Ошибка при выходе'))
+    // dispatch(userError('Ошибка при связи с сервером'))
+    console.log(error);
   }
 }
 

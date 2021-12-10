@@ -10,10 +10,10 @@ import { addNewCard } from '../../redux/actions/cards.action'
 function Cabinet() {
 
   const inputs = [
-    useInput({ name: 'name', type: 'text', id: 'name'}),
-    useInput({ name: 'email', type: 'email', id: 'email'}),
-    useInput({ name: 'password', type: 'password', id: 'password'}),
-    useInput({ name: 'phone', type: 'text', id: 'phone'}),
+    useInput({ name: 'title', type: 'text', id: 'title'}),
+    useInput({ name: 'text', type: 'text', id: 'text'}),
+    useInput({ name: 'image', type: 'file', id: 'image'}),
+    useInput({ name: 'price', type: 'text', id: 'price'}),
   ]
 
   const categories = [
@@ -22,33 +22,18 @@ function Cabinet() {
     'make up'
   ]
 
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [title, setTitle] = useState('')
-  const [img, setImg] = useState('')
-  const [text, setText] = useState('')
 
 
-  function getTitle(event) {
-    setTitle(event.target.value)
-  }
-  function getImage(event) {
-    setImg(event.target.value)
-  }
-  function getText(event) {
-    setText(event.target.value)
-  }
-
-
-  function getUserData(event) {
+  function getCardData(event) {
     event.preventDefault()
     dispatch(addNewCard({
-      id,
-      name,
-      type,
-      value,
-      isFavourite: false
+      title: inputs[0].getValue(),
+      text: inputs[1].getValue(),
+      image: inputs[2].getValue(),
+      price: inputs[3].getValue(),
+      isActive: false
     }))
     navigate('/')
   }
@@ -56,7 +41,7 @@ function Cabinet() {
 
   return (
     <div className={styles.card_input_container}>
-    <form className={styles.card_input_box}>
+      <form className={styles.card_input_box} onSubmit={getCardData}>
         {inputs.map(el => <Input 
           key={el.attrs.id}
           id={el.attrs.id}
