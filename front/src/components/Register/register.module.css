@@ -1,7 +1,6 @@
 .register_container {
   display: flex;
-  align-items: center;
-  height: 70vh;
+  margin: 3%;
 }
 
 .register_box {

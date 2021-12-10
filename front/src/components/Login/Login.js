@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
-import styles from './Login.module.css'
+import styles from './login.module.css'
 import { useNavigate } from "react-router"
 import { useDispatch, useSelector } from 'react-redux'
 import {useEffect} from 'react'
