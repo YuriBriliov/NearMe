@@ -2,7 +2,7 @@ import React from 'react'
 import useInput from '../../hooks/useInput'
 import Input from '../Input/Input'
 import styles from './register.module.css'
-import {useState, useEffect} from 'react'
+import {  useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import {registerNewUser} from '../../redux/actions/user.actions'
@@ -34,7 +34,6 @@ function Register(){
 
   return(
     <div className={styles.register_container} onSubmit={completeUser}>
-          <p>{error}</p>
         <form className={styles.register_box}>
         {inputs.map(el => <Input 
           key={el.attrs.id}
@@ -44,7 +43,7 @@ function Register(){
           value={el.attrs.value}
           handleChange={el.handleChange}
           />)}
-
+          {error}
         <button variant="primary" type="submit">
           Submit
         </button>

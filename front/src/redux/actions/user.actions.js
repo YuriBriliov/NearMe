@@ -6,7 +6,6 @@ const userError = (error) => ({
 })
 
 export const registerNewUser = (user) => async (dispatch) => {
-  console.log(user);
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/sign_up`, {
       method: "POST",
@@ -27,7 +26,7 @@ export const registerNewUser = (user) => async (dispatch) => {
       dispatch(userError('Вы ввели неверные данные'))
     }
   } catch (error) {
-    dispatch(userError('Вы ввели неверные данные'))
+    dispatch(userError('Ошибка при связи с сервером'))
   }
 }
 
@@ -53,6 +52,7 @@ export const checkUser = () => async (dispatch) => {
 }
 
 export const loginUser = (data) => async (dispatch) => {
+  console.log(data);
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/sign_in`, {
       method: 'POST',
@@ -73,7 +73,7 @@ export const loginUser = (data) => async (dispatch) => {
     }
 
   } catch (err) {
-    dispatch(userError('Неверный логин или пароль'))
+    dispatch(userError('Ошибка при связи с сервером'))
   }
 }
 
@@ -95,7 +95,7 @@ export const userLogout = (user) => async (dispatch) => {
       dispatch(userError('Ошибка при выходе'))
     }
   } catch (error) {
-    dispatch(userError('Ошибка при выходе'))
+    dispatch(userError('Ошибка при связи с сервером'))
   }
 }
 
