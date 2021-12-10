@@ -36,9 +36,8 @@ function Cabinet() {
         </button>
       </form>
     </div>
-
+ 
   )
-
 
 
 }
