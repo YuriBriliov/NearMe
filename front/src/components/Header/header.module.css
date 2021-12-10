@@ -1,18 +1,12 @@
-$mainbg: #D4145A;
-$border: 1px solid #8f2c50;
-
-
 
 .header {
-// position: fixed;
 display: flex;
 flex-direction: column;
 width: 100%;
-max-width: 1600px;
 left: 0px;
 top: 0px;
 color: #FFFFFF;
-background: $mainbg;
+background: #D4145A;
 padding: 0;
 margin: 0;
 }
@@ -24,7 +18,7 @@ align-items: center;
 justify-content: center;
 
 
-border-bottom: $border;
+border-bottom: 1px solid 000000;
 }
 
 .header_bottom_container {
@@ -41,7 +35,7 @@ border-bottom: $border;
 .head_links {
   text-decoration: none;
   margin: 15px;
-  padding: 20px 0px 10px;
+  padding: 5px 0px 5px;
   color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
 }

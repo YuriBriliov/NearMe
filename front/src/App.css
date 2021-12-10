@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+button {
+  background: #D4145A;
+  border-radius: 100px;
+  color: white;
+  padding: 10px;
+  border: 1px solid transparent;
+  text-align: center;
+}
+
+button:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+}
+
+.button:hover {
+  border-color: currentColor;
+  background-color: #d6608c;
+}
+
+

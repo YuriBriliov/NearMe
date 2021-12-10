@@ -1,5 +1,7 @@
+
 import React from 'react'
-import classes from './card.module.scss'
+import classes from './card.module.css'
+
 function Card(){
   return(
     <div className={classes.card_wrapper}>
@@ -14,6 +16,7 @@ function Card(){
         price
       </div>
     </div>
+
   )
 }
 

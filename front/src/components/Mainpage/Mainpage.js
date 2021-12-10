@@ -1,13 +1,15 @@
 import React from 'react'
 import ServicePage from '../ServicePage/ServicePage'
-import Login from '../Login/Login'
+import CategoryPage from '../CategoryPage/CategoryPage'
+
 function Mainpage() {
 
   return (
     <div>
+      <CategoryPage/>
       <ServicePage/>
       <ServicePage/>
-      <Login/>
+
     </div>
   )
 
