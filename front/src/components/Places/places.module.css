@@ -1,0 +1,61 @@
+.places_main_container {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+
+  justify-content: space-around;
+}
+
+.places_sidebar {
+  margin: 20px;
+  width: 35%;
+  height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.places_mapbox {
+  background-color: #f5f1f1;
+  -webkit-box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  -moz-box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  width: 65%;
+  margin: 20px;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  }
+
+.filter_block {
+  background-color: #f5f1f1;
+  -webkit-box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  -moz-box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  height: 20%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.cards_block {
+  background-color: #f5f1f1;
+  -webkit-box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  -moz-box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
+  height: 79%;
+  margin-top: 3%;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+
+
+
+}
