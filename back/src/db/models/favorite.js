@@ -5,10 +5,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Favorite extends Model {
     static associate({ User }) {
-      this.belongTo(User, {
+      this.belongsTo(User, {
         foreignKey: 'id', as: 'bayer',
       })
-      this.belongTo(User, {
+      this.belongsTo(User, {
         foreignKey: 'id', as: 'seller',
       })
     }

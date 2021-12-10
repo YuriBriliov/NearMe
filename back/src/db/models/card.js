@@ -19,13 +19,13 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(Ad, {
         foreignKey: 'card_id',
       })
-      this.belongTo(Category, {
+      this.belongsTo(Category, {
         foreignKey: 'id',
       })
-      this.belongTo(User, {
+      this.belongsTo(User, {
         foreignKey: 'id',
       })
-      this.belongTo(Contact, {
+      this.belongsTo(Contact, {
         foreignKey: 'id',
       })
     }

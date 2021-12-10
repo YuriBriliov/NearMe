@@ -5,10 +5,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
     static associate({ User, Card }) {
-      this.belongTo(User, {
+      this.belongsTo(User, {
         foreignKey: 'id',
       })
-      this.belongTo(Card, {
+      this.belongsTo(Card, {
         foreignKey: 'id',
       })
     }
