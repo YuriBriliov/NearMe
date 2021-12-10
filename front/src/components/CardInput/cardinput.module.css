@@ -1,9 +1,9 @@
-.register_container {
+.card_input_container {
   display: flex;
   margin: 3%;
 }
 
-.register_box {
+.card_input_box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +16,4 @@
   -webkit-box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
   -moz-box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
   box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
-
-
 }

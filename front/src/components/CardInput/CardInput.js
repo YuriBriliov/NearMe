@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
-import styles from './profile.module.css'
+import styles from './cardinput.module.css'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addNewCard } from '../../redux/actions/cards.action'
 
 function Cabinet() {
+
+  const user = useSelector((state)=>{
+    return state.user
+  })
 
   const inputs = [
     useInput({ name: 'title', type: 'text', id: 'title'}),
@@ -33,6 +37,7 @@ function Cabinet() {
       text: inputs[1].getValue(),
       image: inputs[2].getValue(),
       price: inputs[3].getValue(),
+      user_id: user.id,
       isActive: false
     }))
     navigate('/')
@@ -52,10 +57,10 @@ function Cabinet() {
           />)}
          <select>
            {categories.map((el) => <option value={el}>{el}</option>)}
-        </select>    
-        <button variant="primary" type="submit">
-          Submit
-        </button>
+         </select>    
+         <button variant="primary" type="submit">
+           Submit
+         </button>
       </form>
     </div>
  

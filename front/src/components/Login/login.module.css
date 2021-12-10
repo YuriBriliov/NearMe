@@ -1,11 +1,9 @@
 .login_container {
   display: flex;
-  align-items: center;
-  height: 70vh;
+  margin: 3%;
 }
 
 .login_box {
-
   display: flex;
   flex-direction: column;
   align-items: center;

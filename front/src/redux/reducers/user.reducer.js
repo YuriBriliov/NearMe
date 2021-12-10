@@ -5,6 +5,7 @@ export const userReducer = (state = {}, action) => {
   switch (type) {
     case REGISTER_USER: {
       const { user } = payload
+      console.log(user);
       return {
         value: user,
         error: null

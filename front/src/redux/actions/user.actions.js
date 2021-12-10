@@ -16,11 +16,13 @@ export const registerNewUser = (user) => async (dispatch) => {
       // credential для cors чтобы не ругался
       body: JSON.stringify(user)
     })
-    if (response.status.ok) {
+    if (response.status === 200) {
+      // console.log(123);
       const newUser = await response.json()
+      // console.log(newUser);
       dispatch({
         type: REGISTER_USER,
-        payload: { newUser }
+        payload: { user: newUser }
       })
     } else {
       dispatch(userError('Вы ввели неверные данные'))
@@ -39,7 +41,7 @@ export const checkUser = () => async (dispatch) => {
       },
       credentials: 'include',
     })
-    if (response.ok) {
+    if (response.status === 200) {
       const { id, name, email } = await response.json()
       dispatch({
         type: CHECK_USER,
@@ -52,7 +54,6 @@ export const checkUser = () => async (dispatch) => {
 }
 
 export const loginUser = (data) => async (dispatch) => {
-  console.log(data);
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/sign_in`, {
       method: 'POST',
@@ -62,7 +63,7 @@ export const loginUser = (data) => async (dispatch) => {
       credentials: 'include',
       body: JSON.stringify(data)
     })
-    if (response.status.ok) {
+    if (response.status === 200) {
       const result = await response.json()
       dispatch({
         type: SET_USER,
@@ -87,7 +88,7 @@ export const userLogout = (user) => async (dispatch) => {
       credentials: 'include',
       body: JSON.stringify(user)
     })
-    if (response.ok) {
+    if (response.status === 200) {
       dispatch({
         type: USER_LOGOUT
       })

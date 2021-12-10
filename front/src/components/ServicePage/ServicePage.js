@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
 import Card from '../Card/Card'
 import classes from './servicesPage.module.css'
-import { useSelector } from 'react-redux'
+import { getAllCards } from '../../redux/actions/cards.action'
 
 function ServicePage() {
 
-  const cards = useSelector((state)=>{
+  const cards = useSelector(state => {
     return state.cards
   })
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllCards())
+  }, [])
 
   let arrCards = [
     {

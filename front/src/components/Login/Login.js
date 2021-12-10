@@ -10,7 +10,7 @@ import { loginUser } from '../../redux/actions/user.actions'
 function Login(){
   const inputs = [
     useInput({ name: 'email', type: 'email', id: 'email'}),
-    useInput({ name: 'password', type: 'password', id: 'password'})
+    useInput({ name: 'password', type: 'text', id: 'password'})
   ]
 
   const dispatch = useDispatch()

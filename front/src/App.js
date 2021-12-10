@@ -6,6 +6,7 @@ import Mainpage from './components/Mainpage/Mainpage'
 import CardInput from './components/CardInput/CardInput'
 import Logout from './components/Logout/Logout'
 import ProfilePage from './components/ProfilePage/ProfilePage'
+import CardDetailPage from './components/CardDetailPage/CardDetailPage'
 
 import './App.css'
 
@@ -21,6 +22,7 @@ function App() {
       <Route path='/cardinput' element={ <CardInput />}/>
       {/* <Route path='/logout' element={ <Logout />}/> */}
       <Route path='/profilepage' element={ <ProfilePage />}/> 
+      <Route path='/detail' element={<CardDetailPage/>}/>
       {/* последний роут - для верстки, для подключения добавления карточек работайте в CardInput */}
 
     </Routes>

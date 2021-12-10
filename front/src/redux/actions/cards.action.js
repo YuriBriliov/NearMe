@@ -33,7 +33,6 @@ export const deleteCard = (card) => ({
 
 export const getAllCards = () => async (dispatch) => {
   try {
-
     const options = {
       method: 'GET',
       headers: {
@@ -52,7 +51,6 @@ export const getAllCards = () => async (dispatch) => {
 
 export const addNewCard = (card) => async (dispatch) => {
   try {
-
     const options = {
       method: 'POST',
       headers: {
