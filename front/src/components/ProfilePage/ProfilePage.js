@@ -4,10 +4,6 @@ import styles from './profilepage.module.css'
 function ProfilePage() {
 
 
-  return (
-
-    
-  )
 
 
 
