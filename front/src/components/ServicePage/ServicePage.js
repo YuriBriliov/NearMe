@@ -6,7 +6,6 @@ function ServicePage() {
 
   return (
     <>
-    <h3 className={classes.title__block}>Title block</h3>
     <section className={classes.cards}>
       <Card />
       <Card />

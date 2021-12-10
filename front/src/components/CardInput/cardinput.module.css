@@ -1,7 +1,6 @@
 .card_input_container {
   display: flex;
-  align-items: center;
-  height: 70vh;
+  margin: 1%;
 }
 
 .card_input_box {
