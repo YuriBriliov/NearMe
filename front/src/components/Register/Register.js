@@ -2,8 +2,18 @@ import React from 'react'
 import useInput from '../../hooks/useInput'
 import Input from '../Input/Input'
 import styles from './register.module.css'
+import {useState, useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom";
+import {registerNewUser} from '../../redux/actions/user.actions'
+
 
 function Register(){
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const {error, value: user} = useSelector((state) => state.user)
+
+
   const inputs = [
     useInput({ name: 'name', type: 'name', id: 'name'}),
     useInput({ name: 'email', type: 'email', id: 'email'}),
@@ -11,8 +21,20 @@ function Register(){
     useInput({ name: 'password', type: 'password', id: 'password'})
   ]
 
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+  }, [user])
+
+  function completeUser(e) {
+    e.preventDefault();
+    dispatch(registerNewUser({email: inputs[1].getValue(), password: inputs[3].getValue(), name: inputs[0].getValue(), phone: inputs[2].getValue()}))
+  }
+
   return(
-    <div className={styles.register_container}>
+    <div className={styles.register_container} onSubmit={completeUser}>
+          <p>{error}</p>
         <form className={styles.register_box}>
         {inputs.map(el => <Input 
           key={el.attrs.id}

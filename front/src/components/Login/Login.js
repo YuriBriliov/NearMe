@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
-import styles from './login.module.css'
+import styles from './Login.module.css'
 
 function Login(){
   const inputs = [

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import { validationReducer } from './validation.reducer'
+// import { validationReducer } from './validation.reducer'
 import { userReducer } from './user.reducer'
 
 
 export const rootReducer = combineReducers({
-  validation: validationReducer,
+  // validation: validationReducer,
   user: userReducer
 })
