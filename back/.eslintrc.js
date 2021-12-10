@@ -12,8 +12,10 @@ module.exports = {
     ecmaVersion: 13,
   },
   rules: {
-    semi: ['error', 'never'],
+    // semi: ['error', 'never'],
     'no-console': 0,
+    // 'linebreak-style': ['error', 'unix'],
+    'linebreak-style': ['error', 'windows'],
   },
 
-}
+};
