@@ -21,7 +21,6 @@ function ServicePage() {
 
   return (
     <>
-    <h3 className={classes.title__block}>Title block</h3>
     <section className={classes.cat_cards_block}>
     {icons.map((el) => <CategoryCard icon={el.icon} title={el.title}/> )}
     </section>

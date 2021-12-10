@@ -1,6 +1,6 @@
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
-import styles from './profile.module.css'
+import styles from './cardinput.module.css'
 
 function Cabinet() {
 

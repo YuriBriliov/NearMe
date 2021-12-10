@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
-import styles from './Login.module.css'
+import styles from './login.module.css'
 import { useNavigate } from "react-router"
 import { useDispatch, useSelector } from 'react-redux'
 import {useEffect} from 'react'
@@ -10,7 +10,7 @@ import {loginUser} from '../../redux/actions/user.actions'
 function Login(){
   const inputs = [
     useInput({ name: 'email', type: 'email', id: 'email'}),
-    useInput({ name: 'password', type: 'password', id: 'password'})
+    useInput({ name: 'password', type: 'text', id: 'password'})
   ]
 
   const dispatch = useDispatch()

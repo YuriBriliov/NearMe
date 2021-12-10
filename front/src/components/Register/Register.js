@@ -15,10 +15,10 @@ function Register(){
 
 
   const inputs = [
-    useInput({ name: 'name', type: 'name', id: 'name'}),
+    useInput({ name: 'name', type: 'text', id: 'name'}),
     useInput({ name: 'email', type: 'email', id: 'email'}),
-    useInput({ name: 'phone', type: 'phone', id: 'phone'}),
-    useInput({ name: 'password', type: 'password', id: 'password'})
+    useInput({ name: 'phone', type: 'text', id: 'phone'}),
+    useInput({ name: 'password', type: 'text', id: 'password'})
   ]
 
   useEffect(() => {
