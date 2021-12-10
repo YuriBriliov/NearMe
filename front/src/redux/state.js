@@ -7,9 +7,4 @@ export const initialState = {
     value: null,
     error: null,
   },
-  validation: {
-    error: null,
-    value: false,
-    number: null
-  }
 }
