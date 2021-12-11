@@ -7,3 +7,21 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 
 export const CHECK_USER = 'CHECK_USER'
 export const SET_USER_ERROR = 'SET_USER_ERROR'
+
+
+// posts/cards
+
+export const TAKE_ALL_CARDS = 'TAKE_ALL_CARDS'
+export const COMPLETE_CARD = 'COMPLETE_CARD'
+export const GET_CARD = 'GET_CARD'
+export const CHANGE_CARD = 'CHANGE_CARD'
+export const ADD_NEW_CARD = 'ADD_NEW_CARD'
+export const DELETE_CARD = 'DELETE_CARD'
+
+
+
+// /categoryes
+
+export const TAKE_ALL_CATEGORYES = 'TAKE_ALL_CATEGORYES'
+export const GET_CATEGORY = 'GET_CATEGORY'
+

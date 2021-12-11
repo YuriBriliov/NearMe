@@ -8,6 +8,7 @@ function CardDetailPage() {
 
 
   return (
+
     <>
     {isLightTheme &&  <div className={styles.detail_main_container_light}>
       <div className={styles.detail_img_block_light}>

@@ -12,9 +12,6 @@ const { isLightTheme , setTheme} = useThemeContext()
 const [block, setBlock ] = useState('');
 
 
-
-
-
 return (
   <>
   {isLightTheme && <div className={styles.profile_page_container_light}>

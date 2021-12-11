@@ -8,8 +8,6 @@ function Mainpage() {
     <div>
       <CategoryPage/>
       <ServicePage/>
-      <ServicePage/>
-
     </div>
   )
 
