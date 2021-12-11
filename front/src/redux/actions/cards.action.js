@@ -62,6 +62,7 @@ export const addNewCard = (card) => async (dispatch) => {
 
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card/`, options)
     const newCard = await response.json()
+    console.log(newCard)
     dispatch(addCard(newCard))
   } catch (error) {
     console.log(error)

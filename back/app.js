@@ -31,6 +31,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const userRouter = require('./src/routers/userRouter');
+const cardRouter = require('./src/routers/cardRouter');
+const categoryRouter = require('./src/routers/categoryRouter');
 
 app.use(cors({
   origin: true,
@@ -40,6 +42,8 @@ app.use(cors({
 app.use(morgan('dev'));
 
 app.use('/api/user', userRouter);
+app.use('/api/card', cardRouter);
+app.use('/', categoryRouter);
 
 app.listen(PORT, () => {
   console.log(`Сервер запускается на ${PORT} порту`);

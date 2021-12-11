@@ -13,6 +13,9 @@ function Cabinet() {
     return state.user
   })
 
+  const [category, setCategory] = useState()
+
+
   const inputs = [
     useInput({ name: 'title', type: 'text', id: 'title'}),
     useInput({ name: 'text', type: 'text', id: 'text'}),
@@ -37,7 +40,8 @@ function Cabinet() {
       text: inputs[1].getValue(),
       image: inputs[2].getValue(),
       price: inputs[3].getValue(),
-      user_id: user.id,
+      category_id: category,
+      user_id: user.value.id,
       isActive: true
     }))
     navigate('/')
@@ -55,7 +59,7 @@ function Cabinet() {
           value={el.attrs.value}
           handleChange={el.handleChange}
           />)}
-         <select id>
+        <select onChange={(event)=>setCategory(event.target.value)}>
            {categories.map((el) => <option value={el}>{el}</option>)}
          </select>    
          <button variant="primary" type="submit">

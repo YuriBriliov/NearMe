@@ -17,3 +17,11 @@ export const GET_CARD = 'GET_CARD'
 export const CHANGE_CARD = 'CHANGE_CARD'
 export const ADD_NEW_CARD = 'ADD_NEW_CARD'
 export const DELETE_CARD = 'DELETE_CARD'
+
+
+
+// /categoryes
+
+export const TAKE_ALL_CATEGORYES = 'TAKE_ALL_CATEGORYES'
+export const GET_CATEGORY = 'GET_CATEGORY'
+

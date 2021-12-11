@@ -12,7 +12,7 @@ const [block, setBlock ] = useState('');
 
 return (
   <>
-  < div className={styles.profile_page_container}>
+  <div className={styles.profile_page_container}>
       <div className={styles.profile_page_menu}>
          <div className={styles.top_menu_block}>MENU</div>
         <button onClick={()=> setBlock(<ServicePage/>)} className={styles.menu_block}> <div >MY PLACES</div></button>

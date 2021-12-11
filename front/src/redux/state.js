@@ -7,7 +7,8 @@ export const initialState = {
     value: null,
     error: null,
   },
-  categories: [], //slice
+  categoryes: [], //slice
+  category: {},
   cards: [],
   card: {},
 }

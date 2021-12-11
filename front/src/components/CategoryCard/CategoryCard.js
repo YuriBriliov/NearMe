@@ -2,10 +2,10 @@ import React from 'react'
 import styles from './categorycard.module.css'
 import { Link } from 'react-router-dom'
 
-function CategoryCard({icon, title}){
+function CategoryCard({icon, title, id}){
 
   return(
-    <Link className={styles.cat_link} to='/mainpage'>
+    <Link className={styles.cat_link} to={`/places/${id}`}>
       <div className={styles.cat_card_wrapper}>
         <div id='cat_item' className={styles.cat_icon}> 
             <i className={icon}></i>
