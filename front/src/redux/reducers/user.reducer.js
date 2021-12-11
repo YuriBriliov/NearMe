@@ -30,7 +30,7 @@ export const userReducer = (state = {}, action) => {
     case CHECK_USER: {
       const { user } = payload
       return {
-        values: user,
+        value: user,
         error: null
       }
     }

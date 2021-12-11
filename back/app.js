@@ -7,6 +7,8 @@ const session = require('express-session');
 // const RedisStore = require('connect-redis')(session)
 const cors = require('cors');
 const FileStore = require('session-file-store')(session);
+const cardRouter = require('./src/routers/cardRouter');
+const userRouter = require('./src/routers/userRouter');
 
 // const redisClient = redis.createClient()
 const PORT = process.env.PORT ?? 3001;
@@ -30,8 +32,6 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-const userRouter = require('./src/routers/userRouter');
-
 app.use(cors({
   origin: true,
   credentials: true,
@@ -40,6 +40,8 @@ app.use(cors({
 app.use(morgan('dev'));
 
 app.use('/api/user', userRouter);
+app.use('/api/card', cardRouter);
+
 
 app.listen(PORT, () => {
   console.log(`Сервер запускается на ${PORT} порту`);

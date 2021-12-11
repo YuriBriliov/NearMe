@@ -78,7 +78,7 @@ export const loginUser = (data) => async (dispatch) => {
   }
 }
 
-export const userLogout = (user) => async (dispatch) => {
+export const userLogout = () => async (dispatch) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/logout`, {
       method: "GET",
@@ -86,7 +86,7 @@ export const userLogout = (user) => async (dispatch) => {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(user)
+      // body: JSON.stringify(user)
     })
     if (response.status === 200) {
       dispatch({

@@ -1,6 +1,6 @@
 const {
   Model,
-} = require('sequelize')
+} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Card extends Model {
@@ -9,25 +9,25 @@ module.exports = (sequelize, DataTypes) => {
     }) {
       this.belongsToMany(User, {
         through: 'Rating', foreignKey: 'card_id',
-      })
+      });
       this.hasMany(Comment, {
         foreignKey: 'card_id',
-      })
+      });
       this.hasOne(Contact, {
         foreignKey: 'card_id',
-      })
+      });
       this.hasOne(Ad, {
         foreignKey: 'card_id',
-      })
+      });
       this.belongsTo(Category, {
         foreignKey: 'id',
-      })
+      });
       this.belongsTo(User, {
         foreignKey: 'id',
-      })
+      });
       this.belongsTo(Contact, {
         foreignKey: 'id',
-      })
+      });
     }
   }
   Card.init({
@@ -42,6 +42,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Card',
-  })
-  return Card
-}
+  });
+  return Card;
+};
