@@ -38,7 +38,7 @@ function Cabinet() {
       image: inputs[2].getValue(),
       price: inputs[3].getValue(),
       user_id: user.id,
-      isActive: false
+      isActive: true
     }))
     navigate('/')
   }
@@ -55,7 +55,7 @@ function Cabinet() {
           value={el.attrs.value}
           handleChange={el.handleChange}
           />)}
-         <select>
+         <select id>
            {categories.map((el) => <option value={el}>{el}</option>)}
          </select>    
          <button variant="primary" type="submit">
