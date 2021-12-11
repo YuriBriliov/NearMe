@@ -1,8 +1,10 @@
 import React from 'react'
 import CategoryCard from '../CategoryCard/CategoryCard'
 import classes from './categorypage.module.css'
+import { useThemeContext } from '../../context/themeContext'
 
 function ServicePage() {
+  const { isLightTheme , setTheme} = useThemeContext()
 
   const icons = [
     {
@@ -21,9 +23,14 @@ function ServicePage() {
 
   return (
     <>
-    <section className={classes.cat_cards_block}>
+    {isLightTheme && <section className={classes.cat_cards_block_ligth}>
     {icons.map((el) => <CategoryCard icon={el.icon} title={el.title}/> )}
-    </section>
+    </section>}
+
+    {!isLightTheme && <section className={classes.cat_cards_block_dark}>
+    {icons.map((el) => <CategoryCard icon={el.icon} title={el.title}/> )}
+    </section>}
+    
     </>
   )
 }

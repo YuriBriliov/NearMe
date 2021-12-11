@@ -1,20 +1,38 @@
 import React from 'react'
 import styles from './categorycard.module.css'
 import { Link } from 'react-router-dom'
+import { useThemeContext } from '../../context/themeContext'
 
-function CategoryCard({icon, title}){
+
+function CategoryCard({icon, title}) {
+  const { isLightTheme , setTheme} = useThemeContext()
+
 
   return(
-    <Link className={styles.cat_link} to='/mainpage'>
-      <div className={styles.cat_card_wrapper}>
-        <div id='cat_item' className={styles.cat_icon}> 
+    <>
+    {isLightTheme &&  <Link className={styles.cat_link_light} to='/mainpage'>
+      <div className={styles.cat_card_wrapper_light}>
+        <div id='cat_item' className={styles.cat_icon_light}> 
             <i className={icon}></i>
         </div>
-        <div className={styles.cat_title}> 
+        <div className={styles.cat_title_light}> 
           {title}
         </div>
       </div>
-    </Link>
+    </Link>}
+
+    {!isLightTheme &&  <Link className={styles.cat_link_dark } to='/mainpage'>
+      <div className={styles.cat_card_wrapper_dark }>
+        <div id='cat_item' className={styles.cat_icon_dark }> 
+            <i className={icon}></i>
+        </div>
+        <div className={styles.cat_title_dark}> 
+          {title}
+        </div>
+      </div>
+    </Link>}
+   
+    </>
     )
 }
 
