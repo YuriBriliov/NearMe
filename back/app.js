@@ -41,9 +41,9 @@ app.use(cors({
 
 app.use(morgan('dev'));
 
+app.use('/', categoryRouter);
 app.use('/api/user', userRouter);
 app.use('/api/card', cardRouter);
-app.use('/', categoryRouter);
 
 app.listen(PORT, () => {
   console.log(`Сервер запускается на ${PORT} порту`);

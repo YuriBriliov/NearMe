@@ -14,19 +14,16 @@ function Cabinet() {
   })
 
   const [category, setCategory] = useState()
-
+  const categoryes = useSelector((state) => state.categoryes)
 
   const inputs = [
     useInput({ name: 'title', type: 'text', id: 'title'}),
     useInput({ name: 'text', type: 'text', id: 'text'}),
     useInput({ name: 'image', type: 'file', id: 'image'}),
     useInput({ name: 'price', type: 'text', id: 'price'}),
-  ]
-
-  const categories = [
-    'nails',
-    'eyebrows',
-    'make up'
+    useInput({ name: 'instagram', type: 'text', id: 'instagram'}),
+    useInput({ name: 'whatsapp', type: 'text', id: 'whatsapp'}),
+    useInput({ name: 'telegram', type: 'text', id: 'telegram'}),
   ]
 
   const dispatch = useDispatch()
@@ -38,10 +35,14 @@ function Cabinet() {
     dispatch(addNewCard({
       title: inputs[0].getValue(),
       text: inputs[1].getValue(),
-      image: inputs[2].getValue(),
-      price: inputs[3].getValue(),
-      category_id: category,
+      image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
+      // image: inputs[2].getValue(),
+      price: Number(inputs[3].getValue()),
+      category_id: Number(category),
       user_id: user.value.id,
+      instagram: inputs[4].getValue(),
+      whatsapp: inputs[5].getValue(),
+      telegram: inputs[6].getValue(),
       isActive: true
     }))
     navigate('/')
@@ -60,7 +61,7 @@ function Cabinet() {
           handleChange={el.handleChange}
           />)}
         <select onChange={(event)=>setCategory(event.target.value)}>
-           {categories.map((el) => <option value={el}>{el}</option>)}
+          {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
          </select>    
          <button variant="primary" type="submit">
            Submit

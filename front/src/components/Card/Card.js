@@ -8,15 +8,15 @@ function Card({image, title, category, price, id}){
   return(
     <Link className={classes.moreBlock} to={`/card/${id}`}>
       <div className={classes.card_wrapper}>
-        <img src="https://i.ibb.co/GFcfRrK/Intersect.png" alt="" />
+        <img src={image} alt="" />
         <h3 className={classes.title}>
-          title
+          {title}
         </h3>
         <div className={classes.title}>
-          category
+          {category}
         </div>
         <div className={classes.title}>
-          price
+          {price}
         </div>
       </div>
     </Link>

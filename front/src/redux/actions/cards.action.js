@@ -5,6 +5,7 @@ export const selectAllCards = (cards) => ({
   payload: { cards }
 })
 
+
 export const selectCard = (card) => ({
   type: GET_CARD,
   payload: { card }

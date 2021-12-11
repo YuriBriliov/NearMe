@@ -3,14 +3,18 @@ const { Card } = require('../db/models')
 
 
 
-router.get('/', (req, res) => {
-  res.render('newPost');
+router.get('/', async (req, res) => {
+  let data = await Card.findAll({ raw: true})
+  // let result = data.json()
+  // console.log(data)
+  res.json(data)
 });
 
 // создание поста
 router.post('/', async (req, res) => {
-  console.log(req.body)
   try {
+    
+    // console.log(req.body)
     // const { title, img, text } = req.body
     // if (!req.files || Object.keys(req.files).length === 0) {
     //   const newPost = await Sounds.create({ text, title, img, user_id: req.session.user.user_id })
@@ -30,7 +34,8 @@ router.post('/', async (req, res) => {
 
 
     let data = await Card.create(req.body, { returning: true, plain: true })
-    res.json(data)
+    let result = data.json()
+    res.statusCode(200)
   } catch (error) {
     console.log(error)
   }
