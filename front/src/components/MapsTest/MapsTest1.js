@@ -1,4 +1,8 @@
 // import styles from './maps.module.css'
+
+// only maps
+
+
 import { useState, useEffect } from 'react'
 
 function MapsTest() {
@@ -9,43 +13,13 @@ function MapsTest() {
 
   let ymaps = window.ymaps;
   let myMap;
-  // ymaps.ready(init);
+  ymaps.ready(init);
   let myPlacemark;
   let adress
 
-  useEffect(() => {
-    ymaps.ready(init);
-
-  }, [])
-  ////////////////////////////////
-  async function showArray() {
-    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test`);
-    const info = await response3.json();
-    console.log(info);
-    // Россия, Москва, улица Орджоникидзе, 3с5
-    // getAddress
-
-    /*  myPoint = new ymaps.Placemark([allCult[i].geometry.coordinates[1], allCult[i].geometry.coordinates[0]], {
-        balloonContentHeader: allCult[i].properties.name,
-        // balloonContentLayout: BalloonContentLayout,
-        // balloonPanelMaxMapArea: 0,
-        balloonContentBody:
-          // `info: ${response3[image]}`,
-          `${addres} <br/> <br/> `
-          + `wikipedia: <br/> <a href=${wikipedia}>${allCult[i].properties.name}</a> <br/><br/>`
-          + `${text} <br/>`
-          + `Фото:<br> <img src="${style || ''}" style='height:${style.height && 0}px; weight:${style.weight && 0} '> <br/>`,
-      }, {
-        preset: 'islands#icon',
-        iconColor: '#0095B6',
-      });
-      */
-
-    // myMap.geoObjects
-    // .add(myPoint);
-    // }
+  async function setAdd1 (add) {
+    setAddr(add)
   }
-  /////////////////////// 
 
   async function init() {
     // let adress
@@ -60,7 +34,6 @@ function MapsTest() {
       searchControlProvider: 'yandex#search',
     });
 
-    // местоположение по IP
     geolocation.get({
       provider: 'yandex',
       mapStateAutoApply: true,
@@ -73,7 +46,6 @@ function MapsTest() {
       myMap.geoObjects.add(result.geoObjects);
     });
 
-    // местоположение по браузеру
     geolocation.get({
       provider: 'browser',
       mapStateAutoApply: true,
@@ -85,7 +57,11 @@ function MapsTest() {
       myMap.geoObjects.add(result.geoObjects);
     });
 
+
+
+
     // Поиск по клику
+
     myMap.events.add('click', function (e) {
       let coords = e.get('coords');
 
@@ -132,63 +108,20 @@ function MapsTest() {
             // В качестве контента балуна задаем строку с адресом объекта.
             balloonContent: firstGeoObject.getAddressLine()
           });
+          setAddr('adress')
         adress = myPlacemark.properties._data.balloonContent;
+        setAdd1(adress)
         console.log(adress);
-        setAddr(adress)
-
+        
       });
     }
-    showArray()
-
-    ///// Определение координат из адреса
-    let addressGeo
-    let addressCards = ymaps.geocode("Россия, Москва, улица Стасовой, 2Б");
-    addressCards.then(
-      function (res) {
-        addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
-        console.log(addressGeo);
-
-
-
-        // Установка метки
-        let myPoint = new ymaps.Placemark([addressGeo[0], addressGeo[1]], {
-          balloonContentHeader: 'Балун Header',
-          // balloonContentLayout: BalloonContentLayout,
-          // balloonPanelMaxMapArea: 0,
-          balloonContentBody:
-            // `info: ${response3[image]}`,
-            // `${addres} <br/> <br/> `
-            `sdsdfsd`
-          // + `wikipedia: <br/> <a href=${wikipedia}>${allCult[i].properties.name}</a> <br/><br/>`
-          // + `${text} <br/>`
-          // + `Фото:<br> <img src="${style || ''}" style='height:${style.height && 0}px; weight:${style.weight && 0} '> <br/>`,
-        }, {
-          preset: 'islands#icon',
-          iconColor: '#0095B6',
-        });
-
-        myMap.geoObjects.add(myPoint);
-
-
-
-
-
-
-      },
-    );
-
-
-
-    /////
-
   }
 
 
   return (
     <>
-      <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
+      <div id="map" style={{width:'90%', margin: '0 auto', height:"600px"}}></div>
       <button type={"click"}>click</button>
-      <p>{addr}</p>
     </>
   )
 }
