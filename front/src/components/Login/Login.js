@@ -6,8 +6,11 @@ import { useNavigate } from "react-router"
 import { useDispatch, useSelector } from 'react-redux'
 import {useEffect} from 'react'
 import {loginUser} from '../../redux/actions/user.actions'
+import { useThemeContext } from '../../context/themeContext'
 
 function Login(){
+  const { isLightTheme , setTheme} = useThemeContext()
+
   const inputs = [
     useInput({ name: 'email', type: 'email', id: 'email'}),
     useInput({ name: 'password', type: 'text', id: 'password'})
@@ -31,8 +34,9 @@ function Login(){
   }
 
   return(
-    <div className={styles.login_container}>
-        <form className={styles.login_box} onSubmit={completeUser}>
+    <>
+    {isLightTheme && <div className={styles.login_container_light}>
+        <form className={styles.login_box_light} onSubmit={completeUser}>
         {inputs.map(el => <Input 
           key={el.attrs.id}
           id={el.attrs.id}
@@ -42,11 +46,30 @@ function Login(){
           handleChange={el.handleChange}
           />)}
           {error}
-        <button variant="primary" type="submit">
+        <button className={styles.button_light} variant="primary" type="submit">
           Submit
         </button>
       </form>
-    </div>
+    </div>}
+
+    {!isLightTheme && <div className={styles.login_container_dark}>
+        <form className={styles.login_box_dark} onSubmit={completeUser}>
+        {inputs.map(el => <Input 
+          key={el.attrs.id}
+          id={el.attrs.id}
+          name={el.attrs.name}
+          type={el.attrs.type}
+          value={el.attrs.value}
+          handleChange={el.handleChange}
+          />)}
+          {error}
+        <button className={styles.button_dark} variant="primary" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>}
+    
+    </>
   )
 }
 

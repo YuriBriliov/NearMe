@@ -28,9 +28,9 @@ export const userReducer = (state = {}, action) => {
     }
 
     case CHECK_USER: {
-      const { user } = payload
+      const { id, email, name } = payload
       return {
-        value: user,
+        value: {id, email, name},
         error: null
       }
     }

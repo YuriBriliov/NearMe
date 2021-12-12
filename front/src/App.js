@@ -10,6 +10,13 @@ import CardDetailPage from './components/CardDetailPage/CardDetailPage'
 import MapsTest from './components/MapsTest/MapsTest'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
+import Places from './components/Places/Places'
+import { useThemeContext } from './context/themeContext'
+
+
+// установка свитчера темы
+// yarn add react-switch-selector
+
 import './App.css'
 import {checkUser} from './redux/actions/user.actions'
 
@@ -22,24 +29,46 @@ function App() {
     dispach(checkUser())
   }, [])
   
+
+    const { isLightTheme , setTheme} = useThemeContext()
+
+  
+
   return (
     <>
     <Header/>
-    <main className='container'>
+    {isLightTheme && <main className='container'>
+
     <Routes>
+      <Route path='/' element={ <Mainpage />}/>
       <Route path='/login' element={ <Login />}/>
       <Route path='/register' element={ <Register />}/>
-      <Route path='/mainpage' element={ <Mainpage />}/>
       <Route path='/cardinput' element={ <CardInput />}/>
       <Route path='/logout' element={ <Logout />}/>
       <Route path='/profilepage' element={ <ProfilePage />}/> 
       <Route path='/detail' element={<CardDetailPage/>}/>
-      {/* последний роут - для верстки, для подключения добавления карточек работайте в CardInput */}
       <Route path='/maps' element={<MapsTest/>}/>
-      {/* test maps */}
-
+      <Route path='/places' element={<Places/>}/>
     </Routes>
-    </main>
+     
+    </main>}
+
+    {!isLightTheme && <main className='container_dark'>
+    <Routes>
+    <Route path='/' element={ <Mainpage />}/>
+      <Route path='/login' element={ <Login />}/>
+      <Route path='/register' element={ <Register />}/>
+      <Route path='/cardinput' element={ <CardInput />}/>
+      <Route path='/logout' element={ <Logout />}/>
+      <Route path='/profilepage' element={ <ProfilePage />}/> 
+      <Route path='/detail' element={<CardDetailPage/>}/>
+      <Route path='/maps' element={<MapsTest/>}/>
+      <Route path='/places' element={<Places/>}/>
+    </Routes>
+    </main>}
+
+
+
     </>
 
   );

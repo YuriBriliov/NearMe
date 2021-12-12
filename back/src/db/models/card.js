@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       });
       this.hasMany(Comment, {
         foreignKey: 'card_id',
-      });
-      this.hasOne(Contact, {
-        foreignKey: 'card_id',
-      });
+      })
+      // this.hasOne(Contact, {
+      //   foreignKey: 'card_id',
+      // })
       this.hasOne(Ad, {
         foreignKey: 'card_id',
       });
@@ -24,10 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       });
       this.belongsTo(User, {
         foreignKey: 'id',
-      });
-      this.belongsTo(Contact, {
-        foreignKey: 'id',
-      });
+      })
+      // this.belongsTo(Contact, {
+      //   foreignKey: 'id',
+      // })
     }
   }
   Card.init({
@@ -38,7 +38,10 @@ module.exports = (sequelize, DataTypes) => {
     category_id: DataTypes.INTEGER,
     is_active: DataTypes.BOOLEAN,
     user_id: DataTypes.INTEGER,
-    contact_id: DataTypes.INTEGER,
+    instagram: DataTypes.TEXT,
+    whatsapp: DataTypes.TEXT,
+    telegram: DataTypes.TEXT,
+    // contact_id: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Card',

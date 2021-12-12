@@ -43,6 +43,7 @@ export const checkUser = () => async (dispatch) => {
     })
     if (response.status === 200) {
       const { id, name, email } = await response.json()
+      console.log(id, name, email);
       dispatch({
         type: CHECK_USER,
         payload: { id, name, email }

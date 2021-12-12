@@ -1,0 +1,113 @@
+/* light */
+
+.places_main_container_light {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 20px;
+  height: 100vh;
+}
+
+.places_sidebar_light {
+  margin: 20px;
+  width: 35%;
+  height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.places_mapbox_light {
+  background-color: #f5f1f1;
+  box-shadow: 0px 0px 20px 0px rgba(189, 86, 145, 0.2);
+ 
+  width: 65%;
+  margin: 20px;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  }
+
+.filter_block_light {
+  background-color: #f5f1f1;
+  box-shadow: 0px 0px 20px 0px rgba(189, 86, 145, 0.2);
+  height: 20%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.cards_block_light {
+  background-color: #f5f1f1;
+  box-shadow: 0px 0px 20px 0px rgba(189, 86, 145, 0.2);
+  height: 79%;
+  margin-top: 3%;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+
+/* dark */
+
+.places_main_container_dark {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 20px;
+  height: 100vh;
+}
+
+.places_sidebar_dark {
+  margin: 20px;
+  width: 35%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.places_mapbox_dark {
+
+  box-shadow: 0px 0px 20px 0px rgb(76, 0, 255);
+  width: 65%;
+  margin: 20px;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  }
+
+.filter_block_dark {
+  box-shadow: 0px 0px 20px 0px rgb(76, 0, 255);
+  height: 20%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards_block_dark {
+  box-shadow: 0px 0px 20px 0px rgb(76, 0, 255);
+  height: 79%;
+  margin-top: 3%;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
