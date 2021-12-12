@@ -32,7 +32,7 @@ function App() {
       <Route path='/login' element={ <Login />}/>
       <Route path='/register' element={ <Register />}/>
       <Route path='/cardinput' element={ <CardInput />}/>
-      {/* <Route path='/logout' element={ <Logout />}/> */}
+      <Route path='/logout' element={ <Logout />}/>
       <Route path='/profilepage' element={ <ProfilePage />}/> 
       <Route path='/detail' element={<CardDetailPage/>}/>
       <Route path='/places' element={<Places/>}/>
@@ -44,7 +44,7 @@ function App() {
     <Routes>
       <Route path='/login' element={ <Login />}/>
       <Route path='/register' element={ <Register />}/>
-      <Route path='/mainpage' element={ <Mainpage />}/>
+      <Route path='/' element={ <Mainpage />}/>
       <Route path='/cardinput' element={ <CardInput />}/>
       <Route path='/logout' element={ <Logout />}/>
       <Route path='/profilepage' element={ <ProfilePage />}/> 

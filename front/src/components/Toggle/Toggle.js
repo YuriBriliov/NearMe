@@ -22,18 +22,19 @@ function Toggle() {
  
     const onChange = (newValue) => {
         setTheme(newValue);
-        console.log(newValue);
+
     };
  
   
 return (
-    <div className="your-required-wrapper" style={{width: 50, height: 20}}>
+    <div className={styles.toggle} >
     <SwitchSelector
         onChange={onChange}
         options={options}
         initialSelectedIndex={initialSelectedIndex}
         backgroundColor={"#FFFFFF"}
         fontColor={"#f5f6fa"}
+        
     />
    </div>
   )

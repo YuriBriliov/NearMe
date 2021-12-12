@@ -29,9 +29,9 @@ function CardDetailPage() {
       </div>
 
       <div className={styles.detail_contacts_light}>
-        <div> <i class="fab fa-instagram "></i> <span> @assholenails</span></div>
-        <div> <i class="fab fa-whatsapp "></i> <span> +7 999 888 77 66</span></div>
-        <div> <i class="fab fa-telegram-plane "></i> <span> @eatdrinkshitting</span></div>
+        <div> <i className="fab fa-instagram "></i> <span> @assholenails</span></div>
+        <div> <i className="fab fa-whatsapp "></i> <span> +7 999 888 77 66</span></div>
+        <div> <i className="fab fa-telegram-plane "></i> <span> @eatdrinkshitting</span></div>
       </div>
       <div className={styles.detail_button_block_light}>
         <button className={styles.button_light}>Message</button>
@@ -59,9 +59,9 @@ function CardDetailPage() {
       </div>
 
       <div className={styles.detail_contacts_dark}>
-        <div> <i class="fab fa-instagram "></i> <span> @assholenails</span></div>
-        <div> <i class="fab fa-whatsapp "></i> <span> +7 999 888 77 66</span></div>
-        <div> <i class="fab fa-telegram-plane "></i> <span> @eatdrinkshitting</span></div>
+        <div> <i className="fab fa-instagram "></i> <span> @assholenails</span></div>
+        <div> <i className="fab fa-whatsapp "></i> <span> +7 999 888 77 66</span></div>
+        <div> <i className="fab fa-telegram-plane "></i> <span> @eatdrinkshitting</span></div>
       </div>
       <div className={styles.detail_button_block_dark}>
         <button className={styles.button_dark}>Message</button>
