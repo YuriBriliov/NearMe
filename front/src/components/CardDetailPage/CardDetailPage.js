@@ -7,6 +7,7 @@ import { useThemeContext } from '../../context/themeContext'
 
 import { getCard } from '../../redux/actions/card.reducer'
 
+
 function CardDetailPage() {
   const { isLightTheme, setTheme } = useThemeContext()
   const {id} = useParams()
