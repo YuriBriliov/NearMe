@@ -7,7 +7,9 @@ const session = require('express-session');
 // const RedisStore = require('connect-redis')(session)
 const cors = require('cors');
 const FileStore = require('session-file-store')(session);
-
+const cardRouter = require('./src/routers/cardRouter');
+const userRouter = require('./src/routers/userRouter');
+const categoryRouter = require('./src/routers/categoryRouter');
 // const redisClient = redis.createClient()
 const PORT = process.env.PORT ?? 3001;
 
@@ -29,11 +31,6 @@ app.use(sessionParser);
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
-
-const userRouter = require('./src/routers/userRouter');
-const cardRouter = require('./src/routers/cardRouter');
-const categoryRouter = require('./src/routers/categoryRouter');
-
 app.use(cors({
   origin: true,
   credentials: true,

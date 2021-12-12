@@ -14,12 +14,10 @@ export const cardsReducer = (state = [], action) => {
       return [...state, card]
     }
 
-
     case CHANGE_CARD: {
       const { cards } = payload
       return [...state, cards]
     }
-
 
     case COMPLETE_CARD: {
       const { card } = payload

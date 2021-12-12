@@ -18,9 +18,9 @@ function Header() {
         NEAR ME   
         </div>
         <div className={`${styles.header_top_container_light}`}> 
-          <Link className={styles.head_links_light} to='/mainpage'><i className="fas fa-home"></i> Home</Link>
+          <Link className={styles.head_links_light} to='/'><i className="fas fa-home"></i> Home</Link>
           <Link className={styles.head_links_light} to='/places'><i className="fas fa-map-marker-alt"></i> Places</Link>
-          <Link className={styles.head_links_light} to='/cardinput'><i className="fas fa-user"></i> Profile</Link>
+          <Link className={styles.head_links_light} to='/profilepage'><i className="fas fa-user"></i> Profile</Link>
           <Link className={styles.head_links_light} to='/login'> <i className="fas fa-sign-in-alt"></i> Login</Link>
           <Link className={styles.head_links_light} to='/logout'> <i className="fas fa-sign-out-alt"></i> Logout</Link>
           <Link className={styles.head_links_light} to='/register'> <i className="fas fa-clipboard-check"></i> Register</Link>
