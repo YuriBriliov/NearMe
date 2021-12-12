@@ -14,6 +14,7 @@ module.exports = {
   rules: {
     semi: ['error', 'never'],
     'no-console': 0,
+    linebreak- style: ["error", "windows"]
   },
 
 }
