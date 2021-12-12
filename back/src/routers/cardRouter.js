@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
   res.json(data)
 });
 
+
 // создание поста
 router.post('/', async (req, res) => {
   try {
@@ -33,12 +34,47 @@ router.post('/', async (req, res) => {
     // }
 
 
-    let data = await Card.create(req.body, { returning: true, plain: true })
-    let result = data.json()
+    // let data = 
+    await Card.create(req.body, { returning: true, plain: true })
+    // let result = data.json()
     res.statusCode(200)
   } catch (error) {
     console.log(error)
   }
 })
+
+
+// взять одну карточку
+router.get('/:id', async (req, res) => {
+  try {
+    let data = await Card.findOne({
+      raw: true,
+      where: {
+        id: req.params.id
+      }
+    })
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
+// router.get('/:id', async (req, res) => {
+//   console.log(req.params)
+//   try {
+//     let result = await Sounds.update(req.body, {
+//       where: {
+//         id: req.body.id
+//       }
+//     })
+//     res.sendStatus(200)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
+
+
+
 
 module.exports = router;

@@ -5,6 +5,9 @@ import classes from './card.module.css'
 
 
 function Card({image, title, category, price, id}){
+
+  
+
   return(
     <Link className={classes.moreBlock} to={`/card/${id}`}>
       <div className={classes.card_wrapper}>

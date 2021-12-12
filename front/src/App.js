@@ -24,7 +24,7 @@ function App() {
       <Route path='/cardinput' element={ <CardInput />}/>
       {/* <Route path='/logout' element={ <Logout />}/> */}
       <Route path='/profilepage' element={ <ProfilePage />}/> 
-      <Route path='/detail' element={<CardDetailPage/>}/>
+      <Route path='/card/:id' element={<CardDetailPage/>}/>
       <Route path='/places' element={<Places/>}/>
   
       {/* последний роут - для верстки, для подключения добавления карточек работайте в CardInput */}
