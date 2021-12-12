@@ -30,6 +30,9 @@ module.exports = {
       telegram: {
         type: Sequelize.STRING,
       },
+      adress: {
+        type: Sequelize.STRING,
+      },
       category_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
