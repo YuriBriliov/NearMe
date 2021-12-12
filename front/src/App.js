@@ -48,6 +48,7 @@ function App() {
       <Route path='/profilepage' element={ <ProfilePage />}/> 
       <Route path='/detail' element={<CardDetailPage/>}/>
       <Route path='/maps' element={<MapsTest/>}/>
+      <Route path='/card/:id' element={<CardDetailPage/>}/>
       <Route path='/places' element={<Places/>}/>
     </Routes>
      
@@ -55,7 +56,7 @@ function App() {
 
     {!isLightTheme && <main className='container_dark'>
     <Routes>
-    <Route path='/' element={ <Mainpage />}/>
+      <Route path='/' element={ <Mainpage />}/>
       <Route path='/login' element={ <Login />}/>
       <Route path='/register' element={ <Register />}/>
       <Route path='/cardinput' element={ <CardInput />}/>
@@ -63,6 +64,7 @@ function App() {
       <Route path='/profilepage' element={ <ProfilePage />}/> 
       <Route path='/detail' element={<CardDetailPage/>}/>
       <Route path='/maps' element={<MapsTest/>}/>
+      <Route path='/card/:id' element={<CardDetailPage/>}/>
       <Route path='/places' element={<Places/>}/>
     </Routes>
     </main>}

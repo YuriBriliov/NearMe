@@ -65,7 +65,7 @@ function Cabinet() {
           handleChange={el.handleChange}
           />)}
          <select>
-           {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
+            {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
         </select>    
         <button className={styles.button_light} variant="primary" type="submit">
           Submit

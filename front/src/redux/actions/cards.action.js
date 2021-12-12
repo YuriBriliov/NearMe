@@ -6,10 +6,10 @@ export const selectAllCards = (cards) => ({
 })
 
 
-export const selectCard = (card) => ({
-  type: GET_CARD,
-  payload: { card }
-})
+// export const selectCard = (card) => ({
+//   type: GET_CARD,
+//   payload: { card }
+// })
 
 export const likeCard = (card) => ({
   type: COMPLETE_CARD,
@@ -106,22 +106,22 @@ export const removeCard = (id) => async (dispatch) => {
   }
 }
 
-export const getCard = (id) => async (dispatch) => {
-  try {
-    const options = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include'
-    }
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card/${id}`, options)
-    const cardPost = await response.json()
-    dispatch(selectCard(cardPost))
-  } catch (error) {
-    console.log(error)
-  }
-}
+// export const getCard = (id) => async (dispatch) => {
+//   try {
+//     const options = {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       credentials: 'include'
+//     }
+//     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card/${id}`, options)
+//     const cardPost = await response.json()
+//     dispatch(selectCard(cardPost))
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 
 export const updateCard = ({ id, title, text, img, isFavourite }) => async (dispatch) => {
   try {

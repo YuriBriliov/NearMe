@@ -1,57 +1,80 @@
 const router = require('express').Router();
-const { Card } = require('../db/models');
+const { Card } = require('../db/models')
 
-router
-// получение всех постов
-  .route('/')
-  .get(async (req, res) => {
-    try {
-      const allCards = await Card.findAll({ raw: true, order: [['updatedAt', 'DESC']] });
-      res.status(200).json(allCards);
-    } catch (error) {
-      res.sendStatus(200);
-    }
-  })
-  .post(async (req, res) => {
-    try {
-      const newCard = {
-        title: req.body.title,
-        text: req.body.text,
-        image: req.body.image,
-        price: Number(req.body.price),
-        user_id: Number(req.body.user_id),
-        category_id: Number(req.body.category_id),
-        isActive: true
+
+
+router.get('/', async (req, res) => {
+  let data = await Card.findAll({ raw: true})
+  // let result = data.json()
+  // console.log(data)
+  res.json(data)
+});
+
+
+// создание поста
+router.post('/', async (req, res) => {
+  try {
+    
+    // console.log(req.body)
+    // const { title, img, text } = req.body
+    // if (!req.files || Object.keys(req.files).length === 0) {
+    //   const newPost = await Sounds.create({ text, title, img, user_id: req.session.user.user_id })
+    //   res.json({ text: newPost.text, title: newPost.title, img: newPost.img })
+    // }else{
+    //   const sampleFile = req.files.file
+    //   const fileName = sampleFile.name.split(' ').join('')
+    //   const fullname = `${new Date().getTime()}_${fileName}`
+    //   const uploadPath = `${process.env.PWD}/public/uploads/`
+
+    //   sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
+    //     if (err) { return res.status(500).send(err) }
+    //     const newPost = await Sounds.create({ text, title, file: fullname, user_id: req.session.user.user_id })
+    //     res.json({ file: newPost.file, img: newPost.img, title: newPost.title, text: newPost.text, id: newPost.id })
+    //   })
+    // }
+
+
+    // let data = 
+    await Card.create(req.body, { returning: true, plain: true })
+    // let result = data.json()
+    res.statusCode(200)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
+// взять одну карточку
+router.get('/:id', async (req, res) => {
+  try {
+    let data = await Card.findOne({
+      raw: true,
+      where: {
+        id: req.params.id
       }
-    } catch (error) {
-      
-    }
+    })
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 
+// router.get('/:id', async (req, res) => {
+//   console.log(req.params)
+//   try {
+//     let result = await Sounds.update(req.body, {
+//       where: {
+//         id: req.body.id
+//       }
+//     })
+//     res.sendStatus(200)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
 
 
-
-
-    const newPost = {
-      title: req.body.title,
-      img: req.body.img,
-      text: req.body.text,
-      price: Number(req.body.price),
-      user_id: Number(req.body.user_id),
-    };
-    try {
-      const data = await Card.create(newPost);
-      res.status(200).json(data);
-    } catch (error) {
-      console.error(error);
-      res.render('error', {
-        message: `ууупс, что-то пошло не так:
-      - проверь данные которые ввел`,
-        error: {},
-      });
-    }
-  });
-// добавление
 
 
 module.exports = router;
