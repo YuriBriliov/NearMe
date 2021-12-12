@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
 import styles from './cardinput.module.css'
+import { useThemeContext } from '../../context/themeContext'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -9,6 +10,7 @@ import { addNewCard } from '../../redux/actions/cards.action'
 
 function Cabinet() {
 
+  const { isLightTheme , setTheme} = useThemeContext()
   const user = useSelector((state)=>{
     return state.user
   })
@@ -50,8 +52,10 @@ function Cabinet() {
 
 
   return (
-    <div className={styles.card_input_container}>
-      <form className={styles.card_input_box} onSubmit={getCardData}>
+    <>
+
+    {isLightTheme && <div className={styles.card_input_container_light}>
+    <form className={styles.card_input_box_light}>
         {inputs.map(el => <Input 
           key={el.attrs.id}
           id={el.attrs.id}
@@ -60,14 +64,35 @@ function Cabinet() {
           value={el.attrs.value}
           handleChange={el.handleChange}
           />)}
-        <select onChange={(event)=>setCategory(event.target.value)}>
-          {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
-         </select>    
-         <button variant="primary" type="submit">
-           Submit
-         </button>
+         <select>
+            {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
+        </select>    
+        <button className={styles.button_light} variant="primary" type="submit">
+          Submit
+        </button>
       </form>
-    </div>
+    </div>}
+
+    {!isLightTheme && <div className={styles.card_input_container_dark}>
+    <form className={styles.card_input_box_dark} onSubmit={getCardData}>
+        {inputs.map(el => <Input 
+          key={el.attrs.id}
+          id={el.attrs.id}
+          name={el.attrs.name}
+          type={el.attrs.type}
+          value={el.attrs.value}
+          handleChange={el.handleChange}
+          />)}
+         <select onChange={(event)=>setCategory(event.target.value)}>
+         {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
+        </select>       
+        <button className={styles.button_dark} variant="primary" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>}
+    
+    </>
  
   )
 
