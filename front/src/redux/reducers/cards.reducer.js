@@ -1,4 +1,4 @@
-import { TAKE_ALL_CARDS, GET_CARD, ADD_NEW_CARD, COMPLETE_CARD, CHANGE_CARD } from '../types'
+import { TAKE_ALL_CARDS, GET_CARD, DELETE_CARD, ADD_NEW_CARD, COMPLETE_CARD, CHANGE_CARD } from '../types'
 
 export const cardsReducer = (state = [], action) => {
   const { type, payload } = action
@@ -14,12 +14,15 @@ export const cardsReducer = (state = [], action) => {
       return [...state, card]
     }
 
+    case DELETE_CARD: {
+      const { card } = payload
+      return [card]
+    }
 
     case CHANGE_CARD: {
       const { cards } = payload
       return [...state, cards]
     }
-
 
     case COMPLETE_CARD: {
       const { card } = payload

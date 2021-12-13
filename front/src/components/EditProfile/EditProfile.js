@@ -14,11 +14,7 @@ function EditProfile(){
     useInput({ name: 'email', type: 'email', id: 'email'}),
     useInput({ name: 'phone', type: 'text', id: 'phone'}),
     useInput({ name: 'password', type: 'text', id: 'password'}),
-    useInput({ name: 'instagram', type: 'text', id: 'instagram'}),
-    useInput({ name: 'whatsapp', type: 'text', id: 'whatsapp'}),
-    useInput({ name: 'telegram', type: 'text', id: 'telegram'})
   ]
-
 
 
   return(
@@ -50,8 +46,6 @@ function EditProfile(){
           Submit
         </button>
       </form>}
-       
-  
     </>
  
   )

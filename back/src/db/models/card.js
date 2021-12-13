@@ -1,15 +1,15 @@
 const {
   Model,
-} = require('sequelize')
+} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Card extends Model {
     static associate({
-      Comment, Contact, Ad, User, Category,
+      Comment, Contact, Ad, User, Category, adress
     }) {
       this.belongsToMany(User, {
         through: 'Rating', foreignKey: 'card_id',
-      })
+      });
       this.hasMany(Comment, {
         foreignKey: 'card_id',
       })
@@ -18,10 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       // })
       this.hasOne(Ad, {
         foreignKey: 'card_id',
-      })
+      });
       this.belongsTo(Category, {
         foreignKey: 'id',
-      })
+      });
       this.belongsTo(User, {
         foreignKey: 'id',
       })
@@ -41,10 +41,11 @@ module.exports = (sequelize, DataTypes) => {
     instagram: DataTypes.TEXT,
     whatsapp: DataTypes.TEXT,
     telegram: DataTypes.TEXT,
+    adress: DataTypes.TEXT,
     // contact_id: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Card',
-  })
-  return Card
-}
+  });
+  return Card;
+};
