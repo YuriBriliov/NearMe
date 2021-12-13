@@ -11,7 +11,7 @@ body {
 
 .container {
   width: 100vw;
-  max-width: 1400px;
+  min-width: 100vw;
   padding: 0;
   margin: 0;
   min-height: 100vh;
@@ -24,7 +24,7 @@ body {
 
 .container_dark {
   width: 100vw;
-  max-width: 1400px;
+  min-width: 100vw;
   padding: 0;
   margin: 0;
   min-height: 100vh;

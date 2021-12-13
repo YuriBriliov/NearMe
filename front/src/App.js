@@ -76,7 +76,6 @@ function App() {
       <Routes>
         <Route path='/register' element={ <Register closeModal={closeModal}/>}/>
         <Route path='/login' element={<Login closeModal={closeModal}/>} />
-        <Route path='/detail' element={<CardDetailPage closeModal={closeModal}/>}/>
       </Routes>}  
 
     </main>}
@@ -99,7 +98,6 @@ function App() {
       <Routes>
         <Route path='/register' element={ <Register closeModal={closeModal}/>}/>
         <Route path='/login' element={<Login closeModal={closeModal}/>} />
-        <Route path='/detail' element={<CardDetailPage closeModal={closeModal}/>}/>
       </Routes>}
 
     </main>}

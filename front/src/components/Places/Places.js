@@ -12,6 +12,7 @@ function Places() {
   const cards = useSelector(state => {
     return state.cards
   })
+
   const [category, setCategory] = useState(1)
   const categoryes = useSelector((state) => state.categoryes)
 
@@ -27,11 +28,11 @@ function Places() {
   // console.log(filterCategory)
 
   useEffect(()=>{
-
     setTimeout(()=>{
       setFilterKey(prev => prev + 1)
     },50)
   }, [filterCategory])
+
 
   function detailOnMap(event) {
     event.preventDefault()
@@ -58,7 +59,7 @@ function Places() {
     setFilterCategory(filteredCards)
   }
   
-  
+  // console.log(category)
 
   return (
     <>

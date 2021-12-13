@@ -8,6 +8,7 @@
   max-width: 1400px;
   padding: 0 20px;
   height: 100vh;
+  margin: 0 auto;
 }
 
 .places_sidebar_light {
@@ -69,6 +70,7 @@
   max-width: 1400px;
   padding: 0 20px;
   height: 100vh;
+  margin: 0 auto;
 }
 
 .places_sidebar_dark {

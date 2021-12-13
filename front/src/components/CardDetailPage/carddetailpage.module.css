@@ -12,6 +12,7 @@
   flex-direction: column;
 	display: -webkit-flex;
 	justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
 
 	-webkit-justify-content: center;
   align-items: center;
@@ -20,6 +21,7 @@
   width: 100%;
   max-width: 1400px;
   height: 100vh;
+  margin: 0 auto;
 }
 
 .detail_img_block_light {
@@ -40,20 +42,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
   width: 40vw;
   padding: 3px;
   margin: 5px;
   border-radius: 5px;
 }
 
-.detail_title_light {
-  padding: 3px;
-  font-size: 50px;
-}
 
 .detail_text_light {
   font-size: 20px;
   padding: 3px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .detail_contacts_light {
@@ -68,6 +68,7 @@
   margin: 5px;
   border-radius: 5px;
   font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .detail_button_block_light {
@@ -78,6 +79,7 @@
   background: #D4145A;
   border-radius: 100px;
   color: white;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
   margin: 10px;
   border: 1px solid transparent;
@@ -96,8 +98,17 @@
   background-color: #d6608c;
 }
 
+.input__detail_page_light {
+  font-size: 20px;
+  border: 1px solid #ccc;
+  background: transparent;
+  margin: 10px 0;
+  border: none;
+  padding: 3px;
+}
 
-/* light */
+
+/* dark */
 
 .detail_main_container_dark {
  
@@ -106,6 +117,7 @@
   flex-direction: column;
 	display: -webkit-flex;
 	justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
 
 	-webkit-justify-content: center;
   align-items: center;
@@ -114,6 +126,7 @@
   width: 100%;
   max-width: 1400px;
   height: 100vh;
+  margin: 0 auto;
 }
 
 .detail_img_block_dark {
@@ -129,7 +142,7 @@
 
 .detail_description_dark {
   color: white;
-  font-family: "Syne", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   box-shadow: 0px 0px 20px 0px rgb(76, 0, 255);
   display: flex;
   flex-direction: column;
@@ -139,11 +152,6 @@
   padding: 3px;
   margin: 5px;
   border-radius: 5px;
-}
-
-.detail_title_dark {
-  padding: 3px;
-  font-size: 50px;
 }
 
 .detail_text_dark {
@@ -164,6 +172,7 @@
   margin: 5px;
   border-radius: 5px;
   font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .detail_button_block_dark {
@@ -176,6 +185,7 @@
   border: 1px solid transparent;
   border-radius: 100px;
   color: white;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
   margin: 10px;
   text-align: center;
@@ -219,12 +229,14 @@
   background-color: #d6608c;
 }
 
-.input__detail_page {
+.input__detail_page_dark {
   font-size: 20px;
   border: 1px solid #ccc;
   background: transparent;
   margin: 10px 0;
-  border: none
+  color: rgba(255, 255, 255, 0.726);
+  border: none;
+  padding: 3px;
 }
 
 p {
@@ -235,7 +247,8 @@ p {
 }
 
 .visible__input {
-   border: 2px solid #d6608c;
+  color: white;
+   border: 2px solid #000000;
    outline: none;
 }
 

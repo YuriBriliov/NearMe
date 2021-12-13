@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
 import styles from '../CardInput/CardInput'
+
 import { useThemeContext } from '../../context/themeContext'
 
 import { useNavigate } from 'react-router-dom'
@@ -227,6 +228,9 @@ function MapsTest() {
 
   return (
     <>
+
+
+    
     <>
 
 {isLightTheme && <div className={styles.card_input_container_light}>
@@ -269,7 +273,7 @@ function MapsTest() {
 
 </>
       <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
-      {/* <button type={"click"}>click</button> */}
+      // {/* <button type={"click"}>click</button> */}
       <p>{addr}</p>
     </>
   )

@@ -81,20 +81,21 @@ function CardDetailPage() {
         <div className={styles.detail_title_light}>
             {/* {cardData.title} */}
             <p>Заголовок</p>
-            <input className={`${styles.input__detail_page} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive}/>
+            <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive}/>
         </div>
-        <div className={styles.detail_text_light}>
+        <div className={styles.detail_text_light_light}>
             {/* {cardData.text} */}
             <p>Описание</p>
-            <input className={`${styles.input__detail_page} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive}/>
+            <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive}/>
         </div>
       </div>
 
+
       <div className={styles.detail_contacts_light}>
           <p>Контакты</p>
-          <div> <i className="fab fa-instagram "></i> <input className={`${styles.input__detail_page} ${isActive ? '' :  styles.visible__input}`} onChange={(event) => setInstagram(event.target.value)} value={instagram} placeholder="instagram" disabled={isActive}/></div>
-          <div> <i className="fab fa-whatsapp "></i> <input className={`${styles.input__detail_page} ${isActive ? '' :  styles.visible__input}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive}/></div>
-          <div> <i className="fab fa-telegram-plane "></i> <input className={`${styles.input__detail_page} ${isActive ? '' :  styles.visible__input}`}  onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive}/></div>
+          <div> <i className="fab fa-instagram "></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' :  styles.visible__input}`} onChange={(event) => setInstagram(event.target.value)} value={instagram} placeholder="instagram" disabled={isActive}/></div>
+          <div> <i className="fab fa-whatsapp "></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' :  styles.visible__input}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive}/></div>
+          <div> <i className="fab fa-telegram-plane "></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' :  styles.visible__input}`}  onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive}/></div>
       </div>
       <div className={styles.detail_button_block_light}>
         <button className={styles.button_light}>Message</button>
@@ -106,35 +107,32 @@ function CardDetailPage() {
 
     {!isLightTheme &&  <div className={styles.detail_main_container_dark}>
       <div className={styles.detail_img_block_dark}>
-          <img className={styles.detail_img_dark} alt='serv-img' src={cardData.image}/>
+          <img className={styles.detail_img_dark}  onChange={(event) => setImage(event.target.value)} alt='serv-img' src={image}/>
       </div>
 
       <div className={styles.detail_description_dark}>
         <div className={styles.detail_title_dark}>
           {/* {cardData.title} */}
             <p>Заголовок</p>
-            <input className={`${styles.input__detail_page} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled/>
+            <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" ddisabled={isActive}/>
         </div>
         <div className={styles.detail_text_dark}>
           {/* {cardData.text} */}
             <p>Описание</p>
-            <input className={`${styles.input__detail_page} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled/>
+            <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive}/>
         </div>
       </div>
-      <p>
-        {cardData.price}
-      </p>
-
+   
       <div className={styles.detail_contacts_dark}>
           <p>Контакты</p>
-          <div> <i className="fab fa-instagram "></i> <input className={`${styles.input__detail_page} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setInstagram(event.target.value)} value={instagram} placeholder="instagram" disabled/></div>
-          <div> <i className="fab fa-whatsapp "></i> <input className={`${styles.input__detail_page} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled/></div>
-          <div> <i className="fab fa-telegram-plane "></i> <input className={`${styles.input__detail_page} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled/></div>
+          <div> <i className="fab fa-instagram "></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setInstagram(event.target.value)} value={instagram} placeholder="instagram" disabled={isActive}/></div>
+          <div> <i className="fab fa-whatsapp "></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive}/></div>
+          <div> <i className="fab fa-telegram-plane "></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input}`} onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive}/></div>
       </div>
       <div className={styles.detail_button_block_dark}>
         <button className={styles.button_dark}>Message</button>
           <button className={`${styles.button_dark} ${isActive ? '' : styles.deactiveBtn}`} onClick={activateEdit}>Edit</button>
-          <button className={styles.button_dark} className={`${styles.sub__btn} ${isActive ? styles.deactiveBtn : ''}`} onClick={() => editCard({ id, image, title, text, instagram, whatsapp, telegram })}>Success</button>
+          <button className={styles.button_dark} className={`${styles.button_light}  ${isActive ? styles.deactiveBtn : ''}`} onClick={() => editCard({ id, image, title, text, instagram, whatsapp, telegram })}>Success</button>
         <button className={styles.button_dark} onClick={()=>{deleteCard(cardData.id)}}>Delete</button>
       </div>
     </div>}
