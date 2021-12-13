@@ -38,7 +38,6 @@ function Login({closeModal}){
   }
 
   function handleClose() {
-    console.log(closeModal);
     closeModal()
   }
 

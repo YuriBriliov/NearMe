@@ -37,7 +37,6 @@ function Register({closeModal}){
   }
 
   function handleClose() {
-    console.log(closeModal);
     closeModal()
   }
 

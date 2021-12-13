@@ -18,11 +18,10 @@ function Toggle() {
           selectedBackgroundColor: "#28094e"
       }
     ];
-    const initialSelectedIndex = options.findIndex(({value}) => value === false);
+    let initialSelectedIndex = options.findIndex(({value}) => value === isLightTheme);
  
-    const onChange = (newValue) => {
+    const onChange = async (newValue) => {
         setTheme(newValue);
-
     };
  
   
