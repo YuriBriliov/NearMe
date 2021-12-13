@@ -24,4 +24,5 @@ export const DELETE_CARD = 'DELETE_CARD'
 
 export const TAKE_ALL_CATEGORYES = 'TAKE_ALL_CATEGORYES'
 export const GET_CATEGORY = 'GET_CATEGORY'
+export const FILTER_CARDS = 'FILTER_CARDS'
 

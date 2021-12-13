@@ -53,12 +53,6 @@ function MapsTest({ cards }) {
   ////////////////////////////////
 
 
-  function choiseCard(event) {
-    event.preventDefaylt()
-    console.log(event.target)
-    console.log('hello')
-  }
-
   /////////////
   async function showAdressFromBack() {
     const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test`);

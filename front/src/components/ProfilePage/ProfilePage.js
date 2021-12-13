@@ -20,7 +20,7 @@ return (
       <div className={styles.profile_page_menu_light}>
          <div className={styles.top_menu_block_light}>MENU</div>
         <button onClick={()=> setBlock(<ServicePage/>)} className={styles.menu_block_light}> <div >MY PLACES</div></button>
-            <button onClick={() => setBlock(<MapsTest/>)} className={styles.menu_block_light}> <div >LIKES</div></button>
+        <button onClick={() => setBlock(<MapsTest/>)} className={styles.menu_block_light}> <div >LIKES</div></button>
         <button onClick={()=> setBlock(<EditProfile/>)} className={styles.menu_block_light}> <div >EDIT PROFILE</div> </button>
         <button onClick={()=> setBlock(<CardInput/>)} className={styles.menu_block_light}>  <div >ADD PLACE</div></button>
       </div>

@@ -19,9 +19,8 @@ function MapsTest() {
   })
 
   let [addr, setAddr] = useState('')
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState(1)
   const categoryes = useSelector((state) => state.categoryes)
-
   const inputs = [
     useInput({ name: 'title', type: 'text', id: 'title'}),
     useInput({ name: 'text', type: 'text', id: 'text'}),
@@ -164,7 +163,7 @@ function MapsTest() {
             balloonContent: firstGeoObject.getAddressLine()
           });
         adress = myPlacemark.properties._data.balloonContent;
-        console.log(adress);
+        // console.log(adress);
         setAddr(adress)
 
       });
@@ -177,7 +176,7 @@ function MapsTest() {
     addressCards.then(
       function (res) {
         addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
-        console.log(addressGeo);
+        // console.log(addressGeo);
 
 
 
@@ -207,14 +206,14 @@ function MapsTest() {
 
   function getCardData(event) {
     event.preventDefault()
-    console.log(addr);
+    // console.log(addr);
     dispatch(addNewCard({
       title: inputs[0].getValue(),
       text: inputs[1].getValue(),
       image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
       // image: inputs[2].getValue(),
       price: Number(inputs[3].getValue()),
-      category_id: Number(2),
+      category_id: Number(category),
       user_id: user.value.id,
       instagram: inputs[4].getValue(),
       whatsapp: inputs[5].getValue(),
@@ -224,6 +223,7 @@ function MapsTest() {
     }))
     navigate('/')
   }
+
 
   return (
     <>
@@ -269,7 +269,7 @@ function MapsTest() {
 
 </>
       <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
-      <button type={"click"}>click</button>
+      {/* <button type={"click"}>click</button> */}
       <p>{addr}</p>
     </>
   )
