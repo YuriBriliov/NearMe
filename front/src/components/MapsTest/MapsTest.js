@@ -6,7 +6,7 @@ import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
 import styles from '../CardInput/CardInput'
 import { useThemeContext } from '../../context/themeContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function MapsTest({ cards }) {
@@ -286,5 +286,12 @@ function MapsTest({ cards }) {
       </>
     )
   }
+  return (
+    <>
+    <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
+     {/* <button type={"click"}>click</button> */}
+    <p>{addr}</p>
+    </>
+  )
 }
   export default MapsTest
