@@ -1,14 +1,13 @@
 import styles from './modal.module.css'
 
 
-function Modal({closeModal}) {
+function Modal({active, setActive, children}) {
 
   return (
     <div className={styles.modalBackground}>
-      <div className={styles.modalContainer}>
-      Modal
-      <button onClick={() => {closeModal(false)}}>close</button>
-      </div>
+      
+  lalala
+      <button onClick={() => {setActive(false)}}>close</button>
     </div>
 
   )
