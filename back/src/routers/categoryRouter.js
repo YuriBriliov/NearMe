@@ -3,18 +3,14 @@ const { Category } = require('../db/models')
 
 
 router.get('/', async (req, res) => {
-  let data;
 
   try {
-    data = await Category.findAll({raw: true});
+    const data = await Category.findAll({raw: true});
+    res.json( data );
   } catch (error) {
-    return res.render('error', {
-      message: 'Не удалось получить записи из базы данных.',
-      error: {}
-    });
+    res.sendStatus(500);
   }
-  // console.log(data)
-  res.json({ data });
+  
 });
 
 module.exports = router;

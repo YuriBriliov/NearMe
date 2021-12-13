@@ -9,7 +9,7 @@ import {registerNewUser} from '../../redux/actions/user.actions'
 import { useThemeContext } from '../../context/themeContext'
 
 
-function Register(){
+function Register({closeModal}){
 
   const { isLightTheme , setTheme} = useThemeContext()
 
@@ -36,10 +36,17 @@ function Register(){
     dispatch(registerNewUser({email: inputs[1].getValue(), password: inputs[3].getValue(), name: inputs[0].getValue(), phone: inputs[2].getValue()}))
   }
 
+  function handleClose() {
+    closeModal()
+  }
+
   return(
     <>
     {isLightTheme &&   <div className={styles.register_container_light} onSubmit={completeUser}>
         <form className={styles.register_box_light}>
+        <div className={styles.closebutton_container_light}>
+          <button className={styles.closebutton_light} onClick={()=> {handleClose()}} type='button'>x</button>
+        </div>
         {inputs.map(el => <Input 
           key={el.attrs.id}
           id={el.attrs.id}
@@ -57,6 +64,9 @@ function Register(){
 
     {!isLightTheme &&   <div className={styles.register_container_dark} onSubmit={completeUser}>
         <form className={styles.register_box_dark}>
+        <div className={styles.closebutton_container_dark}>
+          <button className={styles.closebutton_dark} onClick={()=> {handleClose()}} type='button'>x</button>
+        </div>
         {inputs.map(el => <Input 
           key={el.attrs.id}
           id={el.attrs.id}

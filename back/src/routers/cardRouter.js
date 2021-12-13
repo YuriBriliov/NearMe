@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Card } = require('../db/models')
 
 
-
+// взять все карточки
 router.get('/', async (req, res) => {
   let data = await Card.findAll({ raw: true})
   // let result = data.json()
@@ -59,6 +59,20 @@ router.get('/test', async (req, res) => {
   }
 })
 
+// обновление карты
+router.put('/', async (req, res) => {
+  try {
+    await Card.update(req.body, {
+      where: {
+        id: Number(req.body.id)
+      }
+    })
+    res.sendStatus(200)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 
 // взять одну карточку
 router.get('/:id', async (req, res) => {
@@ -76,20 +90,20 @@ router.get('/:id', async (req, res) => {
 })
 
 
+// удаление карточки
+router.delete('/:id', async (req, res) => {
+  try {
+    await Card.destroy({
+      where: {
+        id: Number(req.params.id)
+      }
+    })
+    res.sendStatus(200)
+  } catch (error) {
+    console.log(error)
+  }
+})
 
-// router.get('/:id', async (req, res) => {
-//   console.log(req.params)
-//   try {
-//     let result = await Sounds.update(req.body, {
-//       where: {
-//         id: req.body.id
-//       }
-//     })
-//     res.sendStatus(200)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// })
 
 
 

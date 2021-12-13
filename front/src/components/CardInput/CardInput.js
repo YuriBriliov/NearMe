@@ -15,7 +15,7 @@ function Cabinet() {
     return state.user
   })
 
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState(1)
   const categoryes = useSelector((state) => state.categoryes)
 
   const inputs = [
@@ -55,7 +55,7 @@ function Cabinet() {
     <>
 
     {isLightTheme && <div className={styles.card_input_container_light}>
-    <form className={styles.card_input_box_light} onSubmit={getCardData}>
+        <form className={styles.card_input_box_light} onSubmit={getCardData}>
         {inputs.map(el => <Input 
           key={el.attrs.id}
           id={el.attrs.id}
@@ -64,8 +64,8 @@ function Cabinet() {
           value={el.attrs.value}
           handleChange={el.handleChange}
           />)}
-         <select onChange={(event)=>setCategory(event.target.value)}>
-            {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
+          <select onChange={(event) => setCategory(event.target.value)} value={category}>
+            {categoryes.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>    
         <button className={styles.button_light} variant="primary" type="submit">
           Submit
@@ -83,8 +83,8 @@ function Cabinet() {
           value={el.attrs.value}
           handleChange={el.handleChange}
           />)}
-         <select onChange={(event)=>setCategory(event.target.value)}>
-         {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
+          <select onChange={(event) => setCategory(event.target.value)} value={category}>
+            {categoryes.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>       
         <button className={styles.button_dark} variant="primary" type="submit">
           Submit

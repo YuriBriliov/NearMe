@@ -1,9 +1,22 @@
 /* light */
 .login_container_light {
-  display: flex;
+  /* display: flex;
   width: 100%;
   max-width: 1400px;
-  height: 100vh;
+  height: 100vh; */
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  z-index: 10000;
+  background:rgba(255, 255, 255, 0.7);
+  margin: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login_box_light {
@@ -15,7 +28,7 @@
   width:max-content;
   padding: 10px;
   margin: auto;
-  font-family: "Syne", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: #f5f1f1;
   box-shadow: 0px 0px 20px 0px rgba(189, 86, 145, 0.2);
 
@@ -43,13 +56,43 @@
   background-color: #d6608c;
 }
 
+.closebutton_container_light {
+  display: flex;
+  flex-direction: row;
+  margin-left: 90%;
+}
+
+.closebutton_light {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-weight: bolder;
+}
+
+.closebutton_light:active {
+  border-color: currentColor;
+  transform: translateY(2px);
+}
+
 
 /* dark */
 .login_container_dark {
-  display: flex;
+  /* display: flex;
   width: 100%;
   max-width: 1400px;
-  height: 100vh;
+  height: 100vh; */
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  z-index: 10000;
+  background:rgba(255, 255, 255, 0.7);
+  margin: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login_box_dark {
@@ -62,8 +105,9 @@
   padding: 10px;
   margin: auto;
   color: white;
-  font-family: "Syne", sans-serif;
-  box-shadow: 0px 0px 20px 0px rgb(76, 0, 255);
+  background-color: #28094e;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0px 0px 20px 0px rgb(33, 10, 85);
 }
 
 .button_dark {
@@ -88,4 +132,23 @@
   background-color: #28094ebb;
   border: 1px solid transparent;
 }
+
+.closebutton_container_dark {
+  display: flex;
+  flex-direction: row;
+  margin-left: 90%;
+}
+
+.closebutton_dark {
+  color: white;
+  font-weight: bolder;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.closebutton_dark:active {
+  border-color: currentColor;
+  transform: translateY(2px);
+}
+
 
