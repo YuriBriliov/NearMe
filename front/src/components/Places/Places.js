@@ -1,10 +1,15 @@
 import styles from './places.module.css'
 import Card from '../Card/Card'
 import { useThemeContext } from '../../context/themeContext'
-
+import MapsTest from '../MapsTest/MapsTest'
+import { useSelector } from 'react-redux'
 
 function Places() {
   const { isLightTheme , setTheme} = useThemeContext()
+
+  const cards = useSelector(state => {
+    return state.cards
+  })
 
 
   return (
@@ -26,7 +31,7 @@ function Places() {
     </div>
 
           <div className={styles.places_mapbox_light}>
-        тут будет карта
+          <MapsTest cards={cards} />
           </div>
       </div>}
 

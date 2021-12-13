@@ -6,11 +6,15 @@ import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
 import styles from '../CardInput/CardInput'
 import { useThemeContext } from '../../context/themeContext'
+import { Link } from 'react-router-dom'
 
 import { useNavigate } from 'react-router-dom'
 import { addNewCard } from '../../redux/actions/cards.action'
 
-function MapsTest() {
+function MapsTest({ cards }) {
+  
+
+  // console.log(cards)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -23,15 +27,15 @@ function MapsTest() {
   const [category, setCategory] = useState()
   const categoryes = useSelector((state) => state.categoryes)
 
-  const inputs = [
-    useInput({ name: 'title', type: 'text', id: 'title' }),
-    useInput({ name: 'text', type: 'text', id: 'text' }),
-    useInput({ name: 'image', type: 'file', id: 'image' }),
-    useInput({ name: 'price', type: 'text', id: 'price' }),
-    useInput({ name: 'instagram', type: 'text', id: 'instagram' }),
-    useInput({ name: 'whatsapp', type: 'text', id: 'whatsapp' }),
-    useInput({ name: 'telegram', type: 'text', id: 'telegram' }),
-  ]
+  // const inputs = [
+  //   useInput({ name: 'title', type: 'text', id: 'title' }),
+  //   useInput({ name: 'text', type: 'text', id: 'text' }),
+  //   useInput({ name: 'image', type: 'file', id: 'image' }),
+  //   useInput({ name: 'price', type: 'text', id: 'price' }),
+  //   useInput({ name: 'instagram', type: 'text', id: 'instagram' }),
+  //   useInput({ name: 'whatsapp', type: 'text', id: 'whatsapp' }),
+  //   useInput({ name: 'telegram', type: 'text', id: 'telegram' }),
+  // ]
 
   const a = '5ae2e3f221c38a28845f05b6e94dd44c91ceac03cdfc62d2a58e3808';
 
@@ -49,10 +53,19 @@ function MapsTest() {
   let adressFromBack
 
   ////////////////////////////////
+
+  
+  function choiseCard(event) {
+    event.preventDefaylt()
+    console.log(event.target)
+    console.log('hello')
+  } 
+
+  /////////////
   async function showAdressFromBack() {
     const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test`);
     adressFromBack = await response3.json();
-    console.log(adressFromBack);
+    // console.log(adressFromBack);
 
 
     for (let i = 0; i < adressFromBack.length; i++) {
@@ -63,7 +76,7 @@ function MapsTest() {
         // eslint-disable-next-line no-loop-func
         function (res) {
           addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
-          console.log(addressGeo);
+          // console.log(addressGeo);
 
 
 
@@ -79,31 +92,31 @@ function MapsTest() {
               // `${addres} <br/> <br/> `
               // 'ssadsasda'
             `${adressFromBack[i].text} <br/> <br/>`
-            + `wikipedia: <br/> <a href='/'>Подробнее</a> <br/><br/>`
+              + ` <br/> <button type="button" class="btn__more" data-id=${cards[i].id}>Подробнее</button> <br/><br/>`
             // + `${text} <br/>`
-            + `Фото:<br> <img src="${adressFromBack[i].image}" style='height:200px; weight:200px '> <br/>`,
+            + `Фото:<br> <img src="${adressFromBack[i].image}" style='height:170px; weight:170px '> <br/>`,
               
           ],
           // Зададим содержимое нижней части балуна.
-        balloonContentFooter: 'Информация предоставлена:<br/>OOO "Рога и копыта"',
+        // balloonContentFooter: 'Информация предоставлена:<br/>OOO "Рога и копыта"',
         // Зададим содержимое всплывающей подсказки.
-        hintContent: 'Рога и копыта'
+        // hintContent: 'Рога и копыта'
         }, {
             preset: 'islands#icon',
             iconColor: '#0095B6',
           });
-          console.log(myPoint)
+          // console.log(myPoint)
           myMap.geoObjects
             .add(myPoint);
         },
       );
       /////
-
     }
 
 
-
   }
+  
+
   /////////////////////// 
 
   async function init() {
@@ -203,29 +216,29 @@ function MapsTest() {
   }
 
 
-  function getCardData(event) {
-    event.preventDefault()
-    console.log(addr);
-    dispatch(addNewCard({
-      title: inputs[0].getValue(),
-      text: inputs[1].getValue(),
-      image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
-      // image: inputs[2].getValue(),
-      price: Number(inputs[3].getValue()),
-      category_id: Number(2),
-      user_id: user.value.id,
-      instagram: inputs[4].getValue(),
-      whatsapp: inputs[5].getValue(),
-      telegram: inputs[6].getValue(),
-      isActive: true,
-      adress: addr,
-    }))
-    navigate('/')
-  }
+  // function getCardData(event) {
+  //   event.preventDefault()
+  //   console.log(addr);
+  //   dispatch(addNewCard({
+  //     title: inputs[0].getValue(),
+  //     text: inputs[1].getValue(),
+  //     image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
+  //     // image: inputs[2].getValue(),
+  //     price: Number(inputs[3].getValue()),
+  //     category_id: Number(2),
+  //     user_id: user.value.id,
+  //     instagram: inputs[4].getValue(),
+  //     whatsapp: inputs[5].getValue(),
+  //     telegram: inputs[6].getValue(),
+  //     isActive: true,
+  //     adress: addr,
+  //   }))
+  //   navigate('/')
+  // }
 
   return (
     <>
-      <>
+      {/* <>
 
         {isLightTheme && <div className={styles.card_input_container_light}>
           <form className={styles.card_input_box_light} onSubmit={getCardData}>
@@ -265,9 +278,9 @@ function MapsTest() {
           </form>
         </div>}
 
-      </>
-      <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
-      <button type={"click"}>click</button>
+      </> */}
+      <div id="map" style={{ width: '90%', margin: '0 auto', height: "500px" }}></div>
+      {/* <button type={"click"}>click</button> */}
       <p>{addr}</p>
     </>
   )
