@@ -52,6 +52,7 @@ export const getAllCards = () => async (dispatch) => {
 
 export const addNewCard = (card) => async (dispatch) => {
   try {
+    console.log(card);
     const options = {
       method: 'POST',
       headers: {

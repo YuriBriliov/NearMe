@@ -3,10 +3,13 @@
 // only maps
 
 
+
 import { useState, useEffect } from 'react'
 
 function MapsTest() {
   let [addr, setAddr] = useState('')
+
+
 
   const a = '5ae2e3f221c38a28845f05b6e94dd44c91ceac03cdfc62d2a58e3808';
 
@@ -118,10 +121,11 @@ function MapsTest() {
   }
 
 
+
   return (
     <>
       <div id="map" style={{width:'90%', margin: '0 auto', height:"600px"}}></div>
-      <button type={"click"}>click</button>
+      <button type={"click"} >click</button>
     </>
   )
 }

@@ -1,4 +1,3 @@
-
 // import styles from './maps.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,9 +12,9 @@ import { addNewCard } from '../../redux/actions/cards.action'
 function MapsTest() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  const { isLightTheme, setTheme } = useThemeContext()
-  const user = useSelector((state) => {
+  
+  const { isLightTheme , setTheme} = useThemeContext()
+  const user = useSelector((state)=>{
     return state.user
   })
 
@@ -24,13 +23,13 @@ function MapsTest() {
   const categoryes = useSelector((state) => state.categoryes)
 
   const inputs = [
-    useInput({ name: 'title', type: 'text', id: 'title' }),
-    useInput({ name: 'text', type: 'text', id: 'text' }),
-    useInput({ name: 'image', type: 'file', id: 'image' }),
-    useInput({ name: 'price', type: 'text', id: 'price' }),
-    useInput({ name: 'instagram', type: 'text', id: 'instagram' }),
-    useInput({ name: 'whatsapp', type: 'text', id: 'whatsapp' }),
-    useInput({ name: 'telegram', type: 'text', id: 'telegram' }),
+    useInput({ name: 'title', type: 'text', id: 'title'}),
+    useInput({ name: 'text', type: 'text', id: 'text'}),
+    useInput({ name: 'image', type: 'file', id: 'image'}),
+    useInput({ name: 'price', type: 'text', id: 'price'}),
+    useInput({ name: 'instagram', type: 'text', id: 'instagram'}),
+    useInput({ name: 'whatsapp', type: 'text', id: 'whatsapp'}),
+    useInput({ name: 'telegram', type: 'text', id: 'telegram'}),
   ]
 
 
@@ -47,65 +46,35 @@ function MapsTest() {
 
   useEffect(() => {
     ymaps.ready(init);
+
   }, [])
-
-  let adressFromBack
-
   ////////////////////////////////
-  async function showAdressFromBack() {
+  async function showArray() {
     const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test`);
-    adressFromBack = await response3.json();
-    console.log(adressFromBack);
+    const adressBack = await response3.json();
+    // console.log(info);
+    // Россия, Москва, улица Орджоникидзе, 3с5
+    // getAddress
 
+    /*  myPoint = new ymaps.Placemark([allCult[i].geometry.coordinates[1], allCult[i].geometry.coordinates[0]], {
+        balloonContentHeader: allCult[i].properties.name,
+        // balloonContentLayout: BalloonContentLayout,
+        // balloonPanelMaxMapArea: 0,
+        balloonContentBody:
+          // `info: ${response3[image]}`,
+          `${addres} <br/> <br/> `
+          + `wikipedia: <br/> <a href=${wikipedia}>${allCult[i].properties.name}</a> <br/><br/>`
+          + `${text} <br/>`
+          + `Фото:<br> <img src="${style || ''}" style='height:${style.height && 0}px; weight:${style.weight && 0} '> <br/>`,
+      }, {
+        preset: 'islands#icon',
+        iconColor: '#0095B6',
+      });
+      */
 
-    for (let i = 0; i < adressFromBack.length; i++) {
-      ///// Определение координат из адрес
-      let addressGeo
-      let addressCards = ymaps.geocode(adressFromBack[i].adress);
-      addressCards.then(
-        // eslint-disable-next-line no-loop-func
-        function (res) {
-          addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
-          console.log(addressGeo);
-
-
-
-          // Установка метки
-          let myPoint = new ymaps.Placemark([addressGeo[0], addressGeo[1]], {
-            balloonContentHeader: adressFromBack[i].title,
-            // balloonContentHeader: 'sasasa',
-
-            // balloonContentLayout: BalloonContentLayout,
-            // balloonPanelMaxMapArea: 0,
-            balloonContentBody:[
-              // `info: ${adressFromBack[i].image}`,
-              // `${addres} <br/> <br/> `
-              // 'ssadsasda'
-            `${adressFromBack[i].text} <br/> <br/>`
-            + `wikipedia: <br/> <a href='/'>Подробнее</a> <br/><br/>`
-            // + `${text} <br/>`
-            + `Фото:<br> <img src="${adressFromBack[i].image}" style='height:200px; weight:200px '> <br/>`,
-              
-          ],
-          // Зададим содержимое нижней части балуна.
-        balloonContentFooter: 'Информация предоставлена:<br/>OOO "Рога и копыта"',
-        // Зададим содержимое всплывающей подсказки.
-        hintContent: 'Рога и копыта'
-        }, {
-            preset: 'islands#icon',
-            iconColor: '#0095B6',
-          });
-          console.log(myPoint)
-          myMap.geoObjects
-            .add(myPoint);
-        },
-      );
-      /////
-
-    }
-
-
-
+    // myMap.geoObjects
+    // .add(myPoint);
+    // }
   }
   /////////////////////// 
 
@@ -114,7 +83,7 @@ function MapsTest() {
     // let myPlacemark;
     const { geolocation } = ymaps;
     // console.log(geolocation);
-    myMap = new ymaps.Map('map', {
+    const myMap = new ymaps.Map('map', {
       center: [55.753994, 37.622093],
       zoom: 10,
       controls: ['geolocationControl'],
@@ -200,9 +169,39 @@ function MapsTest() {
 
       });
     }
-    showAdressFromBack()
+    showArray()
+
+    ///// Определение координат из адреса
+    let addressGeo
+    let addressCards = ymaps.geocode("Россия, Москва, улица Стасовой, 2Б");
+    addressCards.then(
+      function (res) {
+        addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
+        console.log(addressGeo);
 
 
+
+        // Установка метки
+        let myPoint = new ymaps.Placemark([addressGeo[0], addressGeo[1]], {
+          balloonContentHeader: 'Балун Header',
+          // balloonContentLayout: BalloonContentLayout,
+          // balloonPanelMaxMapArea: 0,
+          balloonContentBody:
+            // `info: ${response3[image]}`,
+            // `${addres} <br/> <br/> `
+            `sdsdfsd`
+          // + `wikipedia: <br/> <a href=${wikipedia}>${allCult[i].properties.name}</a> <br/><br/>`
+          // + `${text} <br/>`
+          // + `Фото:<br> <img src="${style || ''}" style='height:${style.height && 0}px; weight:${style.weight && 0} '> <br/>`,
+        }, {
+          preset: 'islands#icon',
+          iconColor: '#0095B6',
+        });
+
+        myMap.geoObjects.add(myPoint);
+      },
+    );
+    /////
   }
 
 
@@ -228,47 +227,47 @@ function MapsTest() {
 
   return (
     <>
-      <>
+    <>
 
-        {isLightTheme && <div className={styles.card_input_container_light}>
-          <form className={styles.card_input_box_light} onSubmit={getCardData}>
-            {inputs.map(el => <Input
-              key={el.attrs.id}
-              id={el.attrs.id}
-              name={el.attrs.name}
-              type={el.attrs.type}
-              value={el.attrs.value}
-              handleChange={el.handleChange}
-            />)}
-            <select onChange={(event) => setCategory(event.target.value)}>
-              {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
-            </select>
-            <button className={styles.button_light} variant="primary" type="submit">
-              Submit
-            </button>
-          </form>
-        </div>}
+{isLightTheme && <div className={styles.card_input_container_light}>
+<form className={styles.card_input_box_light} onSubmit={getCardData}>
+    {inputs.map(el => <Input 
+      key={el.attrs.id}
+      id={el.attrs.id}
+      name={el.attrs.name}
+      type={el.attrs.type}
+      value={el.attrs.value}
+      handleChange={el.handleChange}
+      />)}
+     <select onChange={(event)=>setCategory(event.target.value)}>
+        {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
+    </select>    
+    <button className={styles.button_light} variant="primary" type="submit">
+      Submit
+    </button>
+  </form>
+</div>}
 
-        {!isLightTheme && <div className={styles.card_input_container_dark}>
-          <form className={styles.card_input_box_dark} onSubmit={getCardData}>
-            {inputs.map(el => <Input
-              key={el.attrs.id}
-              id={el.attrs.id}
-              name={el.attrs.name}
-              type={el.attrs.type}
-              value={el.attrs.value}
-              handleChange={el.handleChange}
-            />)}
-            <select onChange={(event) => setCategory(event.target.value)}>
-              {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
-            </select>
-            <button className={styles.button_dark} variant="primary" type="submit">
-              Submit
-            </button>
-          </form>
-        </div>}
+{!isLightTheme && <div className={styles.card_input_container_dark}>
+<form className={styles.card_input_box_dark} onSubmit={getCardData}>
+    {inputs.map(el => <Input 
+      key={el.attrs.id}
+      id={el.attrs.id}
+      name={el.attrs.name}
+      type={el.attrs.type}
+      value={el.attrs.value}
+      handleChange={el.handleChange}
+      />)}
+     <select onChange={(event)=>setCategory(event.target.value)}>
+     {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
+    </select>       
+    <button className={styles.button_dark} variant="primary" type="submit">
+      Submit
+    </button>
+  </form>
+</div>}
 
-      </>
+</>
       <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
       <button type={"click"}>click</button>
       <p>{addr}</p>

@@ -8,12 +8,12 @@ function Input({id, name, type, value, handleChange}) {
   return (
     <>
     {isLightTheme && <div key={id} >
-      <div> <label className={styles.input_label_light} for={id}> {name} </label></div>
+      <div> <label className={styles.input_label_light} htmlFor={id}> {name} </label></div>
       <input className={styles.inputfield_light} type={type} onChange={handleChange} id={id} name={name} placeholder={name}/>
     </div>}
 
     {!isLightTheme && <div key={id} >
-      <div> <label className={styles.input_label_dark} for={id}> {name} </label></div>
+      <div> <label className={styles.input_label_dark} htmlFor={id}> {name} </label></div>
       <input className={styles.inputfield_dark} type={type} onChange={handleChange} id={id} name={name} placeholder={name}/>
     </div>}
     

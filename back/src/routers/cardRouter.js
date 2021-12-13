@@ -35,6 +35,7 @@ router.post('/', async (req, res) => {
 
 
     // let data = 
+    console.log(req.body);
     await Card.create(req.body, { returning: true, plain: true })
     // let result = data.json()
     res.sendStatus(200)
