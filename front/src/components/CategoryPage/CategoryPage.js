@@ -27,11 +27,11 @@ function ServicePage() {
   return (
     <>
     {isLightTheme && <section className={classes.cat_cards_block_ligth}>
-   {categoryes.map((el) => <CategoryCard key={el.id} {...el}/> )}
+      {categoryes.map((el) => <CategoryCard key={el.id} {...el}/> )}
     </section>}
 
     {!isLightTheme && <section className={classes.cat_cards_block_dark}>
-   {categoryes.map((el) => <CategoryCard key={el.id} {...el}/> )}
+      {categoryes.map((el) => <CategoryCard key={el.id} {...el}/> )}
     </section>}
     
     </>
