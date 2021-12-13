@@ -21,6 +21,18 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER,
       },
+      instagram: {
+        type: Sequelize.STRING,
+      },
+      whatsapp: {
+        type: Sequelize.STRING,
+      },
+      telegram: {
+        type: Sequelize.STRING,
+      },
+      adress: {
+        type: Sequelize.STRING,
+      },
       category_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -44,16 +56,6 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
-      },
-      contact_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Contacts',
-          key: 'id',
-        },
-
       },
       createdAt: {
         allowNull: false,
