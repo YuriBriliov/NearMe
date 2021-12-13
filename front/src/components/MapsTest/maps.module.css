@@ -8,3 +8,21 @@ body {
   margin: 0;
   padding: 0;
 } */
+
+/* .map_input_light {
+  display: flex;
+
+
+}
+
+.map_input_dark {
+  display: flex;
+
+} */
+
+.map_dark {
+  width: '90%';
+  margin: '0 auto';
+   height: "600px"
+  
+}
