@@ -6,13 +6,11 @@ import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
 import styles from '../CardInput/CardInput'
 import { useThemeContext } from '../../context/themeContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-import { useNavigate } from 'react-router-dom'
-import { addNewCard } from '../../redux/actions/cards.action'
 
 function MapsTest({ cards }) {
-  
+
 
   // console.log(cards)
   const dispatch = useDispatch()
@@ -54,12 +52,12 @@ function MapsTest({ cards }) {
 
   ////////////////////////////////
 
-  
+
   function choiseCard(event) {
     event.preventDefaylt()
     console.log(event.target)
     console.log('hello')
-  } 
+  }
 
   /////////////
   async function showAdressFromBack() {
@@ -87,21 +85,21 @@ function MapsTest({ cards }) {
 
             // balloonContentLayout: BalloonContentLayout,
             // balloonPanelMaxMapArea: 0,
-            balloonContentBody:[
+            balloonContentBody: [
               // `info: ${adressFromBack[i].image}`,
               // `${addres} <br/> <br/> `
               // 'ssadsasda'
-            `${adressFromBack[i].text} <br/> <br/>`
+              `${adressFromBack[i].text} <br/> <br/>`
               + ` <br/> <button type="button" class="btn__more" data-id=${cards[i].id}>Подробнее</button> <br/><br/>`
-            // + `${text} <br/>`
-            + `Фото:<br> <img src="${adressFromBack[i].image}" style='height:170px; weight:170px '> <br/>`,
-              
-          ],
-          // Зададим содержимое нижней части балуна.
-        // balloonContentFooter: 'Информация предоставлена:<br/>OOO "Рога и копыта"',
-        // Зададим содержимое всплывающей подсказки.
-        // hintContent: 'Рога и копыта'
-        }, {
+              // + `${text} <br/>`
+              + `Фото:<br> <img src="${adressFromBack[i].image}" style='height:170px; weight:170px '> <br/>`,
+
+            ],
+            // Зададим содержимое нижней части балуна.
+            // balloonContentFooter: 'Информация предоставлена:<br/>OOO "Рога и копыта"',
+            // Зададим содержимое всплывающей подсказки.
+            // hintContent: 'Рога и копыта'
+          }, {
             preset: 'islands#icon',
             iconColor: '#0095B6',
           });
@@ -115,7 +113,7 @@ function MapsTest({ cards }) {
 
 
   }
-  
+
 
   /////////////////////// 
 
@@ -212,33 +210,36 @@ function MapsTest({ cards }) {
     }
     showAdressFromBack()
 
+    function init() {
+      // Создаем выпадающую панель с поисковыми подсказками и прикрепляем ее к HTML-элементу по его id.
+      var suggestView1 = new ymaps.SuggestView('suggest1');
+    }
 
-  }
 
 
-  // function getCardData(event) {
-  //   event.preventDefault()
-  //   console.log(addr);
-  //   dispatch(addNewCard({
-  //     title: inputs[0].getValue(),
-  //     text: inputs[1].getValue(),
-  //     image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
-  //     // image: inputs[2].getValue(),
-  //     price: Number(inputs[3].getValue()),
-  //     category_id: Number(2),
-  //     user_id: user.value.id,
-  //     instagram: inputs[4].getValue(),
-  //     whatsapp: inputs[5].getValue(),
-  //     telegram: inputs[6].getValue(),
-  //     isActive: true,
-  //     adress: addr,
-  //   }))
-  //   navigate('/')
-  // }
+    // function getCardData(event) {
+    //   event.preventDefault()
+    //   console.log(addr);
+    //   dispatch(addNewCard({
+    //     title: inputs[0].getValue(),
+    //     text: inputs[1].getValue(),
+    //     image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
+    //     // image: inputs[2].getValue(),
+    //     price: Number(inputs[3].getValue()),
+    //     category_id: Number(2),
+    //     user_id: user.value.id,
+    //     instagram: inputs[4].getValue(),
+    //     whatsapp: inputs[5].getValue(),
+    //     telegram: inputs[6].getValue(),
+    //     isActive: true,
+    //     adress: addr,
+    //   }))
+    //   navigate('/')
+    // }
 
-  return (
-    <>
-      {/* <>
+    return (
+      <>
+        {/* <>
 
         {isLightTheme && <div className={styles.card_input_container_light}>
           <form className={styles.card_input_box_light} onSubmit={getCardData}>
@@ -279,10 +280,18 @@ function MapsTest({ cards }) {
         </div>}
 
       </> */}
-      <div id="map" style={{ width: '90%', margin: '0 auto', height: "500px" }}></div>
-      {/* <button type={"click"}>click</button> */}
-      <p>{addr}</p>
+        <div id="map" style={{ width: '90%', margin: '0 auto', height: "500px" }}></div>
+        {/* <button type={"click"}>click</button> */}
+        <p>{addr}</p>
+      </>
+    )
+  }
+  return (
+    <>
+    <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
+     {/* <button type={"click"}>click</button> */}
+    <p>{addr}</p>
     </>
   )
 }
-export default MapsTest
+  export default MapsTest

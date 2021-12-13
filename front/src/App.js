@@ -14,7 +14,8 @@ import Places from './components/Places/Places'
 import { useThemeContext } from './context/themeContext'
 import Modal from './components/Modal/Modal'
 
-import { getAllCards } from '../../front/src/redux/actions/cards.action'
+// import { getAllCards } from '../../front/src/redux/actions/cards.action'
+import { getAllCategorys, selectAllCategorys } from './redux/actions/category.action'
 
 
 import './App.css'
@@ -28,9 +29,14 @@ function App() {
 
   const dispatch = useDispatch()
 
+  // useEffect(() => {
+  //   dispatch(getAllCards())
+  // }, [])
+
   useEffect(() => {
-    dispatch(getAllCards())
-  }, [])
+    dispatch(getAllCategorys()
+  )
+}, [])
   
   const user = useSelector((state) => state.user.value)
   const dispach = useDispatch()
