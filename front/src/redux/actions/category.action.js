@@ -28,7 +28,23 @@ export const selectCategory = (card) => ({
 //     console.log(error)
 //   }
 // }
+export const getAllCategorys = (data) => async (dispatch) => {
+  try {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    }
 
+    const response = await fetch(`${process.env.REACT_APP_API_URL}`, options)
+    const cards = await response.json()
+    dispatch(selectAllCategorys(cards))
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const getCategory = (id) => async (dispatch) => {
   try {
