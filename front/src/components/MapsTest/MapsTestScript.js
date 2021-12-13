@@ -107,5 +107,3 @@ clickAdres.addEventListener('click', async (e) => {
     add1 = myPlacemark.properties._data.balloonContent
   },300);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 })
-
-export add1

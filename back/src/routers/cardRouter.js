@@ -35,9 +35,25 @@ router.post('/', async (req, res) => {
 
 
     // let data = 
+    console.log(req.body);
     await Card.create(req.body, { returning: true, plain: true })
     // let result = data.json()
-    res.statusCode(200)
+    res.sendStatus(200)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+// test for maps
+router.get('/test', async (req, res) => {
+  try {
+    let data = await Card.findAll({
+      raw: true,
+      where: {
+        category_id: 2
+      }
+    })
+    res.json(data)
   } catch (error) {
     console.log(error)
   }
