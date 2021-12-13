@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 1400px;
   left: 0px;
   top: 0px;
   color: #FFFFFF;
@@ -40,11 +41,17 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.header_logo_light {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1px;
+}
+
 /* dark */
 .header_dark {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 1400px;
   left: 0px;
   top: 0px;
   color: #FFFFFF;
@@ -78,6 +85,11 @@
   padding: 5px 0px 5px;
   color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.header_logo_dark {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1px;
 }
 
 

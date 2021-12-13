@@ -19,7 +19,7 @@ function Places() {
       <div className={styles.filter_block_light}>
         тут будут фильтры
       </div>
-      <div className={styles.cards_block_light}>
+      <div className={`${styles.cards_block_light} scroll_light`}>
       <Card />
       <Card />
       <Card />
@@ -40,7 +40,7 @@ function Places() {
       <div className={styles.filter_block_dark}>
         тут будут фильтры
       </div>
-      <div className={styles.cards_block_dark}>
+      <div className={`${styles.cards_block_dark} scroll_dark`}>
       <Card />
       <Card />
       <Card />

@@ -21,6 +21,7 @@ function ServicePage() {
       .then((data) => {
         dispatch(selectAllCategorys(data.data))
       })
+
   }, [])
 
 

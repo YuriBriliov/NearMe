@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation, useParams } from "react-router-dom";
 import Header from './components/Header/Header'
 import Login from './components/Login/Login'
 import Register from './components/Register/Register'
@@ -12,15 +12,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import Places from './components/Places/Places'
 import { useThemeContext } from './context/themeContext'
+import Modal from './components/Modal/Modal'
+
 import { getAllCards } from '../../front/src/redux/actions/cards.action'
 
-// установка свитчера темы
-// yarn add react-switch-selector
 
 import './App.css'
 import {checkUser} from './redux/actions/user.actions'
 
 function App() {
+
+   let location = useLocation();
+   let navigate = useNavigate();
+   let background = location.state && location.state.background;
 
   const dispatch = useDispatch()
 
@@ -38,6 +42,10 @@ function App() {
 
     const { isLightTheme , setTheme} = useThemeContext()
 
+    function closeModal() {  
+      console.log('baba');    
+      navigate(-1)
+    }
   
 
   return (
@@ -45,7 +53,7 @@ function App() {
     <Header/>
     {isLightTheme && <main className='container'>
 
-    <Routes>
+    <Routes location={background || location}>
       <Route path='/' element={ <Mainpage />}/>
       <Route path='/login' element={ <Login />}/>
       <Route path='/register' element={ <Register />}/>
@@ -56,15 +64,22 @@ function App() {
       <Route path='/maps' element={<MapsTest/>}/>
       <Route path='/card/:id' element={<CardDetailPage/>}/>
       <Route path='/places' element={<Places/>}/>
-    </Routes>
-     
+    </Routes>   
+
+      {background && 
+      <Routes>
+        <Route path='/register' element={ <Register closeModal={closeModal}/>}/>
+        <Route path='/login' element={<Login closeModal={closeModal}/>} />
+        <Route path='/detail' element={<CardDetailPage closeModal={closeModal}/>}/>
+      </Routes>}  
+
     </main>}
 
     {!isLightTheme && <main className='container_dark'>
-    <Routes>
-      <Route path='/' element={ <Mainpage />}/>
+    <Routes location={background || location}>
       <Route path='/login' element={ <Login />}/>
       <Route path='/register' element={ <Register />}/>
+      <Route path='/' element={ <Mainpage />}/>
       <Route path='/cardinput' element={ <CardInput />}/>
       <Route path='/logout' element={ <Logout />}/>
       <Route path='/profilepage' element={ <ProfilePage />}/> 
@@ -73,6 +88,14 @@ function App() {
       <Route path='/card/:id' element={<CardDetailPage/>}/>
       <Route path='/places' element={<Places/>}/>
     </Routes>
+
+    {background && 
+      <Routes>
+        <Route path='/register' element={ <Register closeModal={closeModal}/>}/>
+        <Route path='/login' element={<Login closeModal={closeModal}/>} />
+        <Route path='/detail' element={<CardDetailPage closeModal={closeModal}/>}/>
+      </Routes>}
+
     </main>}
 
     </>

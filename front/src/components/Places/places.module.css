@@ -14,7 +14,7 @@
   margin: 20px;
   width: 35%;
   height: 80vh;
-
+ 
   display: flex;
   flex-direction: column;
 }
@@ -33,6 +33,7 @@
   }
 
 .filter_block_light {
+
   background-color: #f5f1f1;
   box-shadow: 0px 0px 20px 0px rgba(189, 86, 145, 0.2);
   height: 20%;
@@ -60,6 +61,7 @@
 /* dark */
 
 .places_main_container_dark {
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -79,7 +81,6 @@
 }
 
 .places_mapbox_dark {
-
   box-shadow: 0px 0px 20px 0px rgb(76, 0, 255);
   width: 65%;
   margin: 20px;
@@ -109,5 +110,8 @@
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
+  
+
+  
 }
 

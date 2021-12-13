@@ -18,22 +18,22 @@ function Toggle() {
           selectedBackgroundColor: "#28094e"
       }
     ];
-    const initialSelectedIndex = options.findIndex(({value}) => value === false);
+    let initialSelectedIndex = options.findIndex(({value}) => value === isLightTheme);
  
-    const onChange = (newValue) => {
+    const onChange = async (newValue) => {
         setTheme(newValue);
-        console.log(newValue);
     };
  
   
 return (
-    <div className="your-required-wrapper" style={{width: 50, height: 20}}>
+    <div className={styles.toggle} >
     <SwitchSelector
         onChange={onChange}
         options={options}
         initialSelectedIndex={initialSelectedIndex}
         backgroundColor={"#FFFFFF"}
         fontColor={"#f5f6fa"}
+        
     />
    </div>
   )
