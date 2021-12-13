@@ -14,7 +14,7 @@ import logo from './logo.png'
 function Header() {
 
   let location = useLocation();
-  console.log(location);
+  // console.log(location);
 
 
   const { isLightTheme , setTheme} = useThemeContext()

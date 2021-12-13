@@ -11,6 +11,13 @@ function Places() {
     return state.cards
   })
 
+  function detailOnMap(event) {
+    event.preventDefault()
+    console.log(event.target)
+  }
+
+  let cardOnMap = document.querySelector(`${styles.places_mapbox_light}`)
+  // console.log(cardOnMap)
 
   return (
     <>
@@ -30,9 +37,9 @@ function Places() {
       </div>
     </div>
 
-          <div className={styles.places_mapbox_light}>
-          <MapsTest cards={cards} />
-          </div>
+      <div className={styles.places_mapbox_light}>
+        <MapsTest cards={cards} />
+      </div>
       </div>}
 
       {!isLightTheme && <div className={styles.places_main_container_dark}>
