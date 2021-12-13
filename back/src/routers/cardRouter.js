@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
 
 // создание поста
 router.post('/', async (req, res) => {
+  console.log(req.body)
   try {
     
     // console.log(req.body)

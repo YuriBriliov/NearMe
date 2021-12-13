@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { useState } from 'react'
 import { Routes, Route, useHistory, useLocation, useParams } from "react-router-dom";
 import Modal from '../Modal/Modal'
+import logo from './logo.png'
 
 
 
@@ -13,7 +14,7 @@ import Modal from '../Modal/Modal'
 function Header() {
 
   let location = useLocation();
-  console.log(location);
+  // console.log(location);
 
 
   const { isLightTheme , setTheme} = useThemeContext()
@@ -24,7 +25,7 @@ function Header() {
     <div className={`${styles.header_top_container_light}`}> 
 
         <div className={styles.header_logo_light}>
-            NEAR ME   
+        <img src={logo} alt="Logo" /><br/>NEAR ME   
         </div>
 
         <div className={`${styles.header_top_container_light}`}> 
@@ -46,7 +47,7 @@ function Header() {
       <div className={`${styles.header_top_container_dark}`}> 
 
          <div className={styles.header_logo_dark}>
-          NEAR ME   
+         <img src={logo} alt="Logo" /><br/>NEAR ME    
         </div>
 
         <div className={`${styles.header_top_container_dark}`}>       
