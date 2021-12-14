@@ -21,8 +21,28 @@ export const cardsReducer = (state = [], action) => {
 
     case CHANGE_CARD: {
       const { cards } = payload
-      return [...state, cards]
-    }
+      console.log(cards);
+      console.log(cards.title);
+      console.log(state);
+
+      return state.map(el => {
+        if (el.id === Number(cards.id)) {
+          console.log(444);
+          return {
+            ...el,
+            image: cards.image,
+            text: cards.text,
+            title: cards.title,
+            instagram: cards.instagram,
+            telegram: cards.telegram,
+            whatsapp: cards.whatsapp,
+          }
+        } else {
+          return el
+        }
+      })
+      
+  }
 
     case COMPLETE_CARD: {
       const { card } = payload
