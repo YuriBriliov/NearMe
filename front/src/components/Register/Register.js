@@ -22,7 +22,7 @@ function Register({closeModal}){
     useInput({ name: 'name', type: 'text', id: 'name'}),
     useInput({ name: 'email', type: 'email', id: 'email'}),
     useInput({ name: 'phone', type: 'text', id: 'phone'}),
-    useInput({ name: 'password', type: 'text', id: 'password'})
+    useInput({ name: 'password', type: 'password', id: 'password'})
   ]
 
   useEffect(() => {

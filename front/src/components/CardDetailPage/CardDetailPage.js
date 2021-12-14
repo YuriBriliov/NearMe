@@ -83,7 +83,8 @@ function CardDetailPage() {
   return (
 
     <>
-      {isLightTheme && <div className={styles.detail_main_container_light}>
+      {isLightTheme && 
+      <div className={styles.detail_main_container_light}>
         <div className={styles.detail_img_block_light}>
           <img className={styles.detail_img_light}
             onChange={(event) => setImage(event.target.value)} alt='serv-img' src={image} />
@@ -100,6 +101,7 @@ function CardDetailPage() {
             {/* {cardData.text} */}
             <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive} />
           </div>
+        </div>
 
 
           <div className={styles.detail_contacts_light}>
@@ -108,13 +110,14 @@ function CardDetailPage() {
             <div> <i className="fab fa-whatsapp "></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive} /></div>
             <div> <i className="fab fa-telegram-plane "></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive} /></div>
           </div>
+
+
           <div className={styles.detail_button_block_light}>
             {user ?
               <button className={styles.button_light}>Message</button>
               :
               <></>
             }
-
             {Number(userId) === Number(user?.id) ?
               <>
                 <button className={`${styles.button_light}  ${isActive ? '' : styles.deactiveBtn}`} onClick={activateEdit}>Edit</button>
@@ -125,10 +128,14 @@ function CardDetailPage() {
               <></>
             }
           </div>
-          </div>
+
+
+   
         </div>
       }
-      {!isLightTheme && <div className={styles.detail_main_container_dark}>
+      {!isLightTheme && 
+      
+        <div className={styles.detail_main_container_dark}>
             <div className={styles.detail_img_block_dark}>
               <img className={styles.detail_img_dark} onChange={(event) => setImage(event.target.value)} alt='serv-img' src={image} />
             </div>
@@ -137,14 +144,14 @@ function CardDetailPage() {
               <p>Заголовок</p>
               <div className={styles.detail_title_dark}>
                 {/* {cardData.title} */}
-                <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" ddisabled={isActive} />
+                <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive} />
               </div>
               <p>Описание</p>
               <div className={styles.detail_text_dark}>
                 {/* {cardData.text} */}
                 <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive} />
-
               </div>
+            </div>
 
               <div className={styles.detail_contacts_dark}>
                 <p>Контакты</p>
@@ -152,6 +159,8 @@ function CardDetailPage() {
                 <div> <i className="fab fa-whatsapp "></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive} /></div>
                 <div> <i className="fab fa-telegram-plane "></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive} /></div>
               </div>
+
+
               <div className={styles.detail_button_block_dark}>
                 {user ?
                   <button className={styles.button_dark}>Message</button>
@@ -169,7 +178,7 @@ function CardDetailPage() {
                   <></>
                 }
               </div>
-            </div>
+            
             </div>
       }
    </>

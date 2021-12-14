@@ -250,7 +250,7 @@ function MapsTest() {
         </form>
       
       <div className={styles.mapbox_light}>
-          <div id="map" style={{ width: '90%',padding: '10px', margin: '0 10px', height: "600px" }}></div>
+          <div id="map" style={{ width: '100%',padding: '10px', margin: 'auto', height: "100%" }}></div>
       </div>
         {/* <p>{addr}</p> */}
 
@@ -276,7 +276,7 @@ function MapsTest() {
           </button>
         </form>
         <div className={styles.mapbox_dark}>
-        <div id="map" style={{ width: '100%', padding: '10px', margin: '0 10px',  height: "100%" }}></div>
+        <div id="map" style={{ width: '100%', padding: '10px', margin: 'auto',  height: "100%" }}></div>
 
       </div>
           {/* <p>{addr}</p> */}

@@ -21,11 +21,11 @@ function ServicePage() {
 
   return (
     <>
-    {isLightTheme && <section className={classes.cat_cards_block_ligth}>
+    {isLightTheme && <section className={`${classes.cat_cards_block_ligth} scroll_light`}>
       {categoryes.map((el) => <CategoryCard key={el.id} {...el}/> )}
     </section>}
 
-    {!isLightTheme && <section className={classes.cat_cards_block_dark}>
+    {!isLightTheme && <section className={`${classes.cat_cards_block_dark} scroll_dark`}>
       {categoryes.map((el) => <CategoryCard key={el.id} {...el}/> )}
     </section>}
     
