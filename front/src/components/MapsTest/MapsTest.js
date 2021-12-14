@@ -9,8 +9,8 @@ import { useThemeContext } from '../../context/themeContext'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-function MapsTest({ cards }) {
-
+function MapsTest({ cards, select }) {
+  // console.log(select)
 
   // console.log(cards)
   const dispatch = useDispatch()
@@ -57,9 +57,9 @@ function MapsTest({ cards }) {
 
   /////////////
   async function showAdressFromBack() {
-    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test`);
+    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test/${select}`);
     adressFromBack = await response3.json();
-    // console.log(adressFromBack);
+    console.log(adressFromBack);
 
 
     for (let i = 0; i < adressFromBack.length; i++) {
