@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
-import styles from '../CardInput/CardInput'
+// import styles from '../CardInput/CardInput'
+import styles from './maps.module.css'
 
 import { useThemeContext } from '../../context/themeContext'
 
@@ -230,10 +231,8 @@ function MapsTest() {
     <>
 
     {isLightTheme && 
-    
     <>
-
-      <div className={styles.card_input_container_light}>
+      {/* <div className={styles.card_input_container_light}> */}
       <form className={styles.card_input_box_light} onSubmit={getCardData}>
           {inputs.map(el => <Input 
             key={el.attrs.id}
@@ -250,20 +249,20 @@ function MapsTest() {
             Submit
           </button>
         </form>
-      </div>
+      {/* </div> */}
 
       <div className={styles.mapbox_light}>
-        <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
-          <button type={"click"}>click</button>
-          <p>{addr}</p>
+        <div id="map" style={{ width: '90%', padding: '10px', margin: '0 10px', height: "600px" }}></div>
+          {/* <button type={"click"}>click</button> */}
       </div>
+          {/* <p>{addr}</p> */}
 
      </>
     }
 
     {!isLightTheme && 
     <>
-      <div className={styles.card_input_container_dark}>
+      {/* <div className={styles.card_input_container_dark}> */}
       <form className={styles.card_input_box_dark} onSubmit={getCardData}>
           {inputs.map(el => <Input 
             key={el.attrs.id}
@@ -280,14 +279,13 @@ function MapsTest() {
             Submit
           </button>
         </form>
-      </div>
+      {/* </div> */}
 
-      <div>
-        <div id="map" style={{ width: '90%', height: "600px" }}></div>
-            <button type={"click"}>click</button>
-          <p>{addr}</p>
+      <div className={styles.mapbox_dark}>
+        <div id="map" style={{ width: '100%', padding: '10px', margin: '0 10px',  height: "100%" }}></div>
+            {/* <button type={"click"}>click</button> */}
       </div>
-
+          {/* <p>{addr}</p> */}
     </>
    }     
     </>

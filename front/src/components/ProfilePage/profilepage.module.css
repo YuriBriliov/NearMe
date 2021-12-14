@@ -31,7 +31,6 @@
   width: 70%;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
   box-sizing: border-box;
 }
@@ -115,10 +114,8 @@
   margin: 1%;
   width: 70%;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-
   box-sizing: border-box;
 }
 
