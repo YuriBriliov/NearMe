@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './places.module.css'
 import Card from '../Card/Card'
 import { useThemeContext } from '../../context/themeContext'
@@ -13,6 +13,27 @@ function Places() {
     return state.cards
   })
 
+  const [category, setCategory] = useState(1)
+  const categoryes = useSelector((state) => state.categoryes)
+
+
+  const [filterCategory, setFilterCategory] = useState([])
+  const [filterKey, setFilterKey] = useState(0)
+  
+  
+  useEffect(() => {
+    setFilterCategory(cards)
+  }, [])
+
+  // console.log(filterCategory)
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setFilterKey(prev => prev + 1)
+    },50)
+  }, [filterCategory])
+
+
   function detailOnMap(event) {
     event.preventDefault()
     if (event.target.tagName === 'BUTTON') {
@@ -26,18 +47,31 @@ function Places() {
     cardOnMap = document.querySelector(`.${styles.places_mapbox_light}`)
     cardOnMap.addEventListener('click', detailOnMap)
   },[])
+
+
+  function getCategory(event){
+    console.log(event.target.value)
+    const filteredCards = cards.filter((item)=>{
+      if(Number(item.category_id) === Number(event.target.value)){
+        return item
+      }
+    })
+    setFilterCategory(filteredCards)
+  }
   
-  
+  // console.log(category)
 
   return (
     <>
     {isLightTheme && <div className={styles.places_main_container_light}>
     <div className={styles.places_sidebar_light}>
       <div className={styles.filter_block_light}>
-        тут будут фильтры
+            <select onChange={getCategory} value={category}>
+              {categoryes.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
+        </select>  
       </div>
       <div className={`${styles.cards_block_light} scroll_light`}>
-            {cards.map((item)=>{
+            {filterCategory.map((item)=>{
               return <Card key={item.id} {...item} />
             })}
       
@@ -46,7 +80,7 @@ function Places() {
     </div>
 
       <div className={styles.places_mapbox_light}>
-        <MapsTest cards={cards} />
+          <MapsTest key={filterKey} cards={filterCategory} />
       </div>
     </div>}
 

@@ -11,4 +11,5 @@ export const initialState = {
   category: {},
   cards: [],
   card: {},
+  filteredCategories: []
 }

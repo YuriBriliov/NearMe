@@ -21,9 +21,8 @@ function MapsTest() {
   })
 
   let [addr, setAddr] = useState('')
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState(1)
   const categoryes = useSelector((state) => state.categoryes)
-
   const inputs = [
     useInput({ name: 'title', type: 'text', id: 'title'}),
     useInput({ name: 'text', type: 'text', id: 'text'}),
@@ -166,7 +165,7 @@ function MapsTest() {
             balloonContent: firstGeoObject.getAddressLine()
           });
         adress = myPlacemark.properties._data.balloonContent;
-        console.log(adress);
+        // console.log(adress);
         setAddr(adress)
 
       });
@@ -179,7 +178,7 @@ function MapsTest() {
     addressCards.then(
       function (res) {
         addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
-        console.log(addressGeo);
+        // console.log(addressGeo);
 
 
 
@@ -209,14 +208,14 @@ function MapsTest() {
 
   function getCardData(event) {
     event.preventDefault()
-    console.log(addr);
+    // console.log(addr);
     dispatch(addNewCard({
       title: inputs[0].getValue(),
       text: inputs[1].getValue(),
       image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
       // image: inputs[2].getValue(),
       price: Number(inputs[3].getValue()),
-      category_id: Number(2),
+      category_id: Number(category),
       user_id: user.value.id,
       instagram: inputs[4].getValue(),
       whatsapp: inputs[5].getValue(),
@@ -227,12 +226,12 @@ function MapsTest() {
     navigate('/')
   }
 
-  return (
-    <>
 
+  return (
+<>
+    
     {isLightTheme && 
-    <>
-      {/* <div className={styles.card_input_container_light}> */}
+      <>
       <form className={styles.card_input_box_light} onSubmit={getCardData}>
           {inputs.map(el => <Input 
             key={el.attrs.id}
@@ -249,21 +248,18 @@ function MapsTest() {
             Submit
           </button>
         </form>
-      {/* </div> */}
-
+      
       <div className={styles.mapbox_light}>
-        <div id="map" style={{ width: '90%', padding: '10px', margin: '0 10px', height: "600px" }}></div>
-          {/* <button type={"click"}>click</button> */}
+          <div id="map" style={{ width: '90%',padding: '10px', margin: '0 10px', height: "600px" }}></div>
       </div>
-          {/* <p>{addr}</p> */}
+        {/* <p>{addr}</p> */}
 
-     </>
-    }
+        </>
+      }
 
-    {!isLightTheme && 
-    <>
-      {/* <div className={styles.card_input_container_dark}> */}
-      <form className={styles.card_input_box_dark} onSubmit={getCardData}>
+      {!isLightTheme && 
+        <>
+       <form className={styles.card_input_box_dark} onSubmit={getCardData}>
           {inputs.map(el => <Input 
             key={el.attrs.id}
             id={el.attrs.id}
@@ -279,15 +275,13 @@ function MapsTest() {
             Submit
           </button>
         </form>
-      {/* </div> */}
-
-      <div className={styles.mapbox_dark}>
+        <div className={styles.mapbox_dark}>
         <div id="map" style={{ width: '100%', padding: '10px', margin: '0 10px',  height: "100%" }}></div>
-            {/* <button type={"click"}>click</button> */}
+
       </div>
           {/* <p>{addr}</p> */}
     </>
-   }     
+    }
     </>
   )
 }
