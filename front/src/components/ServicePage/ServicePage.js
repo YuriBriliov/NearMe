@@ -14,7 +14,7 @@ function ServicePage() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getAllCards())
+    // dispatch(getAllCards())
     navigate('/')
   }, [])
 

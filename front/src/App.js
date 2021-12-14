@@ -14,7 +14,7 @@ import Places from './components/Places/Places'
 import { useThemeContext } from './context/themeContext'
 import Modal from './components/Modal/Modal'
 
-// import { getAllCards } from '../../front/src/redux/actions/cards.action'
+import { getAllCards } from '../../front/src/redux/actions/cards.action'
 import { getAllCategorys, selectAllCategorys } from './redux/actions/category.action'
 
 
@@ -26,12 +26,14 @@ function App() {
    let location = useLocation();
    let navigate = useNavigate();
    let background = location.state && location.state.background;
-
+   const cards = useSelector((state) => {
+    return state.cards
+  })
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   dispatch(getAllCards())
-  // }, [])
+  useEffect(() => {
+    dispatch(getAllCards())
+  }, [])
 
   useEffect(() => {
     dispatch(getAllCategorys()

@@ -139,9 +139,11 @@ export const updateCard = (arg) => async (dispatch) => {
     }
 
     const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card`, options)
-    const cardPost = await response.json()
-
-    dispatch(changeCard(cardPost))
+    // const cardPost = await response.json()
+    // console.log(cardPost);
+    if (response.status === 200) {
+      dispatch(changeCard(arg))
+    }
   } catch (error) {
 
   }
