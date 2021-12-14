@@ -50,13 +50,17 @@ function Places() {
 
 
   function getCategory(event){
-    console.log(event.target.value)
-    const filteredCards = cards.filter((item)=>{
-      if(Number(item.category_id) === Number(event.target.value)){
-        return item
-      }
-    })
-    setFilterCategory(filteredCards)
+    if (Number(event.target.value) === 1) {
+      setFilterCategory(categoryes)
+    } else {
+      const filteredCards = cards.filter((item)=>{
+        if(Number(item.category_id) === Number(event.target.value)){
+          return item
+        }
+      })
+      // setCategory(Number(event.target.value))
+      setFilterCategory(filteredCards)
+    }
   }
   
   // console.log(category)
@@ -68,6 +72,7 @@ function Places() {
     <div className={styles.places_sidebar_light}>
       <div className={styles.filter_block_light}>
             <select className={styles.cat_select_light} onChange={getCategory} value={category}>
+              <option value="Выберите категорию" disabled="disabled">Выберите категорию</option>
               {categoryes.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
             </select>  
       </div>
