@@ -208,7 +208,7 @@ function MapsTest() {
 
   function getCardData(event) {
     event.preventDefault()
-    // console.log(addr);
+    console.log(addr);
     dispatch(addNewCard({
       title: inputs[0].getValue(),
       text: inputs[1].getValue(),
