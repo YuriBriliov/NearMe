@@ -17,7 +17,7 @@ function Places() {
   const categoryes = useSelector((state) => state.categoryes)
 
 
-  const [filterCategory, setFilterCategory] = useState([])
+  const [filterCategory, setFilterCategory] = useState(null)
   const [filterKey, setFilterKey] = useState(0)
   
   
@@ -30,7 +30,7 @@ function Places() {
   useEffect(()=>{
     setTimeout(()=>{
       setFilterKey(prev => prev + 1)
-    },50)
+    },500)
   }, [filterCategory])
 
 
@@ -72,7 +72,7 @@ function Places() {
             </select>  
       </div>
       <div className={`${styles.cards_block_light} scroll_light`}>
-            {filterCategory.map((item)=>{
+            {filterCategory && filterCategory.map((item)=>{
               return <Card key={item.id} {...item} />
             })}
   
@@ -80,7 +80,7 @@ function Places() {
     </div>
 
       <div id='mapbox' className={styles.places_mapbox_light}>
-          <MapsTest key={filterKey} cards={filterCategory} />
+          {filterCategory &&<MapsTest  cards={filterCategory} />}
       </div>
     </div>}
 
@@ -100,7 +100,7 @@ function Places() {
       </div>
 
       <div  id='mapbox'  className={styles.places_mapbox_dark}>
-          <MapsTest key={filterKey} cards={filterCategory} />
+          <MapsTest  cards={filterCategory} />
        </div>
      </div>}
 
