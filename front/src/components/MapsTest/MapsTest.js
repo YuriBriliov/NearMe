@@ -282,7 +282,7 @@ function MapsTest({ cards }) {
   }
   return (
     <>
-    <div id="map" style={{ width: '90%', margin: '0 auto', height: "600px" }}></div>
+    <div id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>
      {/* <button type={"click"}>click</button> */}
     <p>{addr}</p>
     </>
