@@ -50,7 +50,6 @@ function Places() {
 
 
   function getCategory(event){
-    console.log(event.target.value)
     if (Number(event.target.value) === 1) {
       setCategory(Number(event.target.value))
       setFilterCategory(cards)
@@ -87,7 +86,7 @@ function Places() {
     </div>
 
       <div className={styles.places_mapbox_light}>
-          <MapsTest key={filterKey} cards={filterCategory} select={category} />
+          <MapsTest cards={filterCategory} select={category} />
       </div>
     </div>}
 
