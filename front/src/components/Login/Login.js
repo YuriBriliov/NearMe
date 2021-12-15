@@ -15,7 +15,7 @@ function Login({closeModal}){
 
   const inputs = [
     useInput({ name: 'email', type: 'email', id: 'email'}),
-    useInput({ name: 'password', type: 'text', id: 'password'})
+    useInput({ name: 'пароль', type: 'password', id: 'password'})
   ]
 
   
@@ -59,7 +59,7 @@ function Login({closeModal}){
           />)}
           {error}
         <button className={styles.button_light} variant="primary" type="submit">
-          Submit
+          Вход
         </button>
       </form>
     </div>}
@@ -79,7 +79,7 @@ function Login({closeModal}){
           />)}
           {error}
         <button className={styles.button_dark} variant="primary" type="submit">
-          Submit
+         Вход
         </button>
       </form>
     </div>}

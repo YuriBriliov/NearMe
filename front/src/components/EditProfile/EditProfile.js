@@ -10,10 +10,10 @@ function EditProfile(){
   const { isLightTheme , setTheme} = useThemeContext()
 
   const inputs = [
-    useInput({ name: 'name', type: 'text', id: 'name'}),
+    useInput({ name: 'Имя', type: 'text', id: 'name'}),
     useInput({ name: 'email', type: 'email', id: 'email'}),
-    useInput({ name: 'phone', type: 'text', id: 'phone'}),
-    useInput({ name: 'password', type: 'text', id: 'password'}),
+    useInput({ name: 'Телефон', type: 'text', id: 'phone'}),
+    useInput({ name: 'Пароль', type: 'text', id: 'password'}),
   ]
 
 
@@ -29,7 +29,7 @@ function EditProfile(){
           handleChange={el.handleChange}
           />)}
         <button className={styles.button_light} variant="primary" type="submit">
-          Submit
+          Сохранить
         </button>
       </form>}
 
@@ -43,7 +43,7 @@ function EditProfile(){
           handleChange={el.handleChange}
           />)}
         <button className={styles.button_dark}variant="primary" type="submit">
-          Submit
+          Сохранить
         </button>
       </form>}
     </>

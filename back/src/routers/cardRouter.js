@@ -13,33 +13,26 @@ router.get('/', async (req, res) => {
 
 // создание поста
 router.post('/', async (req, res) => {
-  console.log(req.body)
+  const { title, text, price, category_id, user_id, instagram, whatsapp,  telegram, isActive, adress } = req.body;
   try {
-    
-    // console.log(req.body)
-    // const { title, img, text } = req.body
-    // if (!req.files || Object.keys(req.files).length === 0) {
-    //   const newPost = await Sounds.create({ text, title, img, user_id: req.session.user.user_id })
-    //   res.json({ text: newPost.text, title: newPost.title, img: newPost.img })
-    // }else{
-    //   const sampleFile = req.files.file
-    //   const fileName = sampleFile.name.split(' ').join('')
-    //   const fullname = `${new Date().getTime()}_${fileName}`
-    //   const uploadPath = `${process.env.PWD}/public/uploads/`
+    if (!req.files || Object.keys(req.files).length === 0) {
+      // todo create card without file
 
-    //   sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
-    //     if (err) { return res.status(500).send(err) }
-    //     const newPost = await Sounds.create({ text, title, file: fullname, user_id: req.session.user.user_id })
-    //     res.json({ file: newPost.file, img: newPost.img, title: newPost.title, text: newPost.text, id: newPost.id })
-    //   })
-    // }
+    }
 
+    const sampleFile = req.files.file
+    const fileName = sampleFile.name.split(' ').join('')
+    const fullname = `${new Date().getTime()}_${fileName}`
+    const uploadPath = `${process.env.PWD}/public/uploads/`
 
-    // let data = 
-    console.log(req.body);
-    await Card.create(req.body, { returning: true, plain: true })
-    // let result = data.json()
-    res.sendStatus(200)
+    sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
+      if (err) { return res.status(500).send(err) }
+
+    const newCard = await Card.create({title, text, image: fullname, price, category_id, user_id, instagram, whatsapp,  telegram, isActive, adress}, { returning: true, plain: true })
+   
+      res.status(200).json(newCard)
+
+    })
   } catch (error) {
     console.log(error)
   }
@@ -47,12 +40,13 @@ router.post('/', async (req, res) => {
 
 // test for maps
 router.get('/test/:id', async (req, res) => {
-  // console.log(req.params)
+  
   try {
     if (Number(req.params.id) === 1) {
       let data = await Card.findAll({
         raw: true
       })
+      console.log(data)
       res.json(data)
     } else {
       
@@ -62,6 +56,7 @@ router.get('/test/:id', async (req, res) => {
           category_id: Number(req.params.id)
         }
       })
+      console.log(data)
       res.json(data)
     }
   } catch (error) {

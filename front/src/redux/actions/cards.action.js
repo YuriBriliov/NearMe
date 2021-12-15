@@ -1,3 +1,4 @@
+import { useLayoutEffect } from 'react'
 import { TAKE_ALL_CARDS, GET_CARD, ADD_NEW_CARD, COMPLETE_CARD, CHANGE_CARD, DELETE_CARD } from '../types'
 
 export const selectAllCards = (cards) => ({
@@ -52,20 +53,27 @@ export const getAllCards = () => async (dispatch) => {
 }
 
 // добавление карточки
-export const addNewCard = (card) => async (dispatch) => {
+export const addNewCard = (card, file) => async (dispatch) => {
+
   try {
-    console.log(card);
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(card)
+    const formData = new FormData()
+    for(let key in card) {
+      formData.append(key, card[key])
     }
 
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card/`, options)
+    formData.append('file', file)
+    // const options = {
+    //   method: 'POST',
+    //   body: formData,
+    //   files: file
+    // }
+
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card/`, {
+      method: 'POST',
+      body: formData,
+    })  
     const newCard = await response.json()
+
     dispatch(addCard(newCard))
   } catch (error) {
     console.log(error)

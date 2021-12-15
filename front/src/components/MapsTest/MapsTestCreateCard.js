@@ -1,5 +1,5 @@
 // import styles from './maps.module.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
@@ -14,6 +14,8 @@ import { addNewCard } from '../../redux/actions/cards.action'
 function MapsTest() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const upload = useRef()
   
   const { isLightTheme , setTheme} = useThemeContext()
   const user = useSelector((state)=>{
@@ -24,14 +26,18 @@ function MapsTest() {
   const [category, setCategory] = useState(1)
   const categoryes = useSelector((state) => state.categoryes)
   const inputs = [
-    useInput({ name: 'title', type: 'text', id: 'title'}),
-    useInput({ name: 'text', type: 'text', id: 'text'}),
-    useInput({ name: 'image', type: 'file', id: 'image'}),
-    useInput({ name: 'price', type: 'text', id: 'price'}),
-    useInput({ name: 'instagram', type: 'text', id: 'instagram'}),
-    useInput({ name: 'whatsapp', type: 'text', id: 'whatsapp'}),
-    useInput({ name: 'telegram', type: 'text', id: 'telegram'}),
+    useInput({ name: 'Название', type: 'text', id: 'title'}),
+    useInput({ name: 'Описание', type: 'text', id: 'text'}),
+    // useInput({ name: 'image', type: 'file', id: 'image'}),
+    useInput({ name: 'Стоимость услуги (от)', type: 'text', id: 'price'}),
+    useInput({ name: 'Instagram', type: 'text', id: 'instagram'}),
+    useInput({ name: 'Whatsapp', type: 'text', id: 'whatsapp'}),
+    useInput({ name: 'Telegram', type: 'text', id: 'telegram'}),
   ]
+
+  const [image, setImage] = useState(null);
+  const [reader] = useState(new FileReader())
+
 
 
 
@@ -47,8 +53,14 @@ function MapsTest() {
 
   useEffect(() => {
     ymaps.ready(init);
-
   }, [])
+
+  function imageHandler() {
+    reader.readAsDataURL(upload.current.files[0]);
+    reader.addEventListener('load', function () {
+      setImage(reader.result)
+    });
+  }
   ////////////////////////////////
   async function showArray() {
     const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test`);
@@ -206,23 +218,25 @@ function MapsTest() {
   }
 
 
+ 
+
   function getCardData(event) {
     event.preventDefault()
-    console.log(addr);
+  
     dispatch(addNewCard({
       title: inputs[0].getValue(),
       text: inputs[1].getValue(),
-      image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
-      // image: inputs[2].getValue(),
-      price: Number(inputs[3].getValue()),
+      image: upload.current.value,
+      price: Number(inputs[2].getValue()),
       category_id: Number(category),
       user_id: user.value.id,
-      instagram: inputs[4].getValue(),
-      whatsapp: inputs[5].getValue(),
-      telegram: inputs[6].getValue(),
+      instagram: inputs[3].getValue(),
+      whatsapp: inputs[4].getValue(),
+      telegram: inputs[5].getValue(),
       isActive: true,
       adress: addr,
-    }))
+    }, upload.current.files[0]
+    ))
     navigate('/')
   }
 
@@ -241,16 +255,20 @@ function MapsTest() {
             value={el.attrs.value}
             handleChange={el.handleChange}
             />)}
-          <select onChange={(event)=>setCategory(event.target.value)}>
+
+            <input className={styles.uploader_light} type='file' name='file' id='file' ref={upload} onChange={imageHandler}/>
+            {image && <img className={styles.preview_light}  src={image}/>} 
+            
+            <select className={styles.cat_selector_light} onChange={(event)=>setCategory(event.target.value)}>
               {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
-          </select>    
+          </select>  
           <button className={styles.button_light} variant="primary" type="submit">
-            Submit
+            Сохранить
           </button>
         </form>
       
       <div className={styles.mapbox_light}>
-          <div id="map" style={{ width: '90%',padding: '10px', margin: '0 10px', height: "600px" }}></div>
+          <div id="map" style={{ width: '100%',padding: '10px', margin: 'auto', height: "100%" }}></div>
       </div>
         {/* <p>{addr}</p> */}
 
@@ -268,15 +286,19 @@ function MapsTest() {
             value={el.attrs.value}
             handleChange={el.handleChange}
             />)}
-          <select onChange={(event)=>setCategory(event.target.value)}>
+
+            <input className={styles.uploader_dark} type='file' name='file' id='file' ref={upload} onChange={imageHandler}/>
+            {image && <img className={styles.preview_dark} src={image}/>} 
+
+          <select className={styles.cat_selector_dark} onChange={(event)=>setCategory(event.target.value)}>
           {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
           </select>       
           <button className={styles.button_dark} variant="primary" type="submit">
-            Submit
+            Сохранить
           </button>
         </form>
         <div className={styles.mapbox_dark}>
-        <div id="map" style={{ width: '100%', padding: '10px', margin: '0 10px',  height: "100%" }}></div>
+        <div id="map" style={{ width: '100%', padding: '10px', margin: 'auto',  height: "100%" }}></div>
 
       </div>
           {/* <p>{addr}</p> */}
