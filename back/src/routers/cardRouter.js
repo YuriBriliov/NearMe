@@ -40,12 +40,13 @@ router.post('/', async (req, res) => {
 
 // test for maps
 router.get('/test/:id', async (req, res) => {
-  // console.log(req.params)
+  
   try {
     if (Number(req.params.id) === 1) {
       let data = await Card.findAll({
         raw: true
       })
+      console.log(data)
       res.json(data)
     } else {
       
@@ -55,6 +56,7 @@ router.get('/test/:id', async (req, res) => {
           category_id: Number(req.params.id)
         }
       })
+      console.log(data)
       res.json(data)
     }
   } catch (error) {

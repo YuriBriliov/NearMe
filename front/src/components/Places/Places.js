@@ -3,8 +3,13 @@ import styles from './places.module.css'
 import Card from '../Card/Card'
 import { useThemeContext } from '../../context/themeContext'
 import MapsTest from '../MapsTest/MapsTest'
+import MapsContainer from '../MapContainer/MapContainer'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import PrintMapPoints from '../MapsTest/PrintMapPoints'
+import MapContainer from '../MapContainer/MapContainer'
+import { useParams } from 'react-router-dom'
+import { useMemo } from 'react'
 
 function Places() {
   const { isLightTheme , setTheme} = useThemeContext()
@@ -12,6 +17,8 @@ function Places() {
   const cards = useSelector(state => {
     return state.cards
   })
+
+  const param = useParams()
   
   const [category, setCategory] = useState(1)
   const categoryes = useSelector((state) => state.categoryes)
@@ -23,9 +30,17 @@ function Places() {
   
   useEffect(() => {
     setFilterCategory(cards)
-  }, [])
+    if (param.id) {
+      setCategory(Number(param.id))
+      const filteredCards = cards.filter((item) => {
+        if (Number(item.category_id) === Number(param.id)) {
+          return item
+        }
+      })
+      setFilterCategory(filteredCards)
+    }
+  }, [cards])
 
-  // console.log(filterCategory)
 
   useEffect(()=>{
     setTimeout(()=>{

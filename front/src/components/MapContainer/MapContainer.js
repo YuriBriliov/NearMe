@@ -54,13 +54,14 @@ function MapsTest({ cards, select }) {
     for (let i = 0; i < adressFromBack.length; i++) {
       ///// Определение координат из адрес
       let addressGeo
-
       let addressCards = ymaps.geocode(adressFromBack[i].adress);
       addressCards.then(
         // eslint-disable-next-line no-loop-func
         function (res) {
           addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
           // console.log(addressGeo);
+
+
 
           // Установка метки
           let myPoint = new ymaps.Placemark([addressGeo[0], addressGeo[1]], {
@@ -92,7 +93,6 @@ function MapsTest({ cards, select }) {
             .add(myPoint);
         },
       );
-      
       /////
     }
 
@@ -102,25 +102,18 @@ function MapsTest({ cards, select }) {
   /////////////////////// 
 
   async function init() {
-    
+
     // let adress
     // let myPlacemark;
     const { geolocation } = ymaps;
     // console.log(geolocation);
-    
-    
-    if(myMap){
-      console.log(myMap.action)
-      myMap.destroy();
-    }else{
-      myMap = new ymaps.Map('map', {
-        center: [55.753994, 37.622093],
-        zoom: 10,
-        controls: ['geolocationControl'],
-      }, {
-        searchControlProvider: 'yandex#search',
-      });
-    }
+    myMap = new ymaps.Map('map', {
+      center: [55.753994, 37.622093],
+      zoom: 10,
+      controls: ['geolocationControl'],
+    }, {
+      searchControlProvider: 'yandex#search',
+    });
 
     // местоположение по IP
     geolocation.get({
@@ -166,7 +159,7 @@ function MapsTest({ cards, select }) {
       }
       getAddress(coords);
     });
-    
+
     // Создание метки.
     function createPlacemark(coords) {
       return new ymaps.Placemark(coords, {
@@ -201,9 +194,21 @@ function MapsTest({ cards, select }) {
       });
     }
     showAdressFromBack()
+
+    function init() {
+
+      // Создаем выпадающую панель с поисковыми подсказками и прикрепляем ее к HTML-элементу по его id.
+      var suggestView1 = new ymaps.SuggestView('suggest1');
+    }
+
+
   }
   return (
-    <div id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>
+    <>
+      <div id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>
+      {/* <button type={"click"}>click</button> */}
+      {/* <p>{addr}</p> */}
+    </>
   )
 }
-  export default MapsTest
+export default MapsTest

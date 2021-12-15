@@ -226,7 +226,6 @@ function MapsTest() {
     dispatch(addNewCard({
       title: inputs[0].getValue(),
       text: inputs[1].getValue(),
-      // image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
       image: upload.current.value,
       price: Number(inputs[2].getValue()),
       category_id: Number(category),
