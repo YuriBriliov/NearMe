@@ -7,16 +7,17 @@
 }
 
 .editprofile_box_light {
+  box-shadow: 0px 0px 20px 0px rgba(189, 86, 145, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 10px;
   width:max-content;
+  height: fit-content;
   padding: 10px;
   margin: 10px auto;
   background-color: #f5f1f1;
-  box-shadow: 0px 0px 20px 0px rgba(189, 86, 145, 0.2);
 }
 
 .button_light {
@@ -27,7 +28,6 @@
   margin: 10px;
   border: 1px solid transparent;
   text-align: center;
-  width: 75px;
   box-shadow: 2px 1px 8px 0px rgba(189, 86, 145, 0.2);
 }
 
@@ -55,8 +55,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 10px;
   width:max-content;
+  height: fit-content;
   padding: 10px;
   margin: 10px auto;
   color: white;
@@ -72,7 +73,6 @@
   padding: 10px;
   margin: 10px;
   text-align: center;
-  width: 75px;
 }
 
 .button_dark:active {

@@ -22,7 +22,7 @@ function ServicePage() {
 
   return (
     <>
-    <h3 className={classes.title__block}>Title block</h3>
+    {/* <h3 className={classes.title__block}>Title block</h3> */}
     <section className={classes.cards}>
         {cards.map((item)=>{
           return <Card key={item.id} {...item} />
