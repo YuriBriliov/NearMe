@@ -1,6 +1,6 @@
 
 // import styles from './maps.module.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Input from '../Input/Input'
 import useInput from '../../hooks/useInput'
@@ -9,12 +9,13 @@ import { useThemeContext } from '../../context/themeContext'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-function MapsTest({ cards }) {
-
+function MapsTest({ cards, select }) {
+  // console.log(select)
 
   // console.log(cards)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
 
   const { isLightTheme, setTheme } = useThemeContext()
   const user = useSelector((state) => {
@@ -23,6 +24,7 @@ function MapsTest({ cards }) {
 
   let [addr, setAddr] = useState('')
   const [category, setCategory] = useState()
+  const [map, setMap] = useState(null)
   const categoryes = useSelector((state) => state.categoryes)
 
   // const inputs = [
@@ -55,9 +57,9 @@ function MapsTest({ cards }) {
 
   /////////////
   async function showAdressFromBack() {
-    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test`);
+    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test/${select}`);
     adressFromBack = await response3.json();
-    // console.log(adressFromBack);
+    console.log(adressFromBack);
 
 
     for (let i = 0; i < adressFromBack.length; i++) {
@@ -108,10 +110,10 @@ function MapsTest({ cards }) {
 
   }
 
-
   /////////////////////// 
 
   async function init() {
+    console.log('initttt');
     // let adress
     // let myPlacemark;
     const { geolocation } = ymaps;
@@ -204,10 +206,10 @@ function MapsTest({ cards }) {
     }
     showAdressFromBack()
 
-    function init() {
-      // Создаем выпадающую панель с поисковыми подсказками и прикрепляем ее к HTML-элементу по его id.
-      var suggestView1 = new ymaps.SuggestView('suggest1');
-    }
+    // function init() {
+    //   // Создаем выпадающую панель с поисковыми подсказками и прикрепляем ее к HTML-элементу по его id.
+    //   var suggestView1 = new ymaps.SuggestView('suggest1');
+    // }
 
 
 
@@ -231,7 +233,7 @@ function MapsTest({ cards }) {
     //   navigate('/')
     // }
 
-    return (
+ /*   return (
       <>
         {/* <>
 
@@ -273,12 +275,12 @@ function MapsTest({ cards }) {
           </form>
         </div>}
 
-      </> */}
+      </> *}
         <div id="map" style={{ width: '90%', margin: '0 auto', height: "500px" }}></div>
-        {/* <button type={"click"}>click</button> */}
+        {/* <button type={"click"}>click</button> /
         <p>{addr}</p>
       </>
-    )
+    )*/
   }
   return (
     <>
