@@ -13,6 +13,7 @@ body {
   /* width: 100vw; */
   min-width: 100vw;
   min-height: 100vh;
+  overflow-y: scroll;
   padding: 1%;
   margin: 0;
 }
@@ -23,11 +24,11 @@ body {
 .container_dark {
   /* width: 100vw; */
   min-width: 100vw;
-  min-height: 100%;
+  min-height: 100vh;
   overflow-y: scroll;
-  height: fit-content;
   padding: 1%;
   margin: 0;
+
   background-color: #28094e;
   scrollbar-color: #28094e;
 }

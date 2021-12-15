@@ -88,103 +88,99 @@ function CardDetailPage() {
           <div className={styles.detail_img_block_light}>
           <img className={styles.detail_img_light}
             onChange={(event) => setImage(event.target.value)} alt='serv-img' src={`http://localhost:3001/uploads/${image}`} />
+    </div>
+
+      <div className={styles.detail_info_light}>
+              <div className={styles.detail_description_light}>
+                <p>Название</p>
+                <div className={styles.detail_title_light}>
+                  {/* {cardData.title} */}
+                  <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive} />
+                </div>
+                <p>Описание</p>
+          
+                  {/* {cardData.text} */}
+                  <textarea className={`${styles.input__textarea_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive}> </textarea>
+  
+              </div>
+
+
+                <div className={styles.detail_contacts_light}>
+                  <p>Контакты</p>
+                  <div> <i className={`${styles.contact_icon} fab fa-instagram`}></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setInstagram(event.target.value)} value={instagram} placeholder="instagram" disabled={isActive} /></div>
+                  <div> <i className={`${styles.contact_icon} fab fa-whatsapp`}></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive} /></div>
+                  <div> <i className={`${styles.contact_icon} fab fa-telegram-plane`}></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive} /></div>
+                </div>
+
+
+                <div className={styles.detail_button_block_light}>
+                  {user ?
+                    <button className={styles.button_light}>Сообщение</button>
+                    :
+                    <></>
+                  }
+                  {Number(userId) === Number(user?.id) ?
+                    <>
+                      <button className={`${styles.button_light}  ${isActive ? '' : styles.deactiveBtn}`} onClick={activateEdit}>Редактировать</button>
+                      <button className={styles.button_light} className={`${styles.button_light} ${isActive ? styles.deactiveBtn : ''}`} onClick={() => editCard({ id, image, title, text, instagram, whatsapp, telegram })}>Сохранить</button>
+                      <button className={styles.button_light} onClick={() => { deleteCard(cardData.id) }}>Удалить</button>
+                    </>
+                    :
+                    <></>
+                  }
+                </div>
         </div>
-
-          <div className={styles.detail_info_light}>
-                  <div className={styles.detail_description_light}>
-                    <p>Название</p>
-                    <div className={styles.detail_title_light}>
-                      {/* {cardData.title} */}
-                      <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive} />
-                    </div>
-                    <p>Описание</p>
-                    <div className={styles.detail_text_light_light}>
-                      {/* {cardData.text} */}
-                      <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive} />
-                    </div>
-                  </div>
-
-
-                    <div className={styles.detail_contacts_light}>
-                      <p>Контакты</p>
-                      <div> <i className="fab fa-instagram "></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setInstagram(event.target.value)} value={instagram} placeholder="instagram" disabled={isActive} /></div>
-                      <div> <i className="fab fa-whatsapp "></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive} /></div>
-                      <div> <i className="fab fa-telegram-plane "></i> <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive} /></div>
-                    </div>
-
-
-                    <div className={styles.detail_button_block_light}>
-                      {user ?
-                        <button className={styles.button_light}>Сообщение</button>
-                        :
-                        <></>
-                      }
-                      {Number(userId) === Number(user?.id) ?
-                        <>
-                          <button className={`${styles.button_light}  ${isActive ? '' : styles.deactiveBtn}`} onClick={activateEdit}>Редактировать</button>
-                          <button className={styles.button_light} className={`${styles.button_light} ${isActive ? styles.deactiveBtn : ''}`} onClick={() => editCard({ id, image, title, text, instagram, whatsapp, telegram })}>Сохранить</button>
-                          <button className={styles.button_light} onClick={() => { deleteCard(cardData.id) }}>Удалить</button>
-                        </>
-                        :
-                        <></>
-                      }
-                    </div>
-            </div>
         </div>
 
       }
       {!isLightTheme && 
       
-        <div className={styles.detail_main_container_dark}>
-            <div className={styles.detail_img_block_dark}>
-              <img className={styles.detail_img_dark} onChange={(event) => setImage(event.target.value)} alt='serv-img' src={`http://localhost:3001/uploads/${image}`} />
-            </div>
-          <div className={styles.detail_info_dark}>
-            
-                      <div className={styles.detail_description_dark}>
-                        <p>Название</p>
-                        <div className={styles.detail_title_dark}>
-                          {/* {cardData.title} */}
-                          <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive} />
-                        </div>
-                        <p>Описание</p>
-                        <div className={styles.detail_text_dark}>
-                          {/* {cardData.text} */}
-                          <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive} />
-                        </div>
-                      </div>
+    <div className={styles.detail_main_container_dark}>
+        <div className={styles.detail_img_block_dark}>
+          <img className={styles.detail_img_dark} onChange={(event) => setImage(event.target.value)} alt='serv-img' src={`http://localhost:3001/uploads/${image}`} />
+        </div>
+      <div className={styles.detail_info_dark}>
+        
+      <div className={styles.detail_description_dark}>
+        <p>Название</p>
+          <div className={styles.detail_title_dark}>
+            {/* {cardData.title} */}
+            <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive} />
+          </div>
+          <p>Описание</p>
+        
+            {/* {cardData.text} */}
+            <textarea className={`${styles.input__textarea_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive}></textarea>
+         
+        </div>
 
-                        <div className={styles.detail_contacts_dark}>
-                          <p>Контакты</p>
-                          <div> <i className="fab fa-instagram "></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setInstagram(event.target.value)} value={instagram} placeholder="instagram" disabled={isActive} /></div>
-                          <div> <i className="fab fa-whatsapp "></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive} /></div>
-                          <div> <i className="fab fa-telegram-plane "></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive} /></div>
-                        </div>
-
-
-                        <div className={styles.detail_button_block_dark}>
-                          {user ?
-                            <button className={styles.button_dark}>Сообщение</button>
-                            :
-                            <></>
-                          }
-                          {Number(userId) === Number(user?.id) ?
-                            <>
-
-                              <button className={`${styles.button_dark} ${isActive ? '' : styles.deactiveBtn}`} onClick={activateEdit}>Редактировать</button>
-                              <button className={styles.button_dark} className={`${styles.button_dark}  ${isActive ? styles.deactiveBtn : ''}`} onClick={() => editCard({ id, image, title, text, instagram, whatsapp, telegram })}>Сохранить</button>
-                              <button className={styles.button_dark} onClick={() => { deleteCard(cardData.id) }}>Удалить</button>
-                            </>
-                            :
-                            <></>
-                          }
-                        </div>
+          <div className={styles.detail_contacts_dark}>
+            <p>Контакты</p>
+            <div> <i className={`${styles.contact_icon} fab fa-instagram`}></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setInstagram(event.target.value)} value={instagram} placeholder="instagram" disabled={isActive} /></div>
+            <div> <i className={`${styles.contact_icon} fab fa-whatsapp`}></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setWhatsapp(event.target.value)} value={whatsapp} placeholder="whatsapp" disabled={isActive} /></div>
+            <div> <i className={`${styles.contact_icon} fab fa-telegram-plane`}></i> <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setTelegram(event.target.value)} value={telegram} placeholder="telegram" disabled={isActive} /></div>
+          </div>
 
 
-            </div>
+          <div className={styles.detail_button_block_dark}>
+            {user ?
+              <button className={styles.button_dark}>Сообщение</button>
+              :
+              <></>
+            }
+            {Number(userId) === Number(user?.id) ?
+              <>
 
-            
-            </div>
+                <button className={`${styles.button_dark} ${isActive ? '' : styles.deactiveBtn}`} onClick={activateEdit}>Редактировать</button>
+                <button className={styles.button_dark} className={`${styles.button_dark}  ${isActive ? styles.deactiveBtn : ''}`} onClick={() => editCard({ id, image, title, text, instagram, whatsapp, telegram })}>Сохранить</button>
+                <button className={styles.button_dark} onClick={() => { deleteCard(cardData.id) }}>Удалить</button>
+              </>
+              :
+              <></>
+            }
+          </div>
+        </div>
+        </div>
       }
    </>
   )

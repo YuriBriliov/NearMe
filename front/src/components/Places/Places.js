@@ -44,7 +44,7 @@ function Places() {
 
   let cardOnMap
   useEffect(()=>{
-    cardOnMap = document.querySelector(`.${styles.places_mapbox_light}`)
+    cardOnMap = document.querySelector('#mapbox')
     cardOnMap.addEventListener('click', detailOnMap)
   },[])
 
@@ -68,41 +68,46 @@ function Places() {
 
   return (
     <>
-    {isLightTheme && <div className={styles.places_main_container_light}>
+    {isLightTheme && 
+    <div className={styles.places_main_container_light}>
     <div className={styles.places_sidebar_light}>
       <div className={styles.filter_block_light}>
-            <select onChange={getCategory} value={category}>
+            <select className={styles.cat_select_light} onChange={getCategory} value={category}>
               {/* <option value="All">Все категории</option> */}
               {categoryes.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
-        </select>  
+           </select>  
       </div>
       <div className={`${styles.cards_block_light} scroll_light`}>
             {filterCategory && filterCategory.map((item)=>{
               return <Card key={item.id} {...item} />
             })}
-      
-
       </div>
     </div>
 
-      <div className={styles.places_mapbox_light}>
+      <div id = 'mapbox' className={styles.places_mapbox_light}>
           <MapsTest cards={filterCategory} select={category} />
       </div>
     </div>}
 
-      {!isLightTheme && <div className={styles.places_main_container_dark}>
-    <div className={styles.places_sidebar_dark}>
+      {!isLightTheme && 
+      <div className={styles.places_main_container_dark}>
+      <div className={styles.places_sidebar_dark}>
       <div className={styles.filter_block_dark}>
-        тут будут фильтры
+      <select className={styles.cat_select_dark} onChange={getCategory} value={category}>
+              {/* <option value="All">Все категории</option> */}
+              {categoryes.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
+           </select>  
       </div>
       <div className={`${styles.cards_block_dark} scroll_dark`}>
-      <Card />
+          {filterCategory && filterCategory.map((item)=>{
+                  return <Card key={item.id} {...item} />
+                })}
 
       </div>
     </div>
 
-          <div className={styles.places_mapbox_dark}>
-        тут будет карта
+          <div id = 'mapbox' className={styles.places_mapbox_dark}>
+            <MapsTest cards={filterCategory} select={category} />
           </div>
       </div>}
 

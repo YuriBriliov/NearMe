@@ -257,6 +257,7 @@ function MapsTest() {
             handleChange={el.handleChange}
             />)}
 
+            <label htmlFor='file' className={styles.upload_button_light}>Добавить фото</label>
             <input className={styles.uploader_light} type='file' name='file' id='file' ref={upload} onChange={imageHandler}/>
             {image && <img className={styles.preview_light}  src={image}/>} 
             
@@ -288,6 +289,7 @@ function MapsTest() {
             handleChange={el.handleChange}
             />)}
 
+            <label htmlFor='file'  className={styles.upload_button_dark}>Добавить фото</label>
             <input className={styles.uploader_dark} type='file' name='file' id='file' ref={upload} onChange={imageHandler}/>
             {image && <img className={styles.preview_dark} src={image}/>} 
 
