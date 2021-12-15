@@ -14,6 +14,7 @@ function useInput({ defaultValue = '', type = 'text', name = '', id = 'input' })
     return value
   }
 
+
   return ({
     handleChange,
     handleClear,

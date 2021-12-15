@@ -13,7 +13,7 @@ function Card({image, title, category, price, id}){
     {isLightTheme &&  
     <Link className={classes.moreBlock} to={`/card/${id}`}>
       <div className={classes.card_wrapper_light}>
-        <img src={image} alt=""/>
+        <img src={`http://localhost:3001/uploads/${image}`} alt=""/>
         <h3 title={title} className={classes.title_light}>
         {title}
         </h3>
@@ -30,7 +30,7 @@ function Card({image, title, category, price, id}){
     {!isLightTheme &&  
     <Link className={classes.moreBlock} to={`/card/${id}`}>
       <div className={classes.card_wrapper_dark}>
-        <img src={image} alt=""/>
+        <img src={`http://localhost:3001/uploads/${image}`} alt=""/>
         <h3 title={title} className={classes.title_dark}>
         {title}
         </h3>

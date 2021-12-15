@@ -23,7 +23,9 @@ body {
 .container_dark {
   /* width: 100vw; */
   min-width: 100vw;
-  min-height: 100vh;
+  min-height: 100%;
+  overflow-y: scroll;
+  height: fit-content;
   padding: 1%;
   margin: 0;
   background-color: #28094e;
