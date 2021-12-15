@@ -5,6 +5,7 @@ import { useThemeContext } from '../../context/themeContext'
 import MapsTest from '../MapsTest/MapsTest'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import PrintMapPoints from '../MapsTest/PrintMapPoints'
 
 function Places() {
   const { isLightTheme , setTheme} = useThemeContext()
@@ -23,7 +24,7 @@ function Places() {
   
   useEffect(() => {
     setFilterCategory(cards)
-  }, [])
+  }, [cards])
 
   // console.log(filterCategory)
 
@@ -80,13 +81,12 @@ function Places() {
             {filterCategory && filterCategory.map((item)=>{
               return <Card key={item.id} {...item} />
             })}
-      
-
       </div>
     </div>
 
       <div className={styles.places_mapbox_light}>
-          <MapsTest cards={filterCategory} select={category} />
+          {/* <MapsTest cards={filterCategory} select={category} /> */}
+          <PrintMapPoints cards={filterCategory} select={category}/>
       </div>
     </div>}
 
@@ -96,7 +96,9 @@ function Places() {
         тут будут фильтры
       </div>
       <div className={`${styles.cards_block_dark} scroll_dark`}>
-      <Card />
+            {filterCategory && filterCategory.map((item) => {
+              return <Card key={item.id} {...item} />
+            })}
 
       </div>
     </div>

@@ -112,7 +112,7 @@ function MapsTest({ cards, select }) {
   /////////////////////// 
 
   async function init() {
-    
+
     // let adress
     // let myPlacemark;
     const { geolocation } = ymaps;
@@ -169,7 +169,7 @@ function MapsTest({ cards, select }) {
       }
       getAddress(coords);
     });
-    
+
     // Создание метки.
     function createPlacemark(coords) {
       return new ymaps.Placemark(coords, {
@@ -206,7 +206,7 @@ function MapsTest({ cards, select }) {
     showAdressFromBack()
 
     function init() {
-      
+
       // Создаем выпадающую панель с поисковыми подсказками и прикрепляем ее к HTML-элементу по его id.
       var suggestView1 = new ymaps.SuggestView('suggest1');
     }
@@ -284,10 +284,10 @@ function MapsTest({ cards, select }) {
   }
   return (
     <>
-    <div id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>
-     {/* <button type={"click"}>click</button> */}
-    <p>{addr}</p>
+      <div id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>
+      {/* <button type={"click"}>click</button> */}
+      <p>{addr}</p>
     </>
   )
 }
-  export default MapsTest
+export default MapsTest
