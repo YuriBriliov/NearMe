@@ -1,10 +1,15 @@
-import { GET_CARD, ADD_NEW_CARD, COMPLETE_CARD, CHANGE_CARD, DELETE_CARD } from '../types'
+import { GET_TEST, GET_CARD, ADD_NEW_CARD, COMPLETE_CARD, CHANGE_CARD, DELETE_CARD } from '../types'
 
 
 
 export const selectCard = (card) => ({
   type: GET_CARD,
   payload: { card }
+})
+
+export const selectTest = (nameM) => ({
+  type: GET_TEST,
+  payload: { nameM }
 })
 
 

@@ -23,7 +23,7 @@ function Places() {
   
   useEffect(() => {
     setFilterCategory(cards)
-  }, [])
+  }, [cards])
 
   // console.log(filterCategory)
 

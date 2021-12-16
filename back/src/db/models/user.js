@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate({
-      Card, Favorite, Contact, Comment,
+      Card, Favorite, Contact, Comment, Dialog, Message
     }) {
       this.belongsToMany(Card, {
         through: 'Rating', foreignKey: 'user_id',
@@ -24,6 +24,18 @@ module.exports = (sequelize, DataTypes) => {
       })
       this.hasMany(Comment, {
         foreignKey: 'user_id',
+      })
+      this.belongsToMany(User, {
+        through: 'Dialog', foreignKey: 'sender_id', as: 'sender',
+      })
+      this.belongsToMany(User, {
+        through: 'Dialog', foreignKey: 'authorCard_id', as: 'author',
+      })
+      // this.belongsToMany(Dialog, {
+      //   foreignKey: 'authorCard_id',
+      // })
+      this.hasMany(Message, {
+        foreignKey: 'sender_id',
       })
     }
   }

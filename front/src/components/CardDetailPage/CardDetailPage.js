@@ -11,7 +11,7 @@ import { updateCard, getAllCards } from '../../redux/actions/cards.action'
 
 
 function CardDetailPage() {
-
+  
   const { isLightTheme, setTheme } = useThemeContext()
   const { id } = useParams()
   const dispatch = useDispatch()
@@ -80,6 +80,12 @@ function CardDetailPage() {
     // })
   }
 
+
+  function createChat(event) {
+    navigate(`/chat/${cardData.user_id}_${id}_${user.id}`)
+    
+  }
+
   return (
 
     <>
@@ -110,7 +116,7 @@ function CardDetailPage() {
           </div>
           <div className={styles.detail_button_block_light}>
             {user ?
-              <button className={styles.button_light}>Message</button>
+              <button className={styles.button_light} id='createChat' onClick={createChat}>Message</button>
               :
               <></>
             }

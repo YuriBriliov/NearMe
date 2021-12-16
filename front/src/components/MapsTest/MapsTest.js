@@ -52,12 +52,21 @@ function MapsTest({ cards, select }) {
 
   let adressFromBack
 
-  ////////////////////////////////
 
+  useEffect(() => {
+    // setTimeout(() => {
+    //   console.log(55555);
+    //   console.log(myMap.geoObjects);
+    //   // myMap?.geoObjects?.removeAll();
+    // showAdressFromBack(select)
 
+    // }, 5000);
+    console.log('', myMap);
+
+  }, [select])
   /////////////
-  async function showAdressFromBack() {
-    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test/${select}`);
+  async function showAdressFromBack(aa) {
+    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test/${aa}`);
     adressFromBack = await response3.json();
     console.log(adressFromBack);
 
@@ -86,7 +95,7 @@ function MapsTest({ cards, select }) {
               // `${addres} <br/> <br/> `
               // 'ssadsasda'
               `${adressFromBack[i].text} <br/> <br/>`
-              + ` <br/> <button type="button" class="btn__more" data-id=${cards[i].id}>Подробнее</button> <br/><br/>`
+              // + ` <br/> <button type="button" class="btn__more" data-id=${cards[i].id}>Подробнее</button> <br/><br/>`
               // + `${text} <br/>`
               + `Фото:<br> <img src="${adressFromBack[i].image}" style='height:170px; weight:170px '> <br/>`,
 
@@ -109,6 +118,7 @@ function MapsTest({ cards, select }) {
 
 
   }
+
 
   /////////////////////// 
 
@@ -204,8 +214,8 @@ function MapsTest({ cards, select }) {
 
       });
     }
-    showAdressFromBack()
-
+    showAdressFromBack(select)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     // function init() {
     //   // Создаем выпадающую панель с поисковыми подсказками и прикрепляем ее к HTML-элементу по его id.
     //   var suggestView1 = new ymaps.SuggestView('suggest1');
@@ -281,7 +291,10 @@ function MapsTest({ cards, select }) {
         <p>{addr}</p>
       </>
     )*/
+    
   }
+
+
   return (
     <>
     <div id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>

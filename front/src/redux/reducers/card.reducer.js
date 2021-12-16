@@ -1,4 +1,4 @@
-import { GET_CARD, CHANGE_CARD } from '../types'
+import { GET_TEST, GET_CARD, CHANGE_CARD } from '../types'
 
 export const cardReducer = (state = {}, action) => {
   const { type, payload } = action
@@ -14,7 +14,10 @@ export const cardReducer = (state = {}, action) => {
       const { card } = payload
       return card
     }
-
+    case GET_TEST: {
+      const {nameM} = payload
+      return nameM
+    }
     default: {
       return state
     }

@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Card extends Model {
     static associate({
-      Comment, Contact, Ad, User, Category, adress
+      Comment, Contact, Ad, User, Category, Dialog
     }) {
       this.belongsToMany(User, {
         through: 'Rating', foreignKey: 'card_id',
@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       });
       this.belongsTo(User, {
         foreignKey: 'id',
+      })
+      this.hasMany(Dialog, {
+        foreignKey: 'service_id',
       })
       // this.belongsTo(Contact, {
       //   foreignKey: 'id',

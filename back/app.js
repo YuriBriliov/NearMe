@@ -9,6 +9,7 @@ const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const cardRouter = require('./src/routers/cardRouter');
 const userRouter = require('./src/routers/userRouter');
+const messageRouter = require('./src/routers/messageRouter');
 const categoryRouter = require('./src/routers/categoryRouter');
 // const redisClient = redis.createClient()
 const PORT = process.env.PORT ?? 3001;
@@ -41,7 +42,19 @@ app.use(morgan('dev'));
 app.use('/', categoryRouter);
 app.use('/api/user', userRouter);
 app.use('/api/card', cardRouter);
+app.use('/api/message', messageRouter);
 
-app.listen(PORT, () => {
-  console.log(`Сервер запускается на ${PORT} порту`);
-});
+// const { Dialog, Message } = require('./src/db/models')
+// try {
+//   const try1 = async function(){
+//     await Message.create({sender_id: 1, text:'parsed.payload.text', dialog_id: 15})
+//   }();
+// } catch (error) {
+//   console.log(error);
+// }
+
+// app.listen(PORT, () => {
+//   console.log(`Сервер запускается на ${PORT} порту`);
+// });
+
+module.exports = { app, sessionParser };

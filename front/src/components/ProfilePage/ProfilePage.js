@@ -6,13 +6,31 @@ import Support from '../Support/Support'
 import { useState } from 'react'
 import { useThemeContext } from '../../context/themeContext'
 import MapsTest from '../MapsTest/MapsTestCreateCard'
+import Message from '../Message/Message'
 
 
 
 function ProfilePage() {
 const { isLightTheme , setTheme} = useThemeContext()
 const [block, setBlock ] = useState('');
+// const {authorId, cardId, senderId } = dialogg
 
+
+
+async function getMessage() {
+  // const response = await fetch(`${process.env.REACT_APP_API_URL}/api/message/`, {
+  //   method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     credentials: 'include',
+  //     body: JSON.stringify(dialogg)
+  // })
+  // const cardPost = await response.json()
+  // // console.log(cardPost);
+  setBlock(<Message/>)
+//   setMessage(cardPost)
+}
 
 
 return (
@@ -24,6 +42,7 @@ return (
         <button onClick={() => setBlock(<MapsTest/>)} className={styles.menu_block_light}> <div >ДОБАВИТЬ МЕСТО</div></button>
         <button onClick={()=> setBlock(<EditProfile/>)} className={styles.menu_block_light}> <div >РЕДАКТИРОВАТЬ ПРОФИЛЬ </div> </button>
         <button onClick={()=> setBlock(<Support/>)} className={styles.menu_block_light}>  <div >ПОДДЕРЖКА</div></button>
+        <button onClick={getMessage} className={styles.menu_block_light}>  <div >Мои сообщения</div></button>
       </div>
 
       <div className={styles.profile_page_var_light}>
@@ -38,6 +57,7 @@ return (
         <button onClick={()=> setBlock(<MapsTest/>)} className={styles.menu_block_dark}> <div >ДОБАВИТЬ МЕСТО</div></button>
         <button onClick={()=> setBlock(<EditProfile/>)} className={styles.menu_block_dark}> <div >РЕДАКТИРОВАТЬ ПРОФИЛЬ</div> </button>
         <button onClick={()=> setBlock(<Support/>)} className={styles.menu_block_dark}>  <div >ПОДДЕРЖКА</div></button>
+     
       </div>
 
       <div className={styles.profile_page_var_dark}>

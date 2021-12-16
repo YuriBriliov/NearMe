@@ -9,24 +9,54 @@ import ProfilePage from './components/ProfilePage/ProfilePage'
 import CardDetailPage from './components/CardDetailPage/CardDetailPage'
 import MapsTest from './components/MapsTest/MapsTest'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Places from './components/Places/Places'
 import { useThemeContext } from './context/themeContext'
 import Modal from './components/Modal/Modal'
+import ChatScript from './components/Chat/ChatScript'
 
 import { getAllCards } from '../../front/src/redux/actions/cards.action'
 import { getAllCategorys, selectAllCategorys } from './redux/actions/category.action'
 
 
 import './App.css'
-import {checkUser} from './redux/actions/user.actions'
+import { checkUser } from './redux/actions/user.actions'
 
 function App() {
+  const [socket, setSocket] = useState(null)
+  const user = useSelector((state) => state.user.value)
 
-   let location = useLocation();
-   let navigate = useNavigate();
-   let background = location.state && location.state.background;
-   const cards = useSelector((state) => {
+
+  //////////////////////
+  useEffect(() => {
+    if (user) {
+      setSocket(new WebSocket('ws://localhost:3001'));
+
+
+    }
+  }, [user])
+
+  useEffect(() => {
+    if (socket) {
+      socket.onopen = function () {
+        socket.send(
+          JSON.stringify({
+            type: 'CHAT_CONNECT',
+          }),
+        );
+      };
+    }
+  }, [socket])
+
+  ////////////////
+
+
+
+
+  let location = useLocation();
+  let navigate = useNavigate();
+  let background = location.state && location.state.background;
+  const cards = useSelector((state) => {
     return state.cards
   })
   const dispatch = useDispatch()
@@ -37,72 +67,76 @@ function App() {
 
   useEffect(() => {
     dispatch(getAllCategorys()
-  )
-}, [])
-  
-  const user = useSelector((state) => state.user.value)
+    )
+  }, [])
+
   const dispach = useDispatch()
 
   useEffect(() => {
     dispach(checkUser())
   }, [])
-  
 
-    const { isLightTheme , setTheme} = useThemeContext()
 
-    function closeModal() {  
-      console.log('baba');    
-      navigate(-1)
-    }
-  
+  const { isLightTheme, setTheme } = useThemeContext()
+
+  function closeModal() {
+    console.log('baba');
+    navigate(-1)
+  }
+
+  // 
+
+
 
   return (
     <>
-    <Header/>
-    {isLightTheme && <main className='container'>
+      <Header />
+      {isLightTheme && <main className='container'>
 
-    <Routes location={background || location}>
-      <Route path='/' element={ <Mainpage />}/>
-      <Route path='/login' element={ <Login />}/>
-      <Route path='/register' element={ <Register />}/>
-      <Route path='/cardinput' element={ <CardInput />}/>
-      <Route path='/logout' element={ <Logout />}/>
-      <Route path='/profilepage' element={ <ProfilePage />}/> 
-      <Route path='/detail' element={<CardDetailPage/>}/>
-      <Route path='/maps' element={<MapsTest/>}/>
-      <Route path='/card/:id' element={<CardDetailPage/>}/>
-      <Route path='/places' element={<Places/>}/>
-    </Routes>   
+        <Routes location={background || location}>
+          <Route path='/' element={<Mainpage />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/chat/:id' element={<ChatScript socket={socket} />} />
 
-      {background && 
-      <Routes>
-        <Route path='/register' element={ <Register closeModal={closeModal}/>}/>
-        <Route path='/login' element={<Login closeModal={closeModal}/>} />
-      </Routes>}  
+          <Route path='/register' element={<Register />} />
+          <Route path='/cardinput' element={<CardInput />} />
+          <Route path='/logout' element={<Logout />} />
+          <Route path='/profilepage' element={<ProfilePage  />} />
+          <Route path='/detail' element={<CardDetailPage />} />
+          <Route path='/maps' element={<MapsTest />} />
+          <Route path='/card/:id' element={<CardDetailPage />} />
+          <Route path='/places' element={<Places />} />
+        </Routes>
 
-    </main>}
+        {background &&
+          <Routes>
+            <Route path='/register' element={<Register closeModal={closeModal} />} />
+            <Route path='/login' element={<Login closeModal={closeModal} />} />
+          </Routes>}
 
-    {!isLightTheme && <main className='container_dark'>
-    <Routes location={background || location}>
-      <Route path='/login' element={ <Login />}/>
-      <Route path='/register' element={ <Register />}/>
-      <Route path='/' element={ <Mainpage />}/>
-      <Route path='/cardinput' element={ <CardInput />}/>
-      <Route path='/logout' element={ <Logout />}/>
-      <Route path='/profilepage' element={ <ProfilePage />}/> 
-      <Route path='/detail' element={<CardDetailPage/>}/>
-      <Route path='/maps' element={<MapsTest/>}/>
-      <Route path='/card/:id' element={<CardDetailPage/>}/>
-      <Route path='/places' element={<Places/>}/>
-    </Routes>
+      </main>}
 
-    {background && 
-      <Routes>
-        <Route path='/register' element={ <Register closeModal={closeModal}/>}/>
-        <Route path='/login' element={<Login closeModal={closeModal}/>} />
-      </Routes>}
+      {!isLightTheme && <main className='container_dark'>
+        <Routes location={background || location}>
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/' element={<Mainpage />} />
+          <Route path='/cardinput' element={<CardInput />} />
+          <Route path='/logout' element={<Logout />} />
+          <Route path='/profilepage' element={<ProfilePage />} />
+          <Route path='/detail' element={<CardDetailPage />} />
+          <Route path='/maps' element={<MapsTest />} />
+          <Route path='/card/:id' element={<CardDetailPage />} />
+          <Route path='/places' element={<Places />} />
+        </Routes>
 
-    </main>}
+        {background &&
+          <Routes>
+            <Route path='/register' element={<Register closeModal={closeModal} />} />
+            <Route path='/login' element={<Login closeModal={closeModal} />} />
+          </Routes>}
+
+      </main>}
 
     </>
 
