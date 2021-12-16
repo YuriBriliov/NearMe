@@ -17,13 +17,13 @@ router.post('/', async (req, res) => {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
       // todo create card without file
-
+console.log( req.files.file ,'создание поста с таким файлом');
     }
 
     const sampleFile = req.files.file
     const fileName = sampleFile.name.split(' ').join('')
     const fullname = `${new Date().getTime()}_${fileName}`
-    const uploadPath = `${process.env.PWD}/public/uploads/`
+    const uploadPath = `${__dirname}/public/uploads/`
 
     sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
       if (err) { return res.status(500).send(err) }

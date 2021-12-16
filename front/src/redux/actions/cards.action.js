@@ -74,6 +74,7 @@ export const addNewCard = (card, file) => async (dispatch) => {
     })  
     const newCard = await response.json()
 
+    console.log(response);
     dispatch(addCard(newCard))
   } catch (error) {
     console.log(error)

@@ -21,18 +21,24 @@ router.route('/sign_up')
           email: currentUser.dataValues.email,
           phone: currentUser.dataValues.phone,
         });
+        console.log(`Форма регистрации ушла на фронт,новый пользователь \x1b[42m${name}, ${email}\x1b[0m  зарегестрирован`);
       } else {
         res.sendStatus(400);
+        console.log(`Не прошла авторизвция 400 \x1b[34m ${email}\x1b[0m `);
+
       }
     } catch (error) {
+      // console.log('ууупс', email, name, password, phone);
       res.sendStatus(500);
+      console.log(`Не прошла авторизвция 500 \x1b[34m ${email}\x1b[0m `);
+
     }
   });
 // Авторизация
 router.route('/sign_in')
   .post(async (req, res) => {
     try {
-      const { email, password } = req.body;
+      const { email, password} = req.body;
       const currentUser = await User.findOne({ where: { email } });
       if (currentUser && await bcrypt.compare(password, currentUser.password)) {
         req.session.user = { id: currentUser.id, name: currentUser.name };
@@ -42,8 +48,11 @@ router.route('/sign_in')
           email: currentUser.email,
           phone: currentUser.phone,
         });
+        console.log(`Форма аторизации ушла на фронт, пользователь с почтой \x1b[44m ${email}\x1b[0m авторизирован`);
       } else {
         res.sendStatus(400);
+        console.log(`Не прошла авторизвция 400 \x1b[34m ${email}\x1b[0m `);
+
       }
     } catch (err) {
       res.sendStatus(500);
@@ -64,6 +73,8 @@ router.route('/check')
     // console.log(req.session.user);
     if (req.session.user) {
       res.status(200).json(req.session.user);
+      console.log('Сервер проверил  \x1b[44m${user}, ${email}\x1b[0m пользователя');
+      
     }
   });
 module.exports = router;
