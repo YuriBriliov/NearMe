@@ -72,6 +72,7 @@ function App() {
       <Route path='/maps' element={<MapsTest/>}/>
       <Route path='/card/:id' element={<CardDetailPage/>}/>
       <Route path='/places' element={<Places/>}/>
+      <Route path='/places/:id' element={<Places/>}/>
     </Routes>   
 
       {background && 

@@ -25,15 +25,6 @@ function MapsTest({ cards, select }) {
   const [category, setCategory] = useState()
   const categoryes = useSelector((state) => state.categoryes)
 
-  // const inputs = [
-  //   useInput({ name: 'title', type: 'text', id: 'title' }),
-  //   useInput({ name: 'text', type: 'text', id: 'text' }),
-  //   useInput({ name: 'image', type: 'file', id: 'image' }),
-  //   useInput({ name: 'price', type: 'text', id: 'price' }),
-  //   useInput({ name: 'instagram', type: 'text', id: 'instagram' }),
-  //   useInput({ name: 'whatsapp', type: 'text', id: 'whatsapp' }),
-  //   useInput({ name: 'telegram', type: 'text', id: 'telegram' }),
-  // ]
 
   const a = '5ae2e3f221c38a28845f05b6e94dd44c91ceac03cdfc62d2a58e3808';
 
@@ -107,7 +98,6 @@ function MapsTest({ cards, select }) {
 
 
   }
-
 
   /////////////////////// 
 
@@ -212,81 +202,12 @@ function MapsTest({ cards, select }) {
     }
 
 
-
-    // function getCardData(event) {
-    //   event.preventDefault()
-    //   console.log(addr);
-    //   dispatch(addNewCard({
-    //     title: inputs[0].getValue(),
-    //     text: inputs[1].getValue(),
-    //     image: 'https://i.ibb.co/GFcfRrK/Intersect.png',
-    //     // image: inputs[2].getValue(),
-    //     price: Number(inputs[3].getValue()),
-    //     category_id: Number(2),
-    //     user_id: user.value.id,
-    //     instagram: inputs[4].getValue(),
-    //     whatsapp: inputs[5].getValue(),
-    //     telegram: inputs[6].getValue(),
-    //     isActive: true,
-    //     adress: addr,
-    //   }))
-    //   navigate('/')
-    // }
-
-    return (
-      <>
-        {/* <>
-
-        {isLightTheme && <div className={styles.card_input_container_light}>
-          <form className={styles.card_input_box_light} onSubmit={getCardData}>
-            {inputs.map(el => <Input
-              key={el.attrs.id}
-              id={el.attrs.id}
-              name={el.attrs.name}
-              type={el.attrs.type}
-              value={el.attrs.value}
-              handleChange={el.handleChange}
-            />)}
-            <select onChange={(event) => setCategory(event.target.value)}>
-              {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
-            </select>
-            <button className={styles.button_light} variant="primary" type="submit">
-              Submit
-            </button>
-          </form>
-        </div>}
-
-        {!isLightTheme && <div className={styles.card_input_container_dark}>
-          <form className={styles.card_input_box_dark} onSubmit={getCardData}>
-            {inputs.map(el => <Input
-              key={el.attrs.id}
-              id={el.attrs.id}
-              name={el.attrs.name}
-              type={el.attrs.type}
-              value={el.attrs.value}
-              handleChange={el.handleChange}
-            />)}
-            <select onChange={(event) => setCategory(event.target.value)}>
-              {categoryes.map((el) => <option value={el.id}>{el.title}</option>)}
-            </select>
-            <button className={styles.button_dark} variant="primary" type="submit">
-              Submit
-            </button>
-          </form>
-        </div>}
-
-      </> */}
-        {/* <div id="map" style={{ width: '90%', margin: '0 auto', height: "500px" }}></div> */}
-        {/* <button type={"click"}>click</button> */}
-        {/* <p>{addr}</p> */}
-      </>
-    )
   }
   return (
     <>
       <div id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>
       {/* <button type={"click"}>click</button> */}
-      <p>{addr}</p>
+      {/* <p>{addr}</p> */}
     </>
   )
 }

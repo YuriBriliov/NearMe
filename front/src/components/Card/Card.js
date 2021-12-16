@@ -13,8 +13,10 @@ function Card({image, title, category, price, id}){
     {isLightTheme &&  
     <Link className={classes.moreBlock} to={`/card/${id}`}>
       <div className={classes.card_wrapper_light}>
-        <img src={image} alt=""/>
-        <h3 className={classes.title_light}>
+        <img src={`http://localhost:3001/uploads/${image}`} alt=""/>
+        <div className={classes.card_info_light}>
+
+        <h3 title={title} className={classes.title_light}>
         {title}
         </h3>
         <div className={classes.title_light}>
@@ -23,6 +25,8 @@ function Card({image, title, category, price, id}){
         <div className={classes.title_light}>
         {price}
         </div>
+
+        </div>
       </div>
     </Link>
     }
@@ -30,8 +34,10 @@ function Card({image, title, category, price, id}){
     {!isLightTheme &&  
     <Link className={classes.moreBlock} to={`/card/${id}`}>
       <div className={classes.card_wrapper_dark}>
-        <img src={image} alt=""/>
-        <h3 className={classes.title_dark}>
+        <img src={`http://localhost:3001/uploads/${image}`} alt=""/>
+
+        <div className={classes.card_info_dark}>
+        <h3 title={title} className={classes.title_dark}>
         {title}
         </h3>
         <div className={classes.title_dark}>
@@ -39,6 +45,9 @@ function Card({image, title, category, price, id}){
         </div>
         <div className={classes.title_dark}>
           {price}
+        </div>
+
+
         </div>
       </div>
     </Link>

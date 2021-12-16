@@ -19,7 +19,7 @@ return (
   <>
   {isLightTheme && <div className={styles.profile_page_container_light}>
       <div className={styles.profile_page_menu_light}>
-         <div className={styles.top_menu_block_light}>MENU</div>
+         {/* <div className={styles.top_menu_block_light}>MENU</div> */}
         <button onClick={()=> setBlock(<ServicePage/>)} className={styles.menu_block_light}> <div >МОИ МЕСТА</div></button>
         <button onClick={() => setBlock(<MapsTest/>)} className={styles.menu_block_light}> <div >ДОБАВИТЬ МЕСТО</div></button>
         <button onClick={()=> setBlock(<EditProfile/>)} className={styles.menu_block_light}> <div >РЕДАКТИРОВАТЬ ПРОФИЛЬ </div> </button>
@@ -33,7 +33,7 @@ return (
 
   {!isLightTheme && <div className={styles.profile_page_container_dark}>
       <div className={styles.profile_page_menu_dark}>
-         <div className={styles.top_menu_block_dark}>MENU</div>
+         {/* <div className={styles.top_menu_block_dark}>MENU</div> */}
         <button onClick={()=> setBlock(<ServicePage/>)} className={styles.menu_block_dark}> <div >МОИ МЕСТА</div></button>
         <button onClick={()=> setBlock(<MapsTest/>)} className={styles.menu_block_dark}> <div >ДОБАВИТЬ МЕСТО</div></button>
         <button onClick={()=> setBlock(<EditProfile/>)} className={styles.menu_block_dark}> <div >РЕДАКТИРОВАТЬ ПРОФИЛЬ</div> </button>

@@ -14,7 +14,7 @@
 }
 
 .input_label_light {
-  font-family: "Syne", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
 }
 
@@ -22,7 +22,7 @@
 .inputfield_dark {
   color: white;
   background-color: #5b417a;
-  font-family: "Syne", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 10px 0px 10px;
   height: 40px;
   width: 250px;
@@ -32,6 +32,6 @@
 }
 
 .input_label_dark {
-  font-family: "Syne", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
 }

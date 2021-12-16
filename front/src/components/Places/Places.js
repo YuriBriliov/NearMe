@@ -3,9 +3,13 @@ import styles from './places.module.css'
 import Card from '../Card/Card'
 import { useThemeContext } from '../../context/themeContext'
 import MapsTest from '../MapsTest/MapsTest'
+import MapsContainer from '../MapContainer/MapContainer'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import PrintMapPoints from '../MapsTest/PrintMapPoints'
+import MapContainer from '../MapContainer/MapContainer'
+import { useParams } from 'react-router-dom'
+import { useMemo } from 'react'
 
 function Places() {
   const { isLightTheme , setTheme} = useThemeContext()
@@ -13,6 +17,8 @@ function Places() {
   const cards = useSelector(state => {
     return state.cards
   })
+
+  const param = useParams()
   
   const [category, setCategory] = useState(1)
   const categoryes = useSelector((state) => state.categoryes)
@@ -24,9 +30,17 @@ function Places() {
   
   useEffect(() => {
     setFilterCategory(cards)
+    if (param.id) {
+      setCategory(Number(param.id))
+      const filteredCards = cards.filter((item) => {
+        if (Number(item.category_id) === Number(param.id)) {
+          return item
+        }
+      })
+      setFilterCategory(filteredCards)
+    }
   }, [cards])
 
-  // console.log(filterCategory)
 
   useEffect(()=>{
     setTimeout(()=>{
@@ -45,7 +59,7 @@ function Places() {
 
   let cardOnMap
   useEffect(()=>{
-    cardOnMap = document.querySelector(`.${styles.places_mapbox_light}`)
+    cardOnMap = document.querySelector('#mapbox')
     cardOnMap.addEventListener('click', detailOnMap)
   },[])
 
@@ -69,10 +83,11 @@ function Places() {
 
   return (
     <>
-    {isLightTheme && <div className={styles.places_main_container_light}>
+    {isLightTheme && 
+    <div className={styles.places_main_container_light}>
     <div className={styles.places_sidebar_light}>
       <div className={styles.filter_block_light}>
-            <select onChange={getCategory} value={category}>
+            <select className={styles.cat_select_light} onChange={getCategory} value={category}>
               {/* <option value="All">Все категории</option> */}
               {categoryes.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
         </select>  
@@ -84,16 +99,23 @@ function Places() {
       </div>
     </div>
 
-      <div className={styles.places_mapbox_light}>
-          {/* <MapsTest cards={filterCategory} select={category} /> */}
-          <PrintMapPoints cards={filterCategory} select={category}/>
+      <div  id = 'mapbox' className={styles.places_mapbox_light}>
+          <MapsTest key={filterKey} cards={filterCategory} select={category} />
+          {/* <PrintMapPoints cards={filterCategory} select={category}/> */}
+          {/* <MapContainer cards={filterCategory} select={category} /> */}
       </div>
+
+      
     </div>}
 
-      {!isLightTheme && <div className={styles.places_main_container_dark}>
+      {!isLightTheme && 
+      <div className={styles.places_main_container_dark}>
     <div className={styles.places_sidebar_dark}>
       <div className={styles.filter_block_dark}>
-        тут будут фильтры
+      <select className={styles.cat_select_dark} onChange={getCategory} value={category}>
+              {/* <option value="All">Все категории</option> */}
+              {categoryes.map((el) => <option key={el.id} value={el.id}>{el.title}</option>)}
+           </select>  
       </div>
       <div className={`${styles.cards_block_dark} scroll_dark`}>
             {filterCategory && filterCategory.map((item) => {
@@ -103,9 +125,11 @@ function Places() {
       </div>
     </div>
 
-          <div className={styles.places_mapbox_dark}>
-        тут будет карта
-          </div>
+    <div  id = 'mapbox' className={styles.places_mapbox_dark}>
+          <MapsTest key={filterKey} cards={filterCategory} select={category} />
+          {/* <PrintMapPoints cards={filterCategory} select={category}/> */}
+          {/* <MapContainer cards={filterCategory} select={category} /> */}
+      </div>
       </div>}
 
 
