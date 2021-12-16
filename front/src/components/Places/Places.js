@@ -94,8 +94,10 @@ function Places() {
       </div>
       <div className={`${styles.cards_block_light} scroll_light`}>
             {filterCategory && filterCategory.map((item)=>{
+              
               return <Card key={item.id} {...item} />
             })}
+
       </div>
     </div>
 
