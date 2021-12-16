@@ -1,5 +1,3 @@
-
-// import styles from './maps.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Input from '../Input/Input'
@@ -15,14 +13,15 @@ function MapsTest({ cards, select }) {
   // console.log(cards)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [map, setMap] = useState(null)
 
   const { isLightTheme, setTheme } = useThemeContext()
-  const user = useSelector((state) => {
-    return state.user
-  })
+  // const user = useSelector((state) => {
+  //   return state.user
+  // })
 
   let [addr, setAddr] = useState('')
-  const [category, setCategory] = useState()
+  // const [category, setCategory] = useState()
   const categoryes = useSelector((state) => state.categoryes)
 
 
@@ -36,83 +35,42 @@ function MapsTest({ cards, select }) {
   let adress
 
   useEffect(() => {
-    ymaps.ready(init);
+    // if(document.querySelector('#map') !== undefined){
+    //   console.log(document.querySelector(`.${styles.places_mapbox_light}`))
+    //   // .remove(document.querySelector('#map'))
+    // }
+
+    setTimeout(() => {
+      if ([...document.querySelector('#map').children].length > 0) {
+        // ymaps.ready(init)
+        document.querySelector('#map').innerHTML = ''
+        ymaps.ready(init)
+      } else {
+        document.querySelector('#map').innerHTML = ''
+        ymaps.ready(init)
+      }
+    }, 500)
+
+    // console.log(map)
+    console.log(document.querySelector('ymaps'))
   }, [])
 
   let adressFromBack
 
   ////////////////////////////////
-
-
-  /////////////
-  async function showAdressFromBack() {
-    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test/${select}`);
-    adressFromBack = await response3.json();
-    // console.log(adressFromBack);
-
-
-    for (let i = 0; i < adressFromBack.length; i++) {
-      ///// Определение координат из адрес
-      let addressGeo
-
-      let addressCards = ymaps.geocode(adressFromBack[i].adress);
-      addressCards.then(
-        // eslint-disable-next-line no-loop-func
-        function (res) {
-          addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
-          // console.log(addressGeo);
-
-          // Установка метки
-          let myPoint = new ymaps.Placemark([addressGeo[0], addressGeo[1]], {
-            balloonContentHeader: adressFromBack[i].title,
-            // balloonContentHeader: 'sasasa',
-
-            // balloonContentLayout: BalloonContentLayout,
-            // balloonPanelMaxMapArea: 0,
-            balloonContentBody: [
-              // `info: ${adressFromBack[i].image}`,
-              // `${addres} <br/> <br/> `
-              // 'ssadsasda'
-              `${adressFromBack[i].text} <br/> <br/>`
-              + ` <br/> <button type="button" class="btn__more" data-id=${cards[i].id}>Подробнее</button> <br/><br/>`
-              // + `${text} <br/>`
-              + `Фото:<br> <img src="${adressFromBack[i].image}" style='height:170px; weight:170px '> <br/>`,
-
-            ],
-            // Зададим содержимое нижней части балуна.
-            // balloonContentFooter: 'Информация предоставлена:<br/>OOO "Рога и копыта"',
-            // Зададим содержимое всплывающей подсказки.
-            // hintContent: 'Рога и копыта'
-          }, {
-            preset: 'islands#icon',
-            iconColor: '#0095B6',
-          });
-          // console.log(myPoint)
-          myMap.geoObjects
-            .add(myPoint);
-        },
-      );
-      
-      /////
-    }
-
-
-  }
-
-  /////////////////////// 
-
   async function init() {
-    
+
     // let adress
     // let myPlacemark;
     const { geolocation } = ymaps;
     // console.log(geolocation);
-    
-    
-    if(myMap){
-      console.log(myMap.action)
+
+
+    if (myMap) {
+      // console.log(myMap.action)
       myMap.destroy();
-    }else{
+
+    } else {
       myMap = new ymaps.Map('map', {
         center: [55.753994, 37.622093],
         zoom: 10,
@@ -166,7 +124,7 @@ function MapsTest({ cards, select }) {
       }
       getAddress(coords);
     });
-    
+
     // Создание метки.
     function createPlacemark(coords) {
       return new ymaps.Placemark(coords, {
@@ -202,8 +160,74 @@ function MapsTest({ cards, select }) {
     }
     showAdressFromBack()
   }
+
+  /////////////
+  async function showAdressFromBack() {
+    const response3 = await fetch(`${process.env.REACT_APP_API_URL}/api/card/test/${select}`);
+    adressFromBack = await response3.json();
+    // console.log(adressFromBack);
+
+
+    for (let i = 0; i < adressFromBack.length; i++) {
+      ///// Определение координат из адрес
+      let addressGeo
+
+      let addressCards = ymaps.geocode(adressFromBack[i].adress);
+      addressCards.then(
+        // eslint-disable-next-line no-loop-func
+        function (res) {
+          addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
+          // console.log(addressGeo);
+
+          // Установка метки
+          let myPoint = new ymaps.Placemark([addressGeo[0], addressGeo[1]], {
+            balloonContentHeader: adressFromBack[i].title,
+            // balloonContentHeader: 'sasasa',
+
+            // balloonContentLayout: BalloonContentLayout,
+            // balloonPanelMaxMapArea: 0,
+            balloonContentBody: [
+              // `info: ${adressFromBack[i].image}`,
+              // `${addres} <br/> <br/> `
+              // 'ssadsasda'
+              `${adressFromBack[i].text} <br/> <br/>`
+              + ` <br/> <button type="button" style="background: #D4145A;
+  border-radius: 100px;
+  color: white;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid transparent;
+  text-align: center;" class="btn__more" data-id=${cards[i].id}>Подробнее</button> <br/><br/>`
+              // + `${text} <br/>`
+              + `<br> <img src="http://localhost:3001/uploads/${cards[i].image}" style='height:120px; weight:120px '> <br/>`,
+
+            ],
+            // Зададим содержимое нижней части балуна.
+            // balloonContentFooter: 'Информация предоставлена:<br/>OOO "Рога и копыта"',
+            // Зададим содержимое всплывающей подсказки.
+            // hintContent: 'Рога и копыта'
+          }, {
+            preset: 'islands#icon',
+            iconColor: '#0095B6',
+          });
+          // console.log(myPoint)
+          myMap.geoObjects
+            .add(myPoint);
+        },
+      );
+
+      /////
+    }
+
+
+  }
+
+  /////////////////////// 
+
+
   return (
-    <div id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>
+    <div style="position: absolute" id="map" style={{ width: '100%', padding: '10px', margin: '0 auto', height: "100%" }}></div>
   )
 }
-  export default MapsTest
+export default MapsTest
