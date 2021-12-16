@@ -6,9 +6,13 @@ import {  useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import {registerNewUser} from '../../redux/actions/user.actions'
+import { useThemeContext } from '../../context/themeContext'
 
 
-function Register(){
+function Register({closeModal}){
+
+  const { isLightTheme , setTheme} = useThemeContext()
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const {error, value: user} = useSelector((state) => state.user)
@@ -32,9 +36,17 @@ function Register(){
     dispatch(registerNewUser({email: inputs[1].getValue(), password: inputs[3].getValue(), name: inputs[0].getValue(), phone: inputs[2].getValue()}))
   }
 
+  function handleClose() {
+    closeModal()
+  }
+
   return(
-    <div className={styles.register_container} onSubmit={completeUser}>
-        <form className={styles.register_box}>
+    <>
+    {isLightTheme &&   <div className={styles.register_container_light} onSubmit={completeUser}>
+        <form className={styles.register_box_light}>
+        <div className={styles.closebutton_container_light}>
+          <button className={styles.closebutton_light} onClick={()=> {handleClose()}} type='button'>x</button>
+        </div>
         {inputs.map(el => <Input 
           key={el.attrs.id}
           id={el.attrs.id}
@@ -44,11 +56,33 @@ function Register(){
           handleChange={el.handleChange}
           />)}
           {error}
-        <button variant="primary" type="submit">
+        <button className={styles.button_light}  variant="primary" type="submit">
           Submit
         </button>
       </form>
-    </div>
+    </div>}
+
+    {!isLightTheme &&   <div className={styles.register_container_dark} onSubmit={completeUser}>
+        <form className={styles.register_box_dark}>
+        <div className={styles.closebutton_container_dark}>
+          <button className={styles.closebutton_dark} onClick={()=> {handleClose()}} type='button'>x</button>
+        </div>
+        {inputs.map(el => <Input 
+          key={el.attrs.id}
+          id={el.attrs.id}
+          name={el.attrs.name}
+          type={el.attrs.type}
+          value={el.attrs.value}
+          handleChange={el.handleChange}
+          />)}
+          {error}
+        <button className={styles.button_dark} variant="primary" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>}
+  
+    </>
   )
 }
 

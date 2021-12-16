@@ -4,14 +4,14 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class Contact extends Model {
-    static associate({ User, Card }) {
-      this.belongsTo(User, {
-        foreignKey: 'id',
-      })
-      this.hasMany(Card, {
-        foreignKey: 'contact_id',
-      })
-    }
+    // static associate({ User, Card }) {
+    //   this.belongsTo(User, {
+    //     foreignKey: 'id',
+    //   })
+    //   this.hasMany(Card, {
+    //     foreignKey: 'contact_id',
+    //   })
+    // }
   }
   Contact.init({
     instagram: DataTypes.STRING,
