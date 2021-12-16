@@ -61,6 +61,9 @@ router.route('/logout')
 // проверка есть ли сессия
 router.route('/check')
   .get((req, res) => {
-    res.status(200).json(req.session.user);
+    // console.log(req.session.user);
+    if (req.session.user) {
+      res.status(200).json(req.session.user);
+    }
   });
 module.exports = router;

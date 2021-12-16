@@ -1,29 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import CategoryCard from '../CategoryCard/CategoryCard'
 import classes from './categorypage.module.css'
+import { useThemeContext } from '../../context/themeContext'
+// import { getAllCategorys, selectAllCategorys } from '../../redux/actions/category.action'
+
 
 function ServicePage() {
+  const { isLightTheme , setTheme} = useThemeContext()
 
-  const icons = [
-    {
-      icon: 'fas fa-hand-paper fa-3x',
-      title: 'nails'
-    },
-    {
-      icon: 'fas fa-eye fa-3x',
-      title: 'brows'
-    },
-    {
-      icon: 'fas fa-grin-hearts fa-3x',
-      title: 'make up'
-    },
-  ]
+  const dispatch = useDispatch()
+
+  const categoryes = useSelector((state) => state.categoryes)
+
+  // useEffect(() => {
+  //       dispatch(getAllCategorys()
+  //     )
+  // }, [])
+
 
   return (
     <>
-    <section className={classes.cat_cards_block}>
-    {icons.map((el) => <CategoryCard icon={el.icon} title={el.title}/> )}
-    </section>
+    {isLightTheme && <section className={`${classes.cat_cards_block_ligth} scroll_light`}>
+      {categoryes.map((el) => <CategoryCard key={el.id} {...el}/> )}
+    </section>}
+
+    {!isLightTheme && <section className={`${classes.cat_cards_block_dark} scroll_dark`}>
+      {categoryes.map((el) => <CategoryCard key={el.id} {...el}/> )}
+    </section>}
+    
     </>
   )
 }
