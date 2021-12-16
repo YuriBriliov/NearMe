@@ -66,4 +66,75 @@ router.route('/check')
       res.status(200).json(req.session.user);
     }
   });
-module.exports = router;
+  router.route('/:id')
+  .get(async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    try {
+      const currUser = await User.findOne({
+        where: {
+          id: id
+        }
+      })
+     res.status(200).json({
+       name: currUser.name,
+       email: currUser.email,
+       phone: currUser.phone,
+     })
+    } catch( err) {
+      console.log(err);
+    }
+  })
+  .put(async (req, res) => {
+    const { id, userName, userEmail, userPhone, userPass, userNewPass} = req.body;
+    console.log('newpass:', userNewPass);
+    console.log('oldpass:', userPass.length);
+
+    const currentUser = await User.findOne({ where: { id: Number(id) } });
+    const myresult = await !(bcrypt.compare(userPass, currentUser.password))
+    console.log('результат проверки пароля', myresult);
+    
+    if(userPass.length == 0 || await !(bcrypt.compare(userPass, currentUser.password))) {
+      console.log('ошибка пароля');
+      res.sendStatus(400)
+    } else  {
+      if(!userNewPass) {
+        console.log('не хочет менять пароль', userNewPass);
+
+        try {
+          const updatedUser = await User.update({name: userName, email: userEmail, phone: userPhone}, {
+            where: {
+              id: Number(id)
+            },
+            returning: true,
+            plain: true
+          })
+          res.status(202).json(updatedUser[1].dataValues)
+
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        console.log('хочет менять пароль', userNewPass);
+        const hashedPass = await bcrypt.hash(userNewPass, Number(process.env.SALT_ROUND));
+        try {
+          const updatedUser = await User.update({name: userName, email: userEmail, phone: userPhone, password: hashedPass}, {
+            where: {
+              id: Number(id)
+            },
+            returning: true,
+            plain: true
+          })
+          res.status(201).json(updatedUser[1].dataValues)
+
+        } catch(err) {
+          console.log(err);
+        }
+      }
+  }
+})
+
+
+
+
+module.exports = router

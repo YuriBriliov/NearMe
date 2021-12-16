@@ -5,7 +5,7 @@ import styles from './login.module.css'
 import { useNavigate,useLocation } from "react-router"
 import { useDispatch, useSelector } from 'react-redux'
 import {useEffect} from 'react'
-import {loginUser} from '../../redux/actions/user.actions'
+import {loginUser, getUser} from '../../redux/actions/user.actions'
 import { useThemeContext } from '../../context/themeContext'
 
 function Login({closeModal}){
@@ -35,7 +35,9 @@ function Login({closeModal}){
   function completeUser(e) {
     e.preventDefault();
     dispatch(loginUser({email: inputs[0].getValue(), password: inputs[1].getValue()}))
+ 
   }
+  console.log(user);
 
   function handleClose() {
     closeModal()

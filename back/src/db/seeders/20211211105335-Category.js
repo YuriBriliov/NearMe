@@ -7,6 +7,12 @@ module.exports = {
     //  * Example:
       await queryInterface.bulkInsert('Categories', [
         {
+          icon: 'fas fa-border-all fa-2x',
+          title: 'Посмотреть все разделы',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           icon: 'fas fa-hand-paper fa-2x',
           title: 'Маникюр',
           createdAt: new Date(),
