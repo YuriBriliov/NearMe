@@ -10,6 +10,9 @@ const FileStore = require('session-file-store')(session);
 const cardRouter = require('./src/routers/cardRouter');
 const userRouter = require('./src/routers/userRouter');
 const categoryRouter = require('./src/routers/categoryRouter');
+const path = require('path')
+
+const fileUpload = require('express-fileupload')
 // const redisClient = redis.createClient()
 const PORT = process.env.PORT ?? 3001;
 
@@ -27,8 +30,9 @@ const sessionConfig = {
 
 const sessionParser = session(sessionConfig);
 app.use(sessionParser);
-
+app.use(fileUpload())
 app.use(express.json());
+app.use(express.static(path.join(process.env.PWD, 'public')))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({

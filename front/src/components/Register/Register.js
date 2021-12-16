@@ -19,10 +19,10 @@ function Register({closeModal}){
 
 
   const inputs = [
-    useInput({ name: 'name', type: 'text', id: 'name'}),
+    useInput({ name: 'Имя', type: 'text', id: 'name'}),
     useInput({ name: 'email', type: 'email', id: 'email'}),
-    useInput({ name: 'phone', type: 'text', id: 'phone'}),
-    useInput({ name: 'password', type: 'text', id: 'password'})
+    useInput({ name: 'Телефон', type: 'text', id: 'phone'}),
+    useInput({ name: 'Пароль', type: 'password', id: 'password'})
   ]
 
   useEffect(() => {
@@ -57,7 +57,7 @@ function Register({closeModal}){
           />)}
           {error}
         <button className={styles.button_light}  variant="primary" type="submit">
-          Submit
+          Зарегистрироваться
         </button>
       </form>
     </div>}
@@ -77,7 +77,7 @@ function Register({closeModal}){
           />)}
           {error}
         <button className={styles.button_dark} variant="primary" type="submit">
-          Submit
+        Зарегистрироваться
         </button>
       </form>
     </div>}

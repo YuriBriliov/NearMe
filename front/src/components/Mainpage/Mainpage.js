@@ -5,10 +5,11 @@ import CategoryPage from '../CategoryPage/CategoryPage'
 function Mainpage() {
 
   return (
-    <div>
+    <>
       <CategoryPage/>
       <ServicePage/>
-    </div>
+    </>
+    
   )
 
 }

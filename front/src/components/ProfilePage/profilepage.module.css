@@ -4,16 +4,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
-  max-width: 1400px;
+  max-width: 80%;
   min-height: 100vh;
   margin: 0 auto;
+  padding-top: 1%;
 
 }
 
 .profile_page_menu_light {
   background-color: #f5f1f1;
-  box-shadow: 0px 0px 20px 0px rgba(189, 86, 145, 0.2);
+  box-shadow: 0px 0px 20px 0px rgb(189, 86, 144);
+  border-radius: 10px;
   margin: 1%;
   width: 15%;
   height: 35vh;
@@ -27,11 +28,11 @@
 
 .profile_page_var_light {
   margin: 1%;
-  width: 70%;
+  min-width: 70%;
+  height: 70vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  box-sizing: border-box;
+  justify-content: space-between;
 }
 
 
@@ -44,7 +45,7 @@
   border-radius: 5px;
   color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: bold;
   align-items: center;
   justify-content: center;
@@ -58,7 +59,7 @@
   height: 15%;
   margin: 2% auto;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   width: 90%;
   border-radius: 5px;
   display: flex;
@@ -90,15 +91,15 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
-  max-width: 1400px;
+  max-width: 80%;
   min-height: 100vh;
   margin: 0 auto;
-
+  padding: 1%;
 }
 
 .profile_page_menu_dark {
   box-shadow: 0px 0px 20px 0px rgb(76, 0, 255);
+  border-radius: 10px;
   margin: 1%;
   width: 15%;
   height: 35vh;
@@ -112,11 +113,11 @@
 
 .profile_page_var_dark {
   margin: 1%;
-  width: 70%;
+  min-width: 70%;
+  height: 70vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  box-sizing: border-box;
+  justify-content: space-between;
 }
 
 
@@ -128,7 +129,7 @@
   border-radius: 5px;
   color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   align-items: center;
   justify-content: space-around;
   font-weight: bold;
@@ -142,7 +143,7 @@
   height: 15%;
   margin: 2% auto;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   width: 90%;
   border-radius: 5px;
   display: flex;

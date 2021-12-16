@@ -1,19 +1,24 @@
 /* ligth */
 
 .header_light {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   min-width: 100vw;
   left: 0px;
   top: 0px;
+  padding: 5px;
   color: #FFFFFF;
   background: #D4145A;
-  padding: 0;
-  margin: 0;
 }
 
-.header_top_container_light {
+.header_content_light {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* .header_top_container_light {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,43 +29,38 @@
   padding: 0 20px;
   margin: 0 auto; 
 
-}
-
-.header_bottom_container_light {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
+} */
 
 .head_links_light {
   text-decoration: none;
   margin: 15px;
   padding: 5px 0px 5px;
+  font-size: 20px;
   color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .header_logo_light {
   font-family: Arial, Helvetica, sans-serif;
-  padding: 1px;
+  margin-left: 2%;
+
+}
+
+.header_toggle_light {
+  margin-right: 2%;
 }
 
 /* dark */
 .header_dark {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   min-width: 100vw;
   left: 0px;
   top: 0px;
+  padding: 5px;
   color: #FFFFFF;
   background: #5b417a;
-  padding: 0;
-  margin: 0;
 }
 
-.header_top_container_dark {
+/* .header_top_container_dark {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -70,26 +70,36 @@
   max-width: 1400px;
   padding: 0 20px;
   margin: 0 auto; 
-}
+} */
 
-.header_bottom_container_dark {
+.header_content_dark {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto;
 }
+
 
 .head_links_dark {
   text-decoration: none;
   margin: 15px;
   padding: 5px 0px 5px;
+  font-size: 20px;
   color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .header_logo_dark {
   font-family: Arial, Helvetica, sans-serif;
-  padding: 1px;
+  margin-left: 2%;
+  
 }
+
+.header_toggle_dark {
+  margin-right: 2%;
+}
+
 
 
