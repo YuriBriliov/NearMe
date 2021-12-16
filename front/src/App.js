@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllCategorys()
   )
-}, [])
+  }, [])
   
   const user = useSelector((state) => state.user.value)
   const dispach = useDispatch()
