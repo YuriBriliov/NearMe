@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import styles from './carddetailpage.module.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,6 +8,8 @@ import { getCard } from '../../redux/actions/card.reducer'
 import { removeCard } from '../../redux/actions/cards.action'
 import { updateCard, getAllCards } from '../../redux/actions/cards.action'
 
+import classes from '../MapsTest/maps.module.css'
+
 
 
 function CardDetailPage() {
@@ -15,6 +17,10 @@ function CardDetailPage() {
   const { isLightTheme, setTheme } = useThemeContext()
   const { id } = useParams()
   const dispatch = useDispatch()
+
+
+  const upload = useRef()
+  const [reader] = useState(new FileReader())
 
   useEffect(() => {
     dispatch(getCard(Number(id)))
@@ -28,7 +34,7 @@ function CardDetailPage() {
 
   const [isActive, setIsActive] = useState(true)
 
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState(null)
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
   const [instagram, setInstagram] = useState('')
@@ -38,7 +44,7 @@ function CardDetailPage() {
 
 
   useEffect(() => {
-    setImage(cardData.image)
+    setImage(`http://localhost:3001/uploads/${cardData.image}`)
     setTitle(cardData.title)
     setText(cardData.text)
     setInstagram(cardData.instagram)
@@ -62,7 +68,7 @@ function CardDetailPage() {
 
   function editCard(arg) {
     if (user.id == cardData.user_id) {
-      dispatch(updateCard(arg))
+      dispatch(updateCard({ ...arg, file: upload.current.files[0]}))
       dispatch(getAllCards())
       navigate('/')
     } else {
@@ -81,6 +87,13 @@ function CardDetailPage() {
     // })
   }
 
+  function imageHandler() {
+    reader.readAsDataURL(upload.current.files[0]);
+    reader.addEventListener('load', function () {
+      setImage(reader.result)
+    });
+  }
+
   return (
 
     <>
@@ -88,7 +101,7 @@ function CardDetailPage() {
       <div className={styles.detail_main_container_light}>
           <div className={styles.detail_img_block_light}>
           <img className={styles.detail_img_light}
-            onChange={(event) => setImage(event.target.value)} alt='serv-img' src={`http://localhost:3001/uploads/${image}`} />
+            onChange={(event) => setImage(event.target.value)} alt='serv-img' src={image} />
         </div>
 
           <div className={styles.detail_info_light}>
@@ -97,6 +110,12 @@ function CardDetailPage() {
               <div className={styles.detail_title_light}>
                 {/* {cardData.title} */}
                 <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive} />
+              </div>
+            <div style={{ margin: '15px' }} className={styles.detail_title_light}>
+                {/* {cardData.image} */}
+              <label htmlFor='file' className={classes.upload_button_light}>Обновить изображение</label>
+              <input className={`${classes.uploader_light} ${isActive ? '' : styles.visible__input_light}`} type='file' name='file' id='file' ref={upload} onChange={imageHandler} disabled={isActive} />
+              
               </div>
               <p>Описание</p>
               
@@ -138,7 +157,7 @@ function CardDetailPage() {
       
         <div className={styles.detail_main_container_dark}>
             <div className={styles.detail_img_block_dark}>
-              <img className={styles.detail_img_dark} onChange={(event) => setImage(event.target.value)} alt='serv-img' src={`http://localhost:3001/uploads/${image}`} />
+          <img className={styles.detail_img_dark} onChange={(event) => setImage(event.target.value)} alt='serv-img' src={image} />
             </div>
           <div className={styles.detail_info_dark}>
             
@@ -148,6 +167,12 @@ function CardDetailPage() {
                   {/* {cardData.title} */}
                   <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setTitle(event.target.value)} value={title} placeholder="Введите заголовок" disabled={isActive} />
                 </div>
+              <div style={{ margin: '15px' }} className={styles.detail_title_light}>
+                {/* {cardData.image} */}
+              <label htmlFor='file' className={classes.button_dark}>Обновить изображение</label>
+                <input className={`${classes.uploader_light} ${isActive ? '' : styles.visible__input_light}`} type='file' name='file' id='file' ref={upload} onChange={imageHandler} disabled={isActive} />
+
+              </div>
                 <p>Описание</p>
           
                   {/* {cardData.text} */}
