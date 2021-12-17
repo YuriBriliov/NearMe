@@ -113,9 +113,14 @@ function CardDetailPage() {
               </div>
             <div style={{ margin: '15px' }} className={styles.detail_title_light}>
                 {/* {cardData.image} */}
+                {Number(userId) === Number(user?.id) ?
+                <>
               <label htmlFor='file' className={classes.upload_button_light}>Обновить изображение</label>
               <input className={`${classes.uploader_light} ${isActive ? '' : styles.visible__input_light}`} type='file' name='file' id='file' ref={upload} onChange={imageHandler} disabled={isActive} />
-              
+              </>
+              :
+              <></>
+                }
               </div>
               <p>Описание</p>
               

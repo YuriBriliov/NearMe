@@ -17,7 +17,9 @@ router.post('/', async (req, res) => {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
       // todo create card without file
-
+      const newCard = await Card.create({title, text, price, category_id, user_id, instagram, whatsapp,  telegram, isActive, adress}, { returning: true, plain: true })
+   
+      res.status(200).json(newCard)
     }
 
     const sampleFile = req.files.file
