@@ -18,6 +18,10 @@ function CardDetailPage() {
   const { id } = useParams()
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(getAllCards())
+  }, [])
+
 
   const upload = useRef()
   const [reader] = useState(new FileReader())
@@ -37,6 +41,7 @@ function CardDetailPage() {
   const [image, setImage] = useState(null)
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
+  const [price, setPrice] = useState('')
   const [instagram, setInstagram] = useState('')
   const [whatsapp, setWhatsapp] = useState('')
   const [telegram, setTelegram] = useState('')
@@ -47,6 +52,7 @@ function CardDetailPage() {
     setImage(`http://localhost:3001/uploads/${cardData.image}`)
     setTitle(cardData.title)
     setText(cardData.text)
+    setPrice(cardData.price)
     setInstagram(cardData.instagram)
     setWhatsapp(cardData.whatsapp)
     setTelegram(cardData.telegram)
@@ -121,7 +127,12 @@ function CardDetailPage() {
               
                 {/* {cardData.text} */}
                 <textarea className={`${styles.input__textarea_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive} ></textarea>
-        
+
+            <p>Цена</p>
+            <div className={styles.detail_title_light}>
+              {/* {cardData.title} */}
+              <input className={`${styles.input__detail_page_light} ${isActive ? '' : styles.visible__input_light}`} onChange={(event) => setPrice(event.target.value)} value={price} placeholder="Введите стоимость" disabled={isActive} />
+            </div>
             </div>
 
 
@@ -142,7 +153,7 @@ function CardDetailPage() {
                 {Number(userId) === Number(user?.id) ?
                   <>
                     <button className={`${styles.button_light}  ${isActive ? '' : styles.deactiveBtn}`} onClick={activateEdit}>Редактировать</button>
-                    <button className={styles.button_light} className={`${styles.button_light} ${isActive ? styles.deactiveBtn : ''}`} onClick={() => editCard({ id, image, title, text, instagram, whatsapp, telegram })}>Сохранить</button>
+                    <button className={styles.button_light} className={`${styles.button_light} ${isActive ? styles.deactiveBtn : ''}`} onClick={() => editCard({ id, image, title, text, price, instagram, whatsapp, telegram })}>Сохранить</button>
                     <button className={styles.button_light} onClick={() => { deleteCard(cardData.id) }}>Удалить</button>
                   </>
                   :
