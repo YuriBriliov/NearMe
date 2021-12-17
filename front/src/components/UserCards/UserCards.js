@@ -12,16 +12,15 @@ function UserCards() {
   const cards = useSelector(state => {
     return state.cards
   })
+  console.log(cards);
   const user = useSelector(state => {
     return state.user
   })
 
   useEffect(() => {
-    cards.forEach((item)=>{
-      if (Number(item.user_id) === Number(user.value.id)) {
-        setUserCards([...userCards,item])
-      }
-    })
+    const filteredCards = cards.filter((item) =>  Number(item.user_id) === Number(user.value.id))
+    setUserCards(filteredCards)
+ 
   }, [])
 
   console.log(userCards)

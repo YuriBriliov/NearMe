@@ -41,6 +41,24 @@
   background-color: #d6608c;
 }
 
+.input_edit_profile_light {
+  font-size: 20px;
+  background: transparent;
+  border: 2px solid #d6608b44;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px 0;
+  padding: 3px;
+}
+.visible_input_light {
+  color: black;
+  border: 2px solid #d6608bc9;
+  border-radius: 10px;
+  outline: none;
+}
+
+
+
 /* dark */
 
 .editprofile_container_dark {
@@ -85,3 +103,25 @@
   background-color: #28094ebb;
   border: 1px solid transparent;
 }
+
+.input_edit_profile_dark {
+  font-size: 20px;
+  background: transparent;
+  border: 2px solid #d6608b44;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px 0;
+  padding: 3px;
+}
+
+.visible_input_dark {
+  color: white;
+   border: 2px solid #ffffff86;
+   border-radius: 10px;
+   outline: none;
+}
+
+.deactiveBtn {
+  display: none;
+}
+

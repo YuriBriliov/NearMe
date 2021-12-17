@@ -8,6 +8,10 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 export const CHECK_USER = 'CHECK_USER'
 export const SET_USER_ERROR = 'SET_USER_ERROR'
 
+export const SET_USER_ALL = 'SET_USER_ALL'
+export const SET_USER_UPDATE_ERROR = 'SET_USER_UPDATE_ERROR'
+
+
 
 // posts/cards
 

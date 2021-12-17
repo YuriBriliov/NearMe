@@ -26,6 +26,7 @@ function CardDetailPage() {
     dispatch(getCard(Number(id)))
   }, [])
   const user = useSelector((state) => state.user.value)
+  
 
   const cardData = useSelector((state) => {
     return state.card
