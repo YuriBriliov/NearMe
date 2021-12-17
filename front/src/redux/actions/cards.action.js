@@ -135,18 +135,36 @@ export const removeCard = (id) => async (dispatch) => {
 //   }
 // }
 
-export const updateCard = (arg) => async (dispatch) => {
+export const updateCard = (arg, file) => async (dispatch) => {
   try {
-    const options = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(arg)
+    const formData = new FormData()
+    for (let key in arg) {
+      formData.append(key, arg[key])
     }
 
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card`, options)
+    formData.append('file', file)
+    // const options = {
+    //   method: 'POST',
+    //   body: formData,
+    //   files: file
+    // }
+
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card/`, {
+      method: 'PUT',
+      body: formData,
+    })  
+    // const options = {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   credentials: 'include',
+    //   body: JSON.stringify(arg)
+    // }
+
+    // const response = await fetch(`${process.env.REACT_APP_API_URL}/api/card`, options)
+
+
     // const cardPost = await response.json()
     // console.log(cardPost);
     if (response.status === 200) {
