@@ -7,4 +7,13 @@ export const initialState = {
     value: null,
     error: null,
   },
+  userAll: {
+    value: null,
+    error: null,
+  },
+  categoryes: [], //slice
+  category: {},
+  cards: [],
+  card: {},
+  filteredCategories: []
 }
