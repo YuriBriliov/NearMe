@@ -107,7 +107,8 @@
 .input_edit_profile_dark {
   font-size: 20px;
   background: transparent;
-  border: 2px solid #d6608b44;
+  border: 1px solid #ce86a036;
+  background-color: #5b417a;
   border-radius: 10px;
   text-align: center;
   margin: 10px 0;
