@@ -185,15 +185,24 @@ function CardDetailPage() {
                 </div>
               <div style={{ margin: '15px' }} className={styles.detail_title_light}>
                 {/* {cardData.image} */}
+                {Number(userId) === Number(user?.id) ?
+                <>
               <label htmlFor='file' className={classes.button_dark}>Обновить изображение</label>
                 <input className={`${classes.uploader_light} ${isActive ? '' : styles.visible__input_light}`} type='file' name='file' id='file' ref={upload} onChange={imageHandler} disabled={isActive} />
-
+                  </>
+                  :
+                  <></>
+                }
               </div>
                 <p>Описание</p>
           
                   {/* {cardData.text} */}
                   <textarea className={`${styles.input__textarea_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setText(event.target.value)} value={text} placeholder="Введите описание" disabled={isActive} ></textarea>
-             
+                  <p>Цена</p>
+            <div className={styles.detail_title_dark}>
+              {/* {cardData.title} */}
+              <input className={`${styles.input__detail_page_dark} ${isActive ? '' : styles.visible__input_dark}`} onChange={(event) => setPrice(event.target.value)} value={price} placeholder="Введите стоимость" disabled={isActive} />
+            </div>
               </div>
 
                 <div className={styles.detail_contacts_dark}>
