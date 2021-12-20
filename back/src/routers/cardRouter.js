@@ -17,7 +17,9 @@ router.post('/', async (req, res) => {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
       // todo create card without file
-
+      const newCard = await Card.create({title, text, price, category_id, user_id, instagram, whatsapp,  telegram, isActive, adress}, { returning: true, plain: true })
+   
+      res.status(200).json(newCard)
     }
 
     const sampleFile = req.files.file
@@ -66,49 +68,36 @@ router.get('/test/:id', async (req, res) => {
 
 // обновление карты
 router.put('/', async (req, res) => {
-  console.log(req.files)
-  console.log(req.body)
+  console.log(req.body.image)
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
-      // todo create card without file
-
-    }
-
-    const sampleFile = req.files.file
-    const fileName = sampleFile.name.split(' ').join('')
-    const fullname = `${new Date().getTime()}_${fileName}`
-    const uploadPath = `${process.env.PWD}/public/uploads/`
-
-    sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
-      if (err) { return res.status(500).send(err) }
-
-      await Card.update({ ...req.body, image: fullname}, {
-            where: {
-              id: Number(req.body.id)
-            }
-          })
-
+      await Card.update(req.body, {
+        where: {
+          id: Number(req.body.id)
+        }
+      })
       res.sendStatus(200)
+    }else{
+      const sampleFile = req.files.file
+      const fileName = sampleFile.name.split(' ').join('')
+      const fullname = `${new Date().getTime()}_${fileName}`
+      const uploadPath = `${process.env.PWD}/public/uploads/`
 
-    })
+      sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
+        if (err) { return res.status(500).send(err) }
+
+        await Card.update({ ...req.body, image: fullname }, {
+          where: {
+            id: Number(req.body.id)
+          }
+        })
+
+        res.sendStatus(200)
+
+      })
+    }
   } catch (error) {
-  // if(!req.files) // доделать
-  // const sampleFile = req.files.file
-  // const fileName = sampleFile.name.split(' ').join('')
-  // const fullname = `${new Date().getTime()}_${fileName}`
-  // const uploadPath = `${process.env.PWD}/public/uploads/`
 
-  // sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
-  //   if (err) { return res.status(500).send(err) }
-
-  // try {
-  //   await Card.update(req.body, {
-  //     where: {
-  //       id: Number(req.body.id)
-  //     }
-  //   })
-  //   res.sendStatus(200)
-  // } catch (error) {
     console.log(error)
   }
 })

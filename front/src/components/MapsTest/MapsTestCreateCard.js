@@ -185,35 +185,35 @@ function MapsTest() {
     showArray()
 
     ///// Определение координат из адреса
-    let addressGeo
-    let addressCards = ymaps.geocode("Россия, Москва, улица Стасовой, 2Б");
-    addressCards.then(
-      function (res) {
-        addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
-        // console.log(addressGeo);
+    // let addressGeo
+    // let addressCards = ymaps.geocode("Россия, Москва, улица Стасовой, 2Б");
+    // addressCards.then(
+    //   function (res) {
+    //     addressGeo = res.geoObjects.get(0).geometry.getCoordinates();
+    //     // console.log(addressGeo);
 
 
 
-        // Установка метки
-        let myPoint = new ymaps.Placemark([addressGeo[0], addressGeo[1]], {
-          balloonContentHeader: 'Балун Header',
-          // balloonContentLayout: BalloonContentLayout,
-          // balloonPanelMaxMapArea: 0,
-          balloonContentBody:
-            // `info: ${response3[image]}`,
-            // `${addres} <br/> <br/> `
-            `sdsdfsd`
-          // + `wikipedia: <br/> <a href=${wikipedia}>${allCult[i].properties.name}</a> <br/><br/>`
-          // + `${text} <br/>`
-          // + `Фото:<br> <img src="${style || ''}" style='height:${style.height && 0}px; weight:${style.weight && 0} '> <br/>`,
-        }, {
-          preset: 'islands#icon',
-          iconColor: '#0095B6',
-        });
+    //     // Установка метки
+    //     // let myPoint = new ymaps.Placemark([addressGeo[0], addressGeo[1]], {
+    //     //   balloonContentHeader: 'Балун Header',
+    //     //   // balloonContentLayout: BalloonContentLayout,
+    //     //   // balloonPanelMaxMapArea: 0,
+    //     //   balloonContentBody:
+    //     //     // `info: ${response3[image]}`,
+    //     //     // `${addres} <br/> <br/> `
+    //     //     `sdsdfsd`
+    //     //   // + `wikipedia: <br/> <a href=${wikipedia}>${allCult[i].properties.name}</a> <br/><br/>`
+    //     //   // + `${text} <br/>`
+    //     //   // + `Фото:<br> <img src="${style || ''}" style='height:${style.height && 0}px; weight:${style.weight && 0} '> <br/>`,
+    //     // }, {
+    //     //   preset: 'islands#icon',
+    //     //   iconColor: '#0095B6',
+    //     // });
 
-        myMap.geoObjects.add(myPoint);
-      },
-    );
+    //     // myMap.geoObjects.add(myPoint);
+    //   },
+    // );
     /////
   }
 
